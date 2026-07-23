@@ -14,7 +14,7 @@ jobs:
     name: PHP Security Checker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check for known security vulnerabilities
         run: |
@@ -27,7 +27,7 @@ jobs:
     name: PHP Copy/Paste Detector
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -57,7 +57,7 @@ jobs:
     name: PHP Insights
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: shivammathur/setup-php@v2
         with:
