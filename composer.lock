@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6055678006d2a7d89c4f3cbcff176f98",
+    "content-hash": "d688c6112fbac70cb427096c4f78d9e6",
     "packages": [
         {
             "name": "adhocore/jwt",
@@ -1540,16 +1540,16 @@
         },
         {
             "name": "docusign/esign-client",
-            "version": "v8.8.1",
+            "version": "v9.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/docusign/docusign-esign-php-client.git",
-                "reference": "d026fdcb41bec593ec152f5a223f2820324b5124"
+                "reference": "91bc7860cb0e18f816d86dabb6ea41522b226ff1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/docusign/docusign-esign-php-client/zipball/d026fdcb41bec593ec152f5a223f2820324b5124",
-                "reference": "d026fdcb41bec593ec152f5a223f2820324b5124",
+                "url": "https://api.github.com/repos/docusign/docusign-esign-php-client/zipball/91bc7860cb0e18f816d86dabb6ea41522b226ff1",
+                "reference": "91bc7860cb0e18f816d86dabb6ea41522b226ff1",
                 "shasum": ""
             },
             "require": {
@@ -1593,9 +1593,9 @@
             ],
             "support": {
                 "issues": "https://github.com/docusign/docusign-esign-php-client/issues",
-                "source": "https://github.com/docusign/docusign-esign-php-client/tree/v8.8.1"
+                "source": "https://github.com/docusign/docusign-esign-php-client/tree/v9.0.0"
             },
-            "time": "2026-05-27T12:50:12+00:00"
+            "time": "2026-07-16T14:21:44+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
