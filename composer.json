@@ -31,7 +31,7 @@
         "spatie/laravel-permission": "^6.25",
         "spatie/menu": "^3.2.1",
         "spiral/roadrunner-cli": "^2.7.2",
-        "spiral/roadrunner-http": "^3.6.0",
+        "spiral/roadrunner-http": "^4.1.0",
         "stripe/stripe-php": "^20.3.1"
     },
     "require-dev": {
