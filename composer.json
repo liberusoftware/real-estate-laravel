@@ -32,7 +32,7 @@
         "spatie/menu": "^3.2.1",
         "spiral/roadrunner-cli": "^2.7.2",
         "spiral/roadrunner-http": "^3.6.0",
-        "stripe/stripe-php": "^20.3.1"
+        "stripe/stripe-php": "^21.2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24.1",
