@@ -8,4 +8,6 @@ Route::middleware('api')->prefix('api/real-estate/property-management')->group(f
     Route::post('/', [ManagementRecordController::class, 'store']);
     Route::get('/{record}', [ManagementRecordController::class, 'show']);
     Route::patch('/{record}', [ManagementRecordController::class, 'update']);
+    Route::patch('/{record}/details', [ManagementRecordController::class, 'updateDetails']);
+    Route::post('/{record}/failure', [ManagementRecordController::class, 'recordFailure']);
 });

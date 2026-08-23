@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\PropertyManagementFilament\Resources;
 
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -25,7 +26,7 @@ final class ManagementRecordResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('subject')->required()->maxLength(255), Select::make('capability')->options(collect(ManagementCapability::cases())->mapWithKeys(fn ($c) => [$c->value => str($c->value)->replace('_', ' ')->title()])->all())->required(), Select::make('status')->options(['draft' => 'Draft', 'in_progress' => 'In progress', 'completed' => 'Completed', 'cancelled' => 'Cancelled'])->required()]);
+        return $schema->components([TextInput::make('subject')->required()->maxLength(255), Select::make('capability')->options(collect(ManagementCapability::cases())->mapWithKeys(fn ($c) => [$c->value => str($c->value)->replace('_', ' ')->title()])->all())->required(), Select::make('status')->options(['draft' => 'Draft', 'in_progress' => 'In progress', 'completed' => 'Completed', 'cancelled' => 'Cancelled'])->required(), Textarea::make('failure_reason')->maxLength(2000)->columnSpanFull()]);
     }
 
     public static function table(Table $table): Table

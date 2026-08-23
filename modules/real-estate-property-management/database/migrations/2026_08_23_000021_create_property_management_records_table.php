@@ -21,6 +21,7 @@ return new class() extends Migration
             $table->string('status', 32)->index();
             $table->json('details')->nullable();
             $table->json('audit')->nullable();
+            $table->text('failure_reason')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->timestamp('cancelled_at')->nullable();
             $table->softDeletes();

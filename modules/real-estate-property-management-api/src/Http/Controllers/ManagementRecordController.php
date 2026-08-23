@@ -7,7 +7,9 @@ namespace Liberu\RealEstate\PropertyManagementApi\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Liberu\RealEstate\PropertyManagement\Application\CreateManagementRecord;
+use Liberu\RealEstate\PropertyManagement\Application\RecordManagementFailure;
 use Liberu\RealEstate\PropertyManagement\Application\TransitionManagementRecord;
+use Liberu\RealEstate\PropertyManagement\Application\UpdateManagementDetails;
 use Liberu\RealEstate\PropertyManagement\Domain\ManagementStatus;
 use Liberu\RealEstate\PropertyManagement\Models\ManagementRecord;
 
@@ -44,5 +46,23 @@ final class ManagementRecordController
         $data = $request->validate(['status' => 'required|string|in:draft,in_progress,completed,cancelled']);
 
         return response()->json(['data' => $transition->handle($record, $user->current_team_id, $user->getAuthIdentifier(), ManagementStatus::from($data['status']))]);
+    }
+
+    public function updateDetails(Request $request, ManagementRecord $record, UpdateManagementDetails $update): JsonResponse
+    {
+        $user = $request->user();
+        abort_unless((string) $user?->current_team_id === (string) $record->team_id, 404);
+        $data = $request->validate(['details' => 'required|array']);
+
+        return response()->json(['data' => $update->handle($record, $user->current_team_id, $user->getAuthIdentifier(), $data['details'])]);
+    }
+
+    public function recordFailure(Request $request, ManagementRecord $record, RecordManagementFailure $failure): JsonResponse
+    {
+        $user = $request->user();
+        abort_unless((string) $user?->current_team_id === (string) $record->team_id, 404);
+        $data = $request->validate(['reason' => 'required|string|max:2000']);
+
+        return response()->json(['data' => $failure->handle($record, $user->current_team_id, $user->getAuthIdentifier(), $data['reason'])]);
     }
 }

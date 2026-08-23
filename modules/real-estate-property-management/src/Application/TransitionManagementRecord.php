@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\PropertyManagement\Application;
 
 use Illuminate\Validation\ValidationException;
+use Liberu\RealEstate\PropertyManagement\Domain\Events\ManagementRecordStatusChanged;
 use Liberu\RealEstate\PropertyManagement\Domain\ManagementStatus;
 use Liberu\RealEstate\PropertyManagement\Models\ManagementRecord;
 
@@ -18,7 +19,15 @@ final class TransitionManagementRecord
         if ($record->status === ManagementStatus::Completed && $status !== ManagementStatus::Completed) {
             throw ValidationException::withMessages(['status' => 'Completed records cannot be reopened.']);
         }
-        $record->forceFill(['status' => $status, 'completed_at' => $status === ManagementStatus::Completed ? now() : $record->completed_at, 'cancelled_at' => $status === ManagementStatus::Cancelled ? now() : $record->cancelled_at, 'audit' => [...($record->audit ?? []), ['event' => $status->value, 'actor_id' => $actorId, 'at' => now()->toISOString()]]])->save();
+
+        $from = $record->status;
+        $record->forceFill([
+            'status' => $status,
+            'completed_at' => $status === ManagementStatus::Completed ? now() : $record->completed_at,
+            'cancelled_at' => $status === ManagementStatus::Cancelled ? now() : $record->cancelled_at,
+            'audit' => [...($record->audit ?? []), ['event' => $status->value, 'actor_id' => $actorId, 'at' => now()->toISOString()]],
+        ])->save();
+        event(new ManagementRecordStatusChanged($record, $from, $status, $actorId));
 
         return $record->refresh();
     }
