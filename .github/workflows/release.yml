@@ -69,7 +69,10 @@ jobs:
         run: php artisan key:generate
 
       - name: Run tests with release coverage gate
-        run: php artisan test --coverage-clover=coverage.xml --min=100
+        run: composer test:coverage
+
+      - name: Generate expanded module and theme coverage
+        run: composer test:coverage:expanded
 
       - name: Install frontend dependencies
         run: npm ci

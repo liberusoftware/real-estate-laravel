@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Architecture">
+            <directory>tests/Architecture</directory>
+        </testsuite>
+    </testsuites>
+    <!-- Expanded coverage is uploaded for the host, tracked module source, and tracked theme source. -->
+    <source>
+        <include>
+            <directory>app</directory>
+            <directory>modules/activity-comments/src</directory>
+            <directory>modules/analytics-core/src</directory>
+            <directory>modules/analytics-google/src</directory>
+            <directory>modules/analytics-meta/src</directory>
+            <directory>modules/api-access/src</directory>
+            <directory>modules/application/src</directory>
+            <directory>modules/audit/src</directory>
+            <directory>modules/currency-context/src</directory>
+            <directory>modules/developer-experience/src</directory>
+            <directory>modules/feature-flags/src</directory>
+            <directory>modules/files-media/src</directory>
+            <directory>modules/identity-core/src</directory>
+            <directory>modules/identity-core-filament/src</directory>
+            <directory>modules/identity-socialstream/src</directory>
+            <directory>modules/import-export/src</directory>
+            <directory>modules/integrations/src</directory>
+            <directory>modules/jetstream-bridge/src</directory>
+            <directory>modules/localization-core/src</directory>
+            <directory>modules/localization-core-livewire/src</directory>
+            <directory>modules/localization-mymemory/src</directory>
+            <directory>modules/module-manager/src</directory>
+            <directory>modules/module-manager-filament/src</directory>
+            <directory>modules/notifications/src</directory>
+            <directory>modules/observability/src</directory>
+            <directory>modules/organizations-teams/src</directory>
+            <directory>modules/organizations-teams-filament/src</directory>
+            <directory>modules/profiles/src</directory>
+            <directory>modules/real-estate-core/src</directory>
+            <directory>modules/real-estate-core-api/src</directory>
+            <directory>modules/real-estate-core-filament/src</directory>
+            <directory>modules/real-estate-core-livewire/src</directory>
+            <directory>modules/real-estate-instructions/src</directory>
+            <directory>modules/real-estate-instructions-api/src</directory>
+            <directory>modules/real-estate-instructions-filament/src</directory>
+            <directory>modules/real-estate-instructions-livewire/src</directory>
+            <directory>modules/real-estate-listings/src</directory>
+            <directory>modules/real-estate-listings-api/src</directory>
+            <directory>modules/real-estate-listings-filament/src</directory>
+            <directory>modules/real-estate-listings-livewire/src</directory>
+            <directory>modules/real-estate-marketing/src</directory>
+            <directory>modules/real-estate-marketing-api/src</directory>
+            <directory>modules/real-estate-marketing-filament/src</directory>
+            <directory>modules/real-estate-marketing-livewire/src</directory>
+            <directory>modules/real-estate-matching/src</directory>
+            <directory>modules/real-estate-matching-api/src</directory>
+            <directory>modules/real-estate-matching-filament/src</directory>
+            <directory>modules/real-estate-matching-livewire/src</directory>
+            <directory>modules/real-estate-media-and-documents/src</directory>
+            <directory>modules/real-estate-media-and-documents-api/src</directory>
+            <directory>modules/real-estate-media-and-documents-filament/src</directory>
+            <directory>modules/real-estate-media-and-documents-livewire/src</directory>
+            <directory>modules/real-estate-offers/src</directory>
+            <directory>modules/real-estate-offers-api/src</directory>
+            <directory>modules/real-estate-offers-filament/src</directory>
+            <directory>modules/real-estate-offers-livewire/src</directory>
+            <directory>modules/real-estate-onthemarket/src</directory>
+            <directory>modules/real-estate-onthemarket-api/src</directory>
+            <directory>modules/real-estate-onthemarket-filament/src</directory>
+            <directory>modules/real-estate-onthemarket-livewire/src</directory>
+            <directory>modules/real-estate-parties/src</directory>
+            <directory>modules/real-estate-parties-api/src</directory>
+            <directory>modules/real-estate-parties-filament/src</directory>
+            <directory>modules/real-estate-parties-livewire/src</directory>
+            <directory>modules/real-estate-portals-reporting/src</directory>
+            <directory>modules/real-estate-portals-reporting-api/src</directory>
+            <directory>modules/real-estate-portals-reporting-filament/src</directory>
+            <directory>modules/real-estate-portals-reporting-livewire/src</directory>
+            <directory>modules/real-estate-properties/src</directory>
+            <directory>modules/real-estate-properties-api/src</directory>
+            <directory>modules/real-estate-properties-filament/src</directory>
+            <directory>modules/real-estate-properties-livewire/src</directory>
+            <directory>modules/real-estate-rightmove/src</directory>
+            <directory>modules/real-estate-rightmove-api/src</directory>
+            <directory>modules/real-estate-rightmove-filament/src</directory>
+            <directory>modules/real-estate-rightmove-livewire/src</directory>
+            <directory>modules/real-estate-sales-progression/src</directory>
+            <directory>modules/real-estate-sales-progression-api/src</directory>
+            <directory>modules/real-estate-sales-progression-filament/src</directory>
+            <directory>modules/real-estate-sales-progression-livewire/src</directory>
+            <directory>modules/real-estate-valuations/src</directory>
+            <directory>modules/real-estate-valuations-api/src</directory>
+            <directory>modules/real-estate-valuations-filament/src</directory>
+            <directory>modules/real-estate-valuations-livewire/src</directory>
+            <directory>modules/real-estate-viewings/src</directory>
+            <directory>modules/real-estate-viewings-api/src</directory>
+            <directory>modules/real-estate-viewings-filament/src</directory>
+            <directory>modules/real-estate-viewings-livewire/src</directory>
+            <directory>modules/real-estate-zoopla/src</directory>
+            <directory>modules/real-estate-zoopla-api/src</directory>
+            <directory>modules/real-estate-zoopla-filament/src</directory>
+            <directory>modules/real-estate-zoopla-livewire/src</directory>
+            <directory>modules/roles-permissions/src</directory>
+            <directory>modules/roles-permissions-filament/src</directory>
+            <directory>modules/scheduler-queues/src</directory>
+            <directory>modules/search/src</directory>
+            <directory>modules/search-api/src</directory>
+            <directory>modules/sessions-devices/src</directory>
+            <directory>modules/sessions-devices-filament/src</directory>
+            <directory>modules/settings/src</directory>
+            <directory>modules/settings-filament/src</directory>
+            <directory>modules/theme-support/src</directory>
+            <directory>modules/theme-support-livewire/src</directory>
+            <directory>modules/two-factor-authentication/src</directory>
+            <directory>modules/webhooks/src</directory>
+            <directory>themes/base/src</directory>
+            <directory>themes/clear-signal/src</directory>
+            <directory>themes/dark/src</directory>
+            <directory>themes/default/src</directory>
+            <directory>themes/real-estate-default/src</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="base64:3xVFJ5tTr05dWL1gsJqF+UvWdv3X0Cz/CBaUG47hb3U="/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="BROADCAST_CONNECTION" value="null"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_URL" value=""/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="PULSE_ENABLED" value="false"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="NIGHTWATCH_ENABLED" value="false"/>
+    </php>
+</phpunit>

@@ -15,9 +15,8 @@
             <directory>tests/Architecture</directory>
         </testsuite>
     </testsuites>
-    <!-- The host measures the host. Each package runs and measures itself, against its
-         own phpunit.xml and its own coverage threshold — a package's numbers are not
-         the composition's to report. -->
+    <!-- The application release gate is intentionally scoped to the host. The expanded
+         module/theme report is generated with phpunit.coverage.xml. -->
     <source>
         <include>
             <directory>app</directory>

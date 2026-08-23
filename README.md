@@ -83,6 +83,7 @@ vendor/bin/pest
 vendor/bin/pint --test
 vendor/bin/phpstan analyse --no-progress --memory-limit=512M
 XDEBUG_MODE=coverage php artisan test --coverage --min=100
+composer test:coverage:expanded
 npm audit
 npm run build
 ```

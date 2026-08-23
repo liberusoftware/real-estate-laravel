@@ -198,7 +198,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "test": "vendor/bin/pest"
+        "test": "vendor/bin/pest",
+        "test:coverage": "XDEBUG_MODE=coverage php -d memory_limit=512M vendor/bin/pest --coverage-clover=coverage.xml --min=100",
+        "test:coverage:expanded": "XDEBUG_MODE=coverage php -d memory_limit=512M vendor/bin/pest --configuration=phpunit.coverage.xml --coverage-clover=coverage-expanded.xml"
     },
     "extra": {
         "laravel": {

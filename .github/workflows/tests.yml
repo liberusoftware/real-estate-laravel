@@ -59,16 +59,19 @@ jobs:
       - name: Generate application key
         run: php artisan key:generate
 
-      # The threshold measures app/ alone — the host's five composition classes. Package
-      # coverage is each package's own gate, against its own phpunit.xml (§3.10).
+      # The host report includes app/, modules/, and themes/. Each package also keeps
+      # its standalone gate in the package repository.
       - name: Run tests
-        run: php artisan test --coverage-clover=coverage.xml --min=100
+        run: composer test:coverage
+
+      - name: Generate expanded module and theme coverage
+        run: composer test:coverage:expanded
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage.xml
+          files: ./coverage.xml,./coverage-expanded.xml
           disable_search: true
           flags: unittests
           name: codecov-umbrella
