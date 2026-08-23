@@ -1,0 +1,90 @@
+{
+    "$schema": "https://schemas.liberu.dev/theme/v1.json",
+    "name": "real-estate-default",
+    "display_name": "Liberu Real Estate Default",
+    "version": "1.0.0",
+    "provider": "Liberu\\Themes\\RealEstateDefault\\RealEstateDefaultThemeServiceProvider",
+    "type": "public",
+    "parent": "default",
+    "optimized_for": [
+        "liberusoftware/real-estate-laravel:^3.0"
+    ],
+    "tested_with": [
+        "liberusoftware/real-estate-laravel:^3.0",
+        "liberusoftware/real-estate-laravel:^3.0"
+    ],
+    "required_capabilities": [],
+    "optional_capabilities": [
+        "foundation.localization",
+        "foundation.theme-support",
+        "foundation.theme-support.livewire"
+    ],
+    "supports": [
+        "application.shell",
+        "identity.auth",
+        "foundation.account",
+        "real-estate.properties",
+        "real-estate.listings",
+        "real-estate.instructions",
+        "real-estate.viewings",
+        "real-estate.offers",
+        "real-estate.integrations.rightmove",
+        "real-estate.integrations.zoopla",
+        "real-estate.integrations.onthemarket"
+    ],
+    "adapters": {
+        "blade": {
+            "entrypoints": [
+                "resources/css/app.css",
+                "resources/js/app.js"
+            ]
+        },
+        "livewire": {
+            "entrypoints": [
+                "resources/css/app.css",
+                "resources/js/app.js"
+            ],
+            "fallback": "server-rendered Blade components remain usable without JavaScript"
+        }
+    },
+    "assets": {
+        "css": [
+            "resources/css/app.css"
+        ],
+        "js": [
+            "resources/js/app.js"
+        ]
+    },
+    "colors": {
+        "primary": "emerald",
+        "secondary": "slate"
+    },
+    "design_tokens": {
+        "states": [
+            "light",
+            "dark",
+            "high-contrast",
+            "error",
+            "warning",
+            "success",
+            "disabled",
+            "focus"
+        ],
+        "directions": [
+            "ltr",
+            "rtl"
+        ],
+        "breakpoints": [
+            "sm",
+            "md",
+            "lg",
+            "xl"
+        ]
+    },
+    "performance": {
+        "css_kib": 80,
+        "js_kib": 40,
+        "image_policy": "responsive dimensions, lazy loading below the fold, and meaningful alt text"
+    },
+    "description": "A warm, conversion-focused property portal theme with accessible search, listing cards, responsive navigation, and safe module fallbacks."
+}

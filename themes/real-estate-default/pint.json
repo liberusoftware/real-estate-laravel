@@ -1,0 +1,9 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "new_with_parentheses": {
+            "anonymous_class": true,
+            "named_class": true
+        }
+    }
+}

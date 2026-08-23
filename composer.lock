@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8cc3ac9a609c8fd2090bccceabed2ddb",
+    "content-hash": "b522f4e400cdc34b8a4b4aca9e3c660b",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -10157,6 +10157,54 @@
             ],
             "description": "Liberu default public theme.",
             "time": "2026-08-07T14:26:23+00:00"
+        },
+        {
+            "name": "liberusoftware/theme-real-estate-default",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liberusoftware/theme-real-estate-default.git",
+                "reference": "b679237231217e61bfce9a4efbaa949b79f5c63f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/liberusoftware/theme-real-estate-default/zipball/b679237231217e61bfce9a4efbaa949b79f5c63f",
+                "reference": "b679237231217e61bfce9a4efbaa949b79f5c63f",
+                "shasum": ""
+            },
+            "require": {
+                "liberusoftware/theme-base": "^2.0",
+                "liberusoftware/theme-default": "^1.5",
+                "liberusoftware/theme-support": "^1.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.24",
+                "liberusoftware/package-testbench": "^1.5",
+                "pestphp/pest": "^5.0",
+                "phpstan/phpstan": "^2.1"
+            },
+            "type": "liberu-theme",
+            "extra": {
+                "liberu": {
+                    "name": "real-estate-default"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\Themes\\RealEstateDefault\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A responsive, accessible property portal theme for Liberu Real Estate.",
+            "support": {
+                "issues": "https://github.com/liberusoftware/theme-real-estate-default/issues",
+                "source": "https://github.com/liberusoftware/theme-real-estate-default/tree/1.0.0"
+            },
+            "time": "2026-08-23T04:13:00+00:00"
         },
         {
             "name": "liberusoftware/theme-support",

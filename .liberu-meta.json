@@ -1,7 +1,7 @@
 {
     "organization": "liberusoftware",
-    "repository": "boilerplate-laravel",
-    "genre": "boilerplate",
+    "repository": "real-estate-laravel",
+    "genre": "real-estate",
     "scriptsRepository": "boilerplate-scripts",
     "components": {
         "modules": { "path": "modules", "repositoryPrefix": "module-" },

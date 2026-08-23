@@ -60,7 +60,7 @@
     "src": "_inter-700-normal-Yt3aPRUw.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CxgLCRQI.css",
+    "file": "assets/app-DXzRh_0I.css",
     "name": "app",
     "names": [
       "app.css"
@@ -135,5 +135,20 @@
       "themes/base/resources/js/app.js",
       "themes/base/resources/js/app.js"
     ]
+  },
+  "themes/real-estate-default/resources/css/app.css": {
+    "file": "assets/app-DHPLJBHy.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "themes/real-estate-default/resources/css/app.css",
+    "isEntry": true
+  },
+  "themes/real-estate-default/resources/js/app.js": {
+    "file": "assets/app-V9lh2q2n.js",
+    "name": "app",
+    "src": "themes/real-estate-default/resources/js/app.js",
+    "isEntry": true
   }
 }

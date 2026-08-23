@@ -1,0 +1,44 @@
+{
+    "name": "liberusoftware/theme-real-estate-default",
+    "version": "1.0.0",
+    "description": "A responsive, accessible property portal theme for Liberu Real Estate.",
+    "type": "liberu-theme",
+    "license": "MIT",
+    "require": {
+        "php": "^8.5",
+        "liberusoftware/theme-support": "^1.0",
+        "liberusoftware/theme-default": "^1.5",
+        "liberusoftware/theme-base": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liberu\\Themes\\RealEstateDefault\\": "src/"
+        }
+    },
+    "extra": {
+        "liberu": {
+            "name": "real-estate-default"
+        }
+    },
+    "require-dev": {
+        "liberusoftware/package-testbench": "^1.5",
+        "laravel/pint": "^1.24",
+        "pestphp/pest": "^5.0",
+        "phpstan/phpstan": "^2.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Liberu\\Themes\\RealEstateDefault\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test:coverage": "pest --coverage --min=100 --coverage-clover=build/coverage/clover.xml",
+        "test:parallel": "pest --parallel"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
