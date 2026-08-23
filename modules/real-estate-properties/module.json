@@ -22,9 +22,6 @@
     "capabilities": ["real-estate.properties"],
     "default_enabled": true,
     "features": [
-        "Team-scoped property records",
-        "Property lifecycle and status transitions",
-        "Structured characteristics and utilities",
-        "Property history events"
+        "Address/location", "Units", "Characteristics", "Tenure", "Utilities", "Features", "Status", "History", "Keys"
     ]
 }

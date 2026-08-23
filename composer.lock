@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b522f4e400cdc34b8a4b4aca9e3c660b",
+    "content-hash": "a539aa61c4d8a5efe709799cda01f720",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -6207,16 +6207,10 @@
         {
             "name": "liberusoftware/module-manager",
             "version": "1.4.2",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:liberusoftware/module-module-manager.git",
-                "reference": "688fc9c01008bfd5258afa2a78587c48804ec2e7"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-module-manager/zipball/688fc9c01008bfd5258afa2a78587c48804ec2e7",
-                "reference": "688fc9c01008bfd5258afa2a78587c48804ec2e7",
-                "shasum": ""
+                "type": "path",
+                "url": "modules/module-manager",
+                "reference": "61d72d4cf8c471381c33660d09be2bdb4be91bdd"
             },
             "require": {
                 "composer/semver": "^3.4",
@@ -6253,7 +6247,10 @@
                 "MIT"
             ],
             "description": "Deterministic manifest discovery and runtime enablement for Liberu modules.",
-            "time": "2026-08-07T14:25:25+00:00"
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
         },
         {
             "name": "liberusoftware/module-manager-filament",
@@ -6412,16 +6409,10 @@
         {
             "name": "liberusoftware/organizations-teams",
             "version": "1.5.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:liberusoftware/module-organizations-teams.git",
-                "reference": "12f20e83088659fe9194823d090e44358eed3a56"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-organizations-teams/zipball/12f20e83088659fe9194823d090e44358eed3a56",
-                "reference": "12f20e83088659fe9194823d090e44358eed3a56",
-                "shasum": ""
+                "type": "path",
+                "url": "modules/organizations-teams",
+                "reference": "7594f3eda7d655ab1ffbd4e4bbdfc319cbdb8a80"
             },
             "require": {
                 "laravel/jetstream": "^5.1",
@@ -6459,7 +6450,10 @@
                 "MIT"
             ],
             "description": "Organization, team, membership, invitation, ownership, and context foundation.",
-            "time": "2026-08-09T15:38:02+00:00"
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
         },
         {
             "name": "liberusoftware/organizations-teams-filament",
@@ -6929,6 +6923,193 @@
             ],
             "description": "Livewire 4 adapter for real-estate instructions.",
             "time": "2026-08-23T01:47:18+00:00"
+        },
+        {
+            "name": "liberusoftware/real-estate-lettings",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-lettings",
+                "reference": "befe3943a50238719b32daa2f203419f7085a9dd"
+            },
+            "require": {
+                "illuminate/database": "^13.0",
+                "illuminate/validation": "^13.0",
+                "liberusoftware/module-manager": "^1.0",
+                "liberusoftware/organizations-teams": "^1.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\Lettings\\LettingsServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-lettings"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\Lettings\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Provider-neutral letting lifecycle and operational records.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/real-estate-lettings-api",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-lettings-api",
+                "reference": "effc95a47dad41587f25d34081cb07e1c06076aa"
+            },
+            "require": {
+                "illuminate/http": "^13.0",
+                "illuminate/routing": "^13.0",
+                "liberusoftware/real-estate-lettings": "^1.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\LettingsApi\\LettingsApiServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-lettings-api"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\LettingsApi\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Versioned HTTP API adapter for real-estate lettings.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/real-estate-lettings-filament",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-lettings-filament",
+                "reference": "95a43bf9a25ed7be89c2d55cd19c413fac2309fd"
+            },
+            "require": {
+                "filament/filament": "^5.0",
+                "liberusoftware/real-estate-lettings": "^1.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\LettingsFilament\\LettingsFilamentServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-lettings-filament"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\LettingsFilament\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Filament 5 adapter for real-estate lettings.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/real-estate-lettings-livewire",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-lettings-livewire",
+                "reference": "2e4a954228c08ef4f62d04a7d3106c99c991361a"
+            },
+            "require": {
+                "liberusoftware/real-estate-lettings": "^1.0",
+                "livewire/livewire": "^4.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\LettingsLivewire\\LettingsLivewireServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-lettings-livewire"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\LettingsLivewire\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Livewire 4 adapter for real-estate lettings.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
         },
         {
             "name": "liberusoftware/real-estate-listings",
@@ -8571,6 +8752,193 @@
                 "MIT"
             ],
             "description": "Livewire 4 adapter for real-estate properties.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/real-estate-property-management",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-property-management",
+                "reference": "dddc31dca0f5ed3367c2c9681781ce5bd7de1fc4"
+            },
+            "require": {
+                "illuminate/database": "^13.0",
+                "illuminate/validation": "^13.0",
+                "liberusoftware/module-manager": "^1.0",
+                "liberusoftware/organizations-teams": "^1.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\PropertyManagement\\PropertyManagementServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-property-management"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\PropertyManagement\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Provider-neutral property management lifecycle and operational records.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/real-estate-property-management-api",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-property-management-api",
+                "reference": "6a671175480f17ee9bbc2df819622cdce50df9e1"
+            },
+            "require": {
+                "illuminate/http": "^13.0",
+                "illuminate/routing": "^13.0",
+                "liberusoftware/real-estate-property-management": "^1.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\PropertyManagementApi\\PropertyManagementApiServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-property-management-api"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\PropertyManagementApi\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Versioned HTTP API adapter for real-estate property management.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/real-estate-property-management-filament",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-property-management-filament",
+                "reference": "b58db8a7e469009e7f8c573734e013ba81933505"
+            },
+            "require": {
+                "filament/filament": "^5.0",
+                "liberusoftware/real-estate-property-management": "^1.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\PropertyManagementFilament\\PropertyManagementFilamentServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-property-management-filament"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\PropertyManagementFilament\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Filament 5 adapter for real-estate property management.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/real-estate-property-management-livewire",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/real-estate-property-management-livewire",
+                "reference": "2d17ca1a6021e27f95a0405eb68ef70ad7467725"
+            },
+            "require": {
+                "liberusoftware/real-estate-property-management": "^1.0",
+                "livewire/livewire": "^4.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "pestphp/pest": "^5.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\RealEstate\\PropertyManagementLivewire\\PropertyManagementLivewireServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "real-estate-property-management-livewire"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\RealEstate\\PropertyManagementLivewire\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "pest"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Livewire 4 adapter for real-estate property management.",
             "transport-options": {
                 "symlink": false,
                 "relative": true
