@@ -3,7 +3,7 @@
     "name": "real-estate-core",
     "display_name": "Real Estate Core",
     "description": "Team-scoped agencies, branches, statuses, terminology, and operational numbering.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "category": "product",
     "provider": "Liberu\\RealEstate\\Core\\RealEstateCoreServiceProvider",
     "requires": {

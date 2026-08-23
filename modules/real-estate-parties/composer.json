@@ -2,7 +2,7 @@
     "name": "liberusoftware/real-estate-parties",
     "description": "Provider-neutral real-estate parties, relationships, and consent.",
     "type": "liberu-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "require": {
         "php": "^8.5",

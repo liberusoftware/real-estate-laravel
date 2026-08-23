@@ -3,7 +3,7 @@
     "name": "real-estate-parties",
     "display_name": "Real Estate Parties",
     "description": "Applicants, vendors, landlords, tenants, buyers, professionals, relationships, and consent.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "category": "product",
     "provider": "Liberu\\RealEstate\\Parties\\PartiesServiceProvider",
     "requires": {

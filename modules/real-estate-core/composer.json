@@ -2,7 +2,7 @@
     "name": "liberusoftware/real-estate-core",
     "description": "Provider-neutral real-estate agencies, branches, and operational numbering.",
     "type": "liberu-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "require": {
         "php": "^8.5",

@@ -6558,17 +6558,11 @@
         },
         {
             "name": "liberusoftware/real-estate-core",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:liberusoftware/module-real-estate-core.git",
-                "reference": "7a2375564fa8140bb6e797d56a246a64b88eb113"
-            },
+            "version": "1.0.1",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-real-estate-core/zipball/7a2375564fa8140bb6e797d56a246a64b88eb113",
-                "reference": "7a2375564fa8140bb6e797d56a246a64b88eb113",
-                "shasum": ""
+                "type": "path",
+                "url": "modules/real-estate-core",
+                "reference": "0b2a7d10ff77116047ac7138c175808142eb7208"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -6605,7 +6599,10 @@
                 "MIT"
             ],
             "description": "Provider-neutral real-estate agencies, branches, and operational numbering.",
-            "time": "2026-08-23T01:20:05+00:00"
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
         },
         {
             "name": "liberusoftware/real-estate-core-api",
@@ -8218,17 +8215,11 @@
         },
         {
             "name": "liberusoftware/real-estate-parties",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:liberusoftware/module-real-estate-parties.git",
-                "reference": "ca48897a46c80bfa61f8699ab15cac5c11bfa9c4"
-            },
+            "version": "1.0.1",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-real-estate-parties/zipball/ca48897a46c80bfa61f8699ab15cac5c11bfa9c4",
-                "reference": "ca48897a46c80bfa61f8699ab15cac5c11bfa9c4",
-                "shasum": ""
+                "type": "path",
+                "url": "modules/real-estate-parties",
+                "reference": "8f27b0eb7eea301a230747e7e3aa5e0db50381b7"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -8265,7 +8256,10 @@
                 "MIT"
             ],
             "description": "Provider-neutral real-estate parties, relationships, and consent.",
-            "time": "2026-08-23T01:12:20+00:00"
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
         },
         {
             "name": "liberusoftware/real-estate-parties-api",
