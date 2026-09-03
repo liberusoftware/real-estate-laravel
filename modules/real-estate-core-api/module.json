@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "category": "presentation",
     "provider": "Liberu\\RealEstate\\CoreApi\\RealEstateCoreApiServiceProvider",
-    "requires": {"php": "^8.5", "laravel": "^13.0", "packages": {"liberusoftware/real-estate-core": "^1.0", "liberusoftware/api-access": "^1.0"}},
+    "requires": {"php": "^8.5", "laravel": "^13.0", "packages": {"liberusoftware/real-estate-core": "^1.0", "liberusoftware/api-access": "^1.0", "liberusoftware/organizations-teams": "^1.0"}},
     "capabilities": ["real-estate.core.api"],
     "default_enabled": true,
     "features": ["Branch list and detail transport", "Validated branch mutations"]

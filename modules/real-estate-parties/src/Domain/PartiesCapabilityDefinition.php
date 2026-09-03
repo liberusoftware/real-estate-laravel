@@ -9,7 +9,7 @@ final class PartiesCapabilityDefinition
     /** @return array<string, array{label: string, required: list<string>, behaviors: list<string>}> */
     public static function all(): array
     {
-        $labels = ['Applicants', 'Vendors', 'Landlords', 'Tenants', 'Buyers', 'Solicitors', 'Contractors', 'Relationships', 'Consent', 'Landlord reviews', 'Tenant reviews'];
+        $labels = ['Applicants', 'Vendors', 'Landlords', 'Tenants', 'Buyers', 'Solicitors', 'Contractors', 'Tourists', 'Guides', 'Relationships', 'Consent', 'Landlord reviews', 'Tenant reviews'];
         $result = [];
         foreach ($labels as $label) {
             $key = strtolower($label);

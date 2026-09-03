@@ -29,6 +29,12 @@ final class PortalReportResource extends Resource
 {
     protected static ?string $model = PortalReport::class;
 
+    protected static ?string $modelLabel = 'Отчёт портала';
+
+    protected static ?string $pluralModelLabel = 'Отчёты порталов';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([TextInput::make('portal')->required()->maxLength(120), TextInput::make('report_type')->required()->maxLength(120), TextInput::make('property_id')->numeric(), TextInput::make('listing_id')->numeric(), TextInput::make('status')->required(), Textarea::make('error')->columnSpanFull()]);

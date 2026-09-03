@@ -10,7 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
+use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\RealEstate\Core\Models\Branch;
+use Liberu\RealEstate\Core\Models\Territory;
+use Liberu\RealEstate\Properties\Domain\DealType;
 use Liberu\RealEstate\Properties\Domain\PropertyGalleryItem;
 use Liberu\RealEstate\Properties\Domain\PropertyStatus;
 
@@ -46,6 +50,7 @@ final class Property extends Model
     {
         return [
             'status' => PropertyStatus::class,
+            'deal_type' => DealType::class,
             'characteristics' => 'array',
             'utilities' => 'array',
             'features' => 'array',
@@ -64,6 +69,12 @@ final class Property extends Model
             'list_date' => 'date',
             'sold_date' => 'date',
             'is_featured' => 'boolean',
+            'has_generator' => 'boolean',
+            'has_wifi' => 'boolean',
+            'has_parking' => 'boolean',
+            'altitude' => 'integer',
+            'max_guests' => 'integer',
+            'views_count' => 'integer',
             'live_tour_available' => 'boolean',
             'ar_tour_enabled' => 'boolean',
             'ar_tour_settings' => 'array',
@@ -265,6 +276,33 @@ final class Property extends Model
     public function isHmo(): bool
     {
         return strtolower((string) $this->property_type) === 'hmo';
+    }
+
+    /**
+     * Human-readable listing number — "IH-2026-00015" — for staff/callers
+     * to reference instead of the raw database id. Computed from id +
+     * creation year rather than a stored column: both inputs are already
+     * unique/immutable, so there's nothing to keep in sync or backfill.
+     */
+    public function reference(): string
+    {
+        return sprintf('IH-%d-%05d', $this->created_at?->year ?? now()->year, $this->getKey());
+    }
+
+    /**
+     * Increments views_count at most once per visitor per property per day.
+     * $visitorKey is typically the request IP — hashed here so nothing
+     * identifying is persisted, only used transiently as a cache key.
+     * Cache::add() is atomic (SET NX under the redis driver), so concurrent
+     * requests from the same visitor can't double-count.
+     */
+    public function recordView(string $visitorKey): void
+    {
+        $cacheKey = 'property-view:'.$this->getKey().':'.hash('xxh128', $visitorKey);
+
+        if (Cache::add($cacheKey, true, now()->addDay())) {
+            $this->increment('views_count');
+        }
     }
 
     public function hasActiveInsurance(): bool
@@ -639,5 +677,15 @@ final class Property extends Model
     public function canBePublished(): bool
     {
         return filled($this->address) && $this->status === PropertyStatus::Draft;
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function territory()
+    {
+        return $this->belongsTo(Territory::class);
     }
 }

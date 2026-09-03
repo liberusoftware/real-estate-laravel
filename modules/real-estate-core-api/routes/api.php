@@ -7,6 +7,13 @@ use Liberu\RealEstate\CoreApi\Http\Controllers\CalendarEntryController;
 use Liberu\RealEstate\CoreApi\Http\Controllers\CommunicationController;
 use Liberu\RealEstate\CoreApi\Http\Controllers\CoreConfigurationController;
 use Liberu\RealEstate\CoreApi\Http\Controllers\NumberingController;
+use Liberu\RealEstate\CoreApi\Http\Controllers\PublicTerritoryController;
+
+// Anonymous, read-only — the storefront's territory picker/filter. Not
+// team-scoped by request user (there isn't one); see PublicTerritoryController.
+Route::get('api/v1/public/territories', [PublicTerritoryController::class, 'index'])
+    ->middleware(['api', 'throttle:api'])
+    ->name('public.territories.index');
 
 Route::prefix('api/v1/real-estate/calendar-entries')->middleware(['api', 'auth:sanctum', 'throttle:api', 'api.idempotency'])->group(function (): void {
     Route::post('/', [CalendarEntryController::class, 'store']);

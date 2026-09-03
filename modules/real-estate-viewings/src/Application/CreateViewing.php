@@ -32,6 +32,6 @@ final class CreateViewing
             throw ValidationException::withMessages(['starts_at' => 'That property already has a viewing in the selected time window.']);
         }
 
-        return DB::transaction(fn (): Viewing => Viewing::query()->create(['team_id' => $teamId, 'created_by' => $actorId, 'property_id' => $attributes['property_id'] ?? null, 'party_id' => $attributes['party_id'] ?? null, 'subject' => $subject, 'status' => ViewingStatus::Requested, 'starts_at' => $starts, 'ends_at' => $ends, 'access' => $attributes['access'] ?? [], 'accompaniment' => $attributes['accompaniment'] ?? [], 'reminders' => $attributes['reminders'] ?? []]));
+        return DB::transaction(fn (): Viewing => Viewing::query()->create(['team_id' => $teamId, 'created_by' => $actorId, 'property_id' => $attributes['property_id'] ?? null, 'party_id' => $attributes['party_id'] ?? null, 'subject' => $subject, 'status' => ViewingStatus::Requested, 'starts_at' => $starts, 'ends_at' => $ends, 'guests_count' => $attributes['guests_count'] ?? null, 'access' => $attributes['access'] ?? [], 'accompaniment' => $attributes['accompaniment'] ?? [], 'reminders' => $attributes['reminders'] ?? []]));
     }
 }

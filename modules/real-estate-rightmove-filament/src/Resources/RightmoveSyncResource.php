@@ -23,6 +23,12 @@ final class RightmoveSyncResource extends Resource
 {
     protected static ?string $model = RightmoveSync::class;
 
+    protected static ?string $modelLabel = 'Синхронизация Rightmove';
+
+    protected static ?string $pluralModelLabel = 'Синхронизации Rightmove';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([TextInput::make('listing_id')->required()->numeric(), TextInput::make('property_id')->numeric(), TextInput::make('external_id'), TextInput::make('status')->required()]);

@@ -32,4 +32,6 @@ final class Territory extends Model
     {
         return $query->where('team_id', $teamId);
     }
+    
 }
+

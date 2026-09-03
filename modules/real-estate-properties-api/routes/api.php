@@ -8,6 +8,14 @@ use Liberu\RealEstate\PropertiesApi\Http\Controllers\PropertyController;
 use Liberu\RealEstate\PropertiesApi\Http\Controllers\PropertyPriceAlertController;
 use Liberu\RealEstate\PropertiesApi\Http\Controllers\PropertySavedSearchController;
 use Liberu\RealEstate\PropertiesApi\Http\Controllers\PropertyTemplateController;
+use Liberu\RealEstate\PropertiesApi\Http\Controllers\PublicPropertyController;
+
+// Anonymous, read-only — the storefront's listing/detail pages. Only
+// PropertyStatus::Available records, narrower field set (PublicPropertyResource).
+Route::prefix('api/v1/public/properties')->middleware(['api', 'throttle:api'])->group(function (): void {
+    Route::get('/', [PublicPropertyController::class, 'index'])->name('public.properties.index');
+    Route::get('/{property}', [PublicPropertyController::class, 'show'])->name('public.properties.show');
+});
 
 Route::prefix('api/v1/real-estate/properties/{property}/ar-tour')->middleware(['api', 'throttle:api'])->group(function (): void {
     Route::get('/config', [PropertyArTourController::class, 'config'])->name('real-estate.properties.ar-tour.config');

@@ -22,6 +22,12 @@ final class StatusDefinitionResource extends Resource
 {
     protected static ?string $model = StatusDefinition::class;
 
+    protected static ?string $modelLabel = 'Статус';
+
+    protected static ?string $pluralModelLabel = 'Статусы';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([TextInput::make('entity')->required()->maxLength(80), TextInput::make('key')->required()->maxLength(80), TextInput::make('label')->required()->maxLength(255), Toggle::make('active')->default(true)]);
@@ -29,7 +35,7 @@ final class StatusDefinitionResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('entity')->searchable(), TextColumn::make('key')->searchable(), TextColumn::make('label'), TextColumn::make('active')->boolean()])->recordActions([EditAction::make(), DeleteAction::make()])->defaultSort('created_at', 'desc');
+        return $table->columns([TextColumn::make('entity')->searchable(), TextColumn::make('key')->searchable(), TextColumn::make('label'), TextColumn::make('active')->badge()->color(fn (bool $state): string => $state ? 'success' : 'danger')->formatStateUsing(fn (bool $state): string => $state ? 'Да' : 'Нет')])->recordActions([EditAction::make(), DeleteAction::make()])->defaultSort('created_at', 'desc');
     }
 
     public static function getEloquentQuery(): Builder

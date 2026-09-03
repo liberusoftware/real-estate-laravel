@@ -9,6 +9,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
@@ -17,6 +18,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
@@ -41,9 +43,13 @@ final class PropertyResource extends Resource
 {
     protected static ?string $model = Property::class;
 
+    protected static ?string $modelLabel = 'Объект недвижимости';
+
+    protected static ?string $pluralModelLabel = 'Объекты недвижимости';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
@@ -63,7 +69,7 @@ final class PropertyResource extends Resource
             Textarea::make('description')->columnSpanFull(),
             Textarea::make('internal_notes')->label('Internal notes')->columnSpanFull(),
             TextInput::make('price')->numeric()->minValue(0),
-            TextInput::make('currency')->length(3)->default('GBP'),
+            TextInput::make('currency')->length(3)->default('TJS'),
             TextInput::make('bedrooms')->numeric()->minValue(0),
             TextInput::make('bathrooms')->numeric()->minValue(0),
             TextInput::make('reception_rooms')->numeric()->minValue(0),
@@ -73,7 +79,19 @@ final class PropertyResource extends Resource
                 ->minValue(Property::EARLIEST_YEAR_BUILT)
                 ->maxValue(Property::latestYearBuilt())
                 ->helperText(Property::yearBuiltMessage()),
-            Select::make('property_type')->options(Property::TYPES)->required(),
+            Select::make('property_type')
+                ->label('Тип недвижимости')
+                ->options([
+                    'apartment' => 'Квартира',
+                    'house' => 'Дом',
+                    'guesthouse' => 'Гестхаус',
+                    'hostel' => 'Хостел',
+                    'hunting-lodge' => 'Охотничий домик',
+                    'land' => 'Земельный участок',
+                    'commercial' => 'Коммерческая',
+                    'cottage' => 'Дача',
+                ])
+                ->required(),
             Select::make('property_category_id')
                 ->label('Category')
                 ->options(fn (): array => PropertyCategory::query()->forTeam(auth()->user()?->current_team_id ?? 0)->orderBy('name')->pluck('name', 'id')->all())
@@ -107,7 +125,46 @@ final class PropertyResource extends Resource
             TextInput::make('insurance_policy_id')->numeric()->minValue(1),
             TextInput::make('insurance_coverage_amount')->numeric()->minValue(0),
             TextInput::make('insurance_premium')->numeric()->minValue(0),
-            TextInput::make('insurance_expiry_date')->date(),
+            DatePicker::make('insurance_expiry_date'),
+            Section::make('🏔️ Региональные особенности')
+                ->schema([
+                    Toggle::make('has_generator')
+                        ->label('Генератор')
+                        ->default(false),
+                    Toggle::make('has_wifi')
+                        ->label('Wi-Fi')
+                        ->default(false),
+                    Toggle::make('has_parking')
+                        ->label('Парковка')
+                        ->default(false),
+                    Select::make('mountain_view')
+                        ->label('Вид на горы')
+                        ->options([
+                            'pamir' => 'Памир',
+                            'fan' => 'Фанские горы',
+                            'hissar' => 'Гиссарский хребет',
+                            'other' => 'Другие',
+                        ])
+                        ->nullable(),
+                    TextInput::make('altitude')
+                        ->label('Высота над уровнем моря (м)')
+                        ->numeric()
+                        ->nullable(),
+                    Select::make('water_source')
+                        ->label('Источник воды')
+                        ->options([
+                            'well' => 'Скважина',
+                            'river' => 'Река',
+                            'spring' => 'Родник',
+                            'other' => 'Другой',
+                        ])
+                        ->nullable(),
+                    TextInput::make('max_guests')
+                        ->label('Максимальное количество гостей')
+                        ->numeric()
+                        ->minValue(1)
+                        ->nullable(),
+                ]),
         ]);
     }
 
@@ -120,18 +177,24 @@ final class PropertyResource extends Resource
                 return $teamId === null ? $query->whereRaw('1 = 0') : $query->forTeam($teamId);
             })
             ->columns([
-                TextColumn::make('address')->searchable()->sortable()->wrap(),
-                TextColumn::make('property_type')->label('Type')->searchable()->sortable(),
-                TextColumn::make('status')->badge(),
-                TextColumn::make('price')->numeric()->sortable(),
-                TextColumn::make('bedrooms')->sortable(),
-                TextColumn::make('bathrooms')->sortable(),
-                TextColumn::make('area_sqft')->sortable(),
-                TextColumn::make('year_built')->sortable(),
-                TextColumn::make('price_per_square_foot')->label('Price / sq ft')->state(fn (Property $record): ?float => $record->pricePerSquareFoot())->numeric(decimalPlaces: 2),
-                TextColumn::make('days_listed')->label('Days listed')->state(fn (Property $record): ?int => $record->daysListed())->numeric(),
-                TextColumn::make('floor_plan_image')->label('Floor plan')->formatStateUsing(fn (?string $state): string => filled($state) ? 'Available' : 'Not supplied'),
-                TextColumn::make('created_at')->dateTime()->sortable(),
+                TextColumn::make('reference')->label('Номер')->state(fn (Property $record): string => $record->reference())->sortable(query: fn (Builder $query, string $direction): Builder => $query->orderBy('id', $direction)),
+                TextColumn::make('address')->label('Адрес')->searchable()->sortable()->wrap(),
+                TextColumn::make('property_type')->label('Тип')->searchable()->sortable(),
+                TextColumn::make('status')->label('Статус')->badge(),
+                TextColumn::make('price')->label('Цена')->numeric()->sortable(),
+                TextColumn::make('bedrooms')->label('Спален')->sortable(),
+                TextColumn::make('bathrooms')->label('Санузлов')->sortable(),
+                // Column name says "sqft" (upstream template default), but
+                // every value in this table is actually square metres — the
+                // frontend renders area_sqft as "{value} м²" throughout, and
+                // this label matches that real usage, not the column name.
+                TextColumn::make('area_sqft')->label('Площадь, м²')->sortable(),
+                TextColumn::make('year_built')->label('Год постройки')->sortable(),
+                TextColumn::make('price_per_square_foot')->label('Цена за м²')->state(fn (Property $record): ?float => $record->pricePerSquareFoot())->numeric(decimalPlaces: 2),
+                TextColumn::make('days_listed')->label('Дней в продаже')->state(fn (Property $record): ?int => $record->daysListed())->numeric(),
+                TextColumn::make('views_count')->label('Просмотры')->numeric()->sortable(),
+                TextColumn::make('floor_plan_image')->label('План этажа')->formatStateUsing(fn (?string $state): string => filled($state) ? 'Есть' : 'Не загружен'),
+                TextColumn::make('created_at')->label('Создано')->dateTime()->sortable(),
             ])
             ->filters([
                 SelectFilter::make('status')->options(collect(PropertyStatus::cases())->mapWithKeys(fn (PropertyStatus $status): array => [$status->value => str($status->value)->headline()->toString()])->all()),

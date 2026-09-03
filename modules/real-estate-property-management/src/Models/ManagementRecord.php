@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\PropertyManagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\RealEstate\PropertyManagement\Domain\ManagementStatus;
 
 final class ManagementRecord extends Model
@@ -24,5 +26,10 @@ final class ManagementRecord extends Model
     public function scopeForTeam($query, int|string $teamId)
     {
         return $query->where('team_id', $teamId);
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 }

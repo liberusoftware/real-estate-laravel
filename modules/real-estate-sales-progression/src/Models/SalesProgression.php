@@ -6,7 +6,9 @@ namespace Liberu\RealEstate\SalesProgression\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\RealEstate\SalesProgression\Domain\SalesProgressionStatus;
 
 final class SalesProgression extends Model
@@ -25,5 +27,10 @@ final class SalesProgression extends Model
     public function scopeForTeam(Builder $query, int|string $teamId): Builder
     {
         return $query->where('team_id', $teamId);
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 }

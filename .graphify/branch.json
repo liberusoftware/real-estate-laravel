@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "branchName": "main",
+  "worktreePath": "/home/adminj0n/ihona",
+  "upstream": "origin/main",
+  "mergeBase": "2f186703fc88af88eb8333701cacf2a29ead66f9",
+  "firstSeenHead": "2f186703fc88af88eb8333701cacf2a29ead66f9",
+  "lastSeenHead": "2f186703fc88af88eb8333701cacf2a29ead66f9",
+  "lastAnalyzedHead": "2f186703fc88af88eb8333701cacf2a29ead66f9",
+  "stale": false,
+  "staleReason": null,
+  "staleSince": null,
+  "lifecycleEvent": null,
+  "createdAt": "2026-08-30T15:11:50.030Z",
+  "updatedAt": "2026-08-30T15:16:15.227Z"
+}

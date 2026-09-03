@@ -29,6 +29,12 @@ final class SalesProgressionResource extends Resource
 {
     protected static ?string $model = SalesProgression::class;
 
+    protected static ?string $modelLabel = 'Сопровождение сделки';
+
+    protected static ?string $pluralModelLabel = 'Сопровождения сделок';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([TextInput::make('subject')->required()->maxLength(255), TextInput::make('property_id')->numeric(), TextInput::make('offer_id')->numeric(), TextInput::make('status')->required(), Textarea::make('notes')->columnSpanFull()]);

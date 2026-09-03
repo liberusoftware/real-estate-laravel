@@ -13,4 +13,6 @@ enum PartyType: string
     case Tenant = 'tenant';
     case Solicitor = 'solicitor';
     case Contractor = 'contractor';
+    case Tourist = 'tourist';
+    case Guide = 'guide';
 }

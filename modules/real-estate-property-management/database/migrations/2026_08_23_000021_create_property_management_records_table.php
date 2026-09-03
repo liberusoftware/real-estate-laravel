@@ -26,7 +26,7 @@ return new class() extends Migration
             $table->timestamp('cancelled_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
-            $table->index(['team_id', 'capability', 'status']);
+            $table->index(['team_id', 'capability', 'status'], 'pm_records_team_cap_status_idx');
         });
     }
 

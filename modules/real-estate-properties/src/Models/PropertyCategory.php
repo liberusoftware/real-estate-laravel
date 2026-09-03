@@ -6,7 +6,9 @@ namespace Liberu\RealEstate\Properties\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Liberu\Foundation\Organizations\Models\Team;
 
 final class PropertyCategory extends Model
 {
@@ -22,5 +24,10 @@ final class PropertyCategory extends Model
     public function scopeForTeam(Builder $query, int|string $teamId): Builder
     {
         return $query->where('team_id', $teamId);
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 }

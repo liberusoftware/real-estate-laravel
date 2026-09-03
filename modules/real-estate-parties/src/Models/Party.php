@@ -31,6 +31,10 @@ final class Party extends Model
     {
         return $query->where('team_id', $teamId);
     }
+    public function team()
+    {
+        return $this->belongsTo(\Liberu\Foundation\Organizations\Models\Team::class);
+    }
 
     public function reviews(): HasMany
     {

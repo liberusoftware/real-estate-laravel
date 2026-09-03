@@ -7,6 +7,7 @@ namespace Liberu\RealEstate\ListingsFilament\Resources;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -27,13 +28,17 @@ final class ListingResource extends Resource
 {
     protected static ?string $model = Listing::class;
 
+    protected static ?string $modelLabel = 'Объявление';
+
+    protected static ?string $pluralModelLabel = 'Объявления';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-megaphone';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('title')->required()->maxLength(255), Select::make('status')->options(['draft' => 'Draft', 'ready' => 'Ready', 'published' => 'Published', 'suspended' => 'Suspended', 'withdrawn' => 'Withdrawn'])->disabled()->dehydrated(false), TextInput::make('price')->numeric()->minValue(0), TextInput::make('available_from')->date()]);
+        return $schema->components([TextInput::make('title')->required()->maxLength(255), Select::make('status')->options(['draft' => 'Draft', 'ready' => 'Ready', 'published' => 'Published', 'suspended' => 'Suspended', 'withdrawn' => 'Withdrawn'])->disabled()->dehydrated(false), TextInput::make('price')->numeric()->minValue(0), DatePicker::make('available_from')]);
     }
 
     public static function table(Table $table): Table

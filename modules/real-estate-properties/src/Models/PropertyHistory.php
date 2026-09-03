@@ -7,6 +7,7 @@ namespace Liberu\RealEstate\Properties\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Liberu\Foundation\Organizations\Models\Team;
 
 final class PropertyHistory extends Model
 {
@@ -77,5 +78,10 @@ final class PropertyHistory extends Model
     public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

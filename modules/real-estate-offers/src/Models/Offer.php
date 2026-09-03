@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\Offers\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\RealEstate\Offers\Domain\OfferStatus;
 
 final class Offer extends Model
@@ -39,5 +41,10 @@ final class Offer extends Model
             OfferStatus::Submitted, OfferStatus::Countered => in_array($status, [OfferStatus::Countered, OfferStatus::Accepted, OfferStatus::Rejected, OfferStatus::Withdrawn], true),
             OfferStatus::Accepted, OfferStatus::Rejected, OfferStatus::Withdrawn => false,
         };
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 }

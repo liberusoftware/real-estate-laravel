@@ -6,6 +6,7 @@ namespace Liberu\RealEstate\Core\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Liberu\Foundation\Organizations\Models\Team;
 
 final class StatusDefinition extends Model
 {
@@ -21,5 +22,10 @@ final class StatusDefinition extends Model
     public function scopeForTeam(Builder $query, int|string $teamId): Builder
     {
         return $query->where('team_id', $teamId);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

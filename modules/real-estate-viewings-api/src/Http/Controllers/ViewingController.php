@@ -8,6 +8,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Liberu\RealEstate\Properties\Models\Property;
 use Liberu\RealEstate\Viewings\Application\CancelViewing;
 use Liberu\RealEstate\Viewings\Application\CompleteViewing;
 use Liberu\RealEstate\Viewings\Application\ConfirmViewing;
@@ -53,15 +54,40 @@ final class ViewingController
     public function store(Request $request, CreateViewing $create): JsonResponse
     {
         $user = $request->user();
-        abort_unless($user?->current_team_id !== null, 403);
-        $data = $request->validate(['subject' => ['required', 'string', 'max:255'], 'property_id' => ['nullable', 'integer'], 'party_id' => ['nullable', 'integer'], 'starts_at' => ['required', 'date'], 'ends_at' => ['nullable', 'date', 'after:starts_at'], 'access' => ['sometimes', 'array'], 'accompaniment' => ['sometimes', 'array'], 'reminders' => ['sometimes', 'array']]);
+        abort_unless($user !== null, 403);
+        $data = $request->validate([
+            'subject' => ['required', 'string', 'max:255'],
+            'property_id' => ['nullable', 'integer'],
+            'party_id' => ['nullable', 'integer'],
+            'starts_at' => ['required', 'date'],
+            'ends_at' => ['nullable', 'date', 'after:starts_at'],
+            'guests_count' => ['sometimes', 'nullable', 'integer', 'min:1', 'max:100'],
+            'access' => ['sometimes', 'array'],
+            'accompaniment' => ['sometimes', 'array'],
+            'reminders' => ['sometimes', 'array'],
+        ]);
 
-        return (new ViewingResource($create->handle($user->current_team_id, $user->getAuthIdentifier(), $data)))->response()->setStatusCode(201);
+        // A request must land where the *property's* team can see and
+        // confirm it, not the requesting visitor's own personal team —
+        // Jetstream gives every registered user their own 1-person team,
+        // so using $user->current_team_id here (the previous behaviour)
+        // silently filed every customer request into a team only that
+        // customer could ever see, and made the overlap check below
+        // compare a property's bookings only within one requester's team,
+        // so two different guests could double-book the same dates without
+        // either request ever seeing the other.
+        $propertyId = $data['property_id'] ?? null;
+        $teamId = $propertyId !== null
+            ? Property::query()->whereKey($propertyId)->value('team_id')
+            : $user->current_team_id;
+        abort_unless($teamId !== null, 422);
+
+        return (new ViewingResource($create->handle($teamId, $user->getAuthIdentifier(), $data)))->response()->setStatusCode(201);
     }
 
     public function show(Request $request, Viewing $viewing): JsonResponse
     {
-        abort_unless((string) $request->user()?->current_team_id === (string) $viewing->team_id, 404);
+        abort_unless($this->canAccessViewing($request->user(), $viewing), 404);
 
         return (new ViewingResource($viewing))->response();
     }
@@ -86,6 +112,8 @@ final class ViewingController
 
     public function confirm(Request $request, Viewing $viewing, ConfirmViewing $confirm): JsonResponse
     {
+        // Host-only: the guest who requested it must not be able to
+        // self-confirm.
         $teamId = $request->user()?->current_team_id;
         abort_unless((string) $teamId === (string) $viewing->team_id, 404);
 
@@ -102,10 +130,15 @@ final class ViewingController
 
     public function cancel(Request $request, Viewing $viewing, CancelViewing $cancel): JsonResponse
     {
-        $teamId = $request->user()?->current_team_id;
-        abort_unless((string) $teamId === (string) $viewing->team_id, 404);
+        // Either party may cancel: the host, or the guest who requested it.
+        $user = $request->user();
+        abort_unless($this->canAccessViewing($user, $viewing), 404);
+        $reason = $request->validate(['reason' => ['nullable', 'string', 'max:1000']])['reason'] ?? null;
 
-        return (new ViewingResource($cancel->handle($viewing, $teamId, $request->validate(['reason' => ['nullable', 'string', 'max:1000']])['reason'] ?? null)))->response();
+        // CancelViewing::handle() re-checks team_id itself — pass the
+        // viewing's own team_id rather than the caller's, since access was
+        // already established above (possibly via created_by, not team).
+        return (new ViewingResource($cancel->handle($viewing, $viewing->team_id, $reason)))->response();
     }
 
     public function noShow(Request $request, Viewing $viewing, MarkViewingNoShow $noShow): JsonResponse
@@ -114,5 +147,15 @@ final class ViewingController
         abort_unless((string) $teamId === (string) $viewing->team_id, 404);
 
         return (new ViewingResource($noShow->handle($viewing, $teamId, $request->validate(['note' => ['nullable', 'string', 'max:1000']])['note'] ?? null)))->response();
+    }
+
+    private function canAccessViewing(?object $user, Viewing $viewing): bool
+    {
+        if ($user === null) {
+            return false;
+        }
+
+        return (string) $user->current_team_id === (string) $viewing->team_id
+            || (string) $user->getAuthIdentifier() === (string) $viewing->created_by;
     }
 }

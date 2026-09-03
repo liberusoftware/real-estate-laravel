@@ -24,11 +24,15 @@ class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
 
+    protected static ?string $modelLabel = 'Команда';
+
+    protected static ?string $pluralModelLabel = 'Команды';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Administration';
+    protected static string|\UnitEnum|null $navigationGroup = 'Администрирование';
 
-    protected static ?string $navigationLabel = 'Teams';
+    protected static ?string $navigationLabel = 'Команды';
 
     protected static ?string $recordTitleAttribute = 'name';
 

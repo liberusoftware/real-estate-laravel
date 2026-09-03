@@ -1,10 +1,16 @@
 <?php
 
-declare(strict_types=1);
-
 use Illuminate\Support\Facades\Route;
-use Liberu\Foundation\IdentityCoreApi\Http\Controllers\StatusController;
+use Liberu\Foundation\IdentityCoreApi\Http\Controllers\AuthTokenController;
 
-Route::prefix('api/v1/identity-core')->middleware('api')->group(function (): void {
-    Route::get('/status', StatusController::class)->name('identity-core-api.status');
-});
+Route::post('api/v1/auth/token', [AuthTokenController::class, 'store'])
+    ->middleware(['api', 'throttle:6,1'])
+    ->name('identity.auth-token.store');
+
+Route::delete('api/v1/auth/token', [AuthTokenController::class, 'destroy'])
+    ->middleware(['api', 'auth:sanctum'])
+    ->name('identity.auth-token.destroy');
+
+Route::post('api/v1/auth/register', [AuthTokenController::class, 'register'])
+    ->middleware(['api', 'throttle:6,1'])
+    ->name('identity.auth-token.register');
