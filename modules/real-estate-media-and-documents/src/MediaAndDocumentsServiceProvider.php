@@ -10,6 +10,9 @@ final class MediaAndDocumentsServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/document-templates.php', 'document-templates');
+
+        $this->app->singleton(Application\DocumentTemplateCatalogue::class);
         $this->app->singleton(Application\GeneratePropertyBrochure::class);
         $this->app->singleton(Application\CreateHomeReport::class);
         $this->app->singleton(Application\UpdateHomeReportConditions::class);
