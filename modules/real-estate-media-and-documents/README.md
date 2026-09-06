@@ -1,5 +1,11 @@
 # Real Estate Media and Documents
 
+## Document template catalogue
+
+The module includes a small catalogue of copyable demonstration templates via `DocumentTemplateCatalogue`. It includes UK-focused residential tenancy and sales memorandum examples, plus jurisdiction-neutral versions suitable for localization to Spanish, Italian, French, German, Portuguese, Russian, Tajik or Uzbek workflows. Demonstrations are intentionally not seeded automatically: templates belong to a team and must be copied after legal review.
+
+Every legal template is marked as a demonstration, uses explicit variables and sections, and keeps the governing-law text configurable. UK examples are illustrative only and should be reviewed against the current law and the property's jurisdiction.
+
 Provider-neutral media and document records for photos, floorplans, video, certificates, brochures, rights, ordering, retention, reusable transaction templates, and digital signing. The package name is `liberusoftware/real-estate-media-and-documents`; its source repository intentionally uses the `module-` prefix.
 
 ## Transaction document pattern

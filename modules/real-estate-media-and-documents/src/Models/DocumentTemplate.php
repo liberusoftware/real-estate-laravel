@@ -40,16 +40,19 @@ final class DocumentTemplate extends Model
 
     public function renderContent(array $values): string
     {
+        return (string) preg_replace_callback(
+            '/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/',
+            fn (array $match): string => e((string) ($values[$match[1]] ?? '')),
+            $this->content,
+        );
+    }
+
+    public function validateValues(array $values): void
+    {
         $missing = array_values(array_diff($this->getCustomFields(), array_keys($values)));
         if ($missing !== []) {
             throw ValidationException::withMessages(['values' => 'Missing template values: '.implode(', ', $missing)]);
         }
-
-        return (string) preg_replace_callback(
-            '/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/',
-            fn (array $match): string => e((string) $values[$match[1]]),
-            $this->content,
-        );
     }
 
     public function generateDocument(array $values): string

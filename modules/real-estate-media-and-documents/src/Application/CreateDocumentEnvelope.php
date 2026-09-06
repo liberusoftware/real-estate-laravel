@@ -22,6 +22,7 @@ final class CreateDocumentEnvelope
             throw ValidationException::withMessages(['template' => 'Only a published template from the current team can be used.']);
         }
 
+        $template->validateValues($values);
         $content = $template->generateDocument($values);
 
         return DB::transaction(function () use ($teamId, $actorId, $template, $values, $content, $participants): DocumentEnvelope {

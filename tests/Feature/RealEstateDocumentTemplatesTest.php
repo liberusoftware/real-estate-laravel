@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\RealEstate\MediaAndDocuments\Application\DocumentTemplateCatalogue;
 use Liberu\RealEstate\MediaAndDocuments\Models\DocumentCategory;
 use Liberu\RealEstate\MediaAndDocuments\Models\DocumentTemplate;
 use Liberu\RealEstate\MediaAndDocuments\Models\MediaDocument;
@@ -23,4 +24,15 @@ it('extracts and safely replaces document template fields', function (): void {
     expect($template->getCustomFields())->toBe(['recipient', 'amount'])
         ->and($template->generateDocument(['recipient' => '<Buyer>', 'amount' => '£300,000']))->toContain('&lt;Buyer&gt;')->toContain('£300,000')
         ->and($template->renderContent(['recipient' => 'Buyer']))->toContain('Buyer');
+});
+
+it('provides UK and generic demonstrations for the document workflow', function (): void {
+    $catalogue = app(DocumentTemplateCatalogue::class);
+
+    expect($catalogue->for('tenancy_agreement', 'en-GB'))->toHaveCount(1)
+        ->and($catalogue->for('sales_memorandum', 'en-GB'))->toHaveCount(1)
+        ->and($catalogue->for('tenancy_agreement', 'en'))->toHaveCount(1)
+        ->and($catalogue->demonstrations())->each->toHaveKeys([
+            'slug', 'name', 'description', 'document_type', 'locale', 'variables', 'sections', 'content',
+        ]);
 });

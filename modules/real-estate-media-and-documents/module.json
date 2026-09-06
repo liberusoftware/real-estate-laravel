@@ -10,5 +10,5 @@
     "suggests": {},
     "capabilities": ["real-estate.media-and-documents"],
     "default_enabled": true,
-    "features": ["Photos", "Floorplans", "Site plans", "Video", "Certificates", "Rights", "Ordering", "Brochures", "Retention"]
+    "features": ["Photos", "Floorplans", "Site plans", "Video", "Certificates", "Rights", "Ordering", "Brochures", "Retention", "Versioned templates", "Localized demonstrations", "Signing envelopes", "Digital signatures", "Signing audit trail"]
 }
