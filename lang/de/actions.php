@@ -1,0 +1,3 @@
+<?php
+
+return ['accept' => 'Annehmen', 'action' => 'Aktion', 'actions' => 'Aktionen', 'add' => 'Hinzufügen', 'cancel' => 'Abbrechen', 'choose' => 'Auswählen', 'close' => 'Schließen', 'confirm' => 'Bestätigen', 'create' => 'Erstellen', 'delete' => 'Löschen', 'edit' => 'Bearbeiten', 'export' => 'Exportieren', 'import' => 'Importieren', 'new' => 'Neu', 'open' => 'Öffnen', 'restore' => 'Wiederherstellen', 'save' => 'Speichern', 'search' => 'Suchen', 'select' => 'Auswählen', 'settings' => 'Einstellungen', 'show' => 'Anzeigen', 'update' => 'Aktualisieren', 'view' => 'Anzeigen', 'yes' => 'Ja', 'no' => 'Nein'];

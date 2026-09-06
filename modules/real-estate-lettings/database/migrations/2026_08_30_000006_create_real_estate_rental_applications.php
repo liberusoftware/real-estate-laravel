@@ -39,7 +39,7 @@ return new class() extends Migration
             $table->string('ethereum_address')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->index(['team_id', 'status', 'application_date']);
+            $table->index(['team_id', 'status', 'application_date'], 'rental_applications_team_status_date_idx');
         });
     }
 

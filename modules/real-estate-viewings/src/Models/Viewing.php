@@ -6,7 +6,9 @@ namespace Liberu\RealEstate\Viewings\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\RealEstate\Viewings\Domain\ViewingStatus;
 
 final class Viewing extends Model
@@ -19,7 +21,7 @@ final class Viewing extends Model
 
     protected function casts(): array
     {
-        return ['status' => ViewingStatus::class, 'access' => 'array', 'accompaniment' => 'array', 'reminders' => 'array', 'feedback' => 'array', 'no_show' => 'boolean', 'starts_at' => 'datetime', 'ends_at' => 'datetime'];
+        return ['status' => ViewingStatus::class, 'access' => 'array', 'accompaniment' => 'array', 'reminders' => 'array', 'feedback' => 'array', 'no_show' => 'boolean', 'starts_at' => 'datetime', 'ends_at' => 'datetime', 'guests_count' => 'integer'];
     }
 
     public function scopeForTeam(Builder $query, int|string $teamId): Builder
@@ -39,6 +41,11 @@ final class Viewing extends Model
             ViewingStatus::Confirmed => in_array($status, [ViewingStatus::Completed, ViewingStatus::Cancelled, ViewingStatus::NoShow], true),
             ViewingStatus::Completed, ViewingStatus::Cancelled, ViewingStatus::NoShow => false,
         };
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 
     public function canBeCancelled(): bool

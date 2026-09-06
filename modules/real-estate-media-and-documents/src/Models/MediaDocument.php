@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\MediaAndDocuments\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Liberu\Foundation\Organizations\Models\Team;
 
 final class MediaDocument extends Model
 {
@@ -59,5 +61,10 @@ final class MediaDocument extends Model
         $explicit = data_get($this->metadata, 'public_url');
 
         return is_string($explicit) && filter_var($explicit, FILTER_VALIDATE_URL) ? $explicit : null;
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 }

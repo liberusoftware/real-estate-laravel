@@ -23,6 +23,12 @@ final class OnTheMarketSyncResource extends Resource
 {
     protected static ?string $model = OnTheMarketSync::class;
 
+    protected static ?string $modelLabel = 'Синхронизация OnTheMarket';
+
+    protected static ?string $pluralModelLabel = 'Синхронизации OnTheMarket';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([TextInput::make('listing_id')->required()->numeric(), TextInput::make('property_id')->numeric(), TextInput::make('external_id'), TextInput::make('status')->required()]);

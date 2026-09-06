@@ -6,7 +6,9 @@ namespace Liberu\RealEstate\Properties\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Liberu\Foundation\Organizations\Models\Team;
 
 final class PropertyTemplate extends Model
 {
@@ -17,6 +19,11 @@ final class PropertyTemplate extends Model
     public function properties(): HasMany
     {
         return $this->hasMany(Property::class, 'property_template_id');
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 
     public function scopeForTeam(Builder $query, int|string $teamId): Builder

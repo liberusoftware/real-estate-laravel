@@ -10,6 +10,7 @@
         "php": "^8.5",
         "laravel": "^13.0",
         "packages": {
+            "liberusoftware/organizations-teams": "^1.0",
             "liberusoftware/roles-permissions": "^1.0"
         }
     },

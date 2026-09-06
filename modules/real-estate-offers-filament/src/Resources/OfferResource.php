@@ -23,9 +23,13 @@ final class OfferResource extends Resource
 {
     protected static ?string $model = Offer::class;
 
+    protected static ?string $modelLabel = 'Предложение';
+
+    protected static ?string $pluralModelLabel = 'Предложения';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-banknotes';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {

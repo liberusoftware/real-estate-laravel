@@ -1,0 +1,2 @@
+<?php
+return ['required' => 'Le champ :attribute est obligatoire.', 'email' => 'Le champ :attribute doit être une adresse e-mail valide.', 'max' => ['string' => 'Le champ :attribute ne peut pas dépasser :max caractères.'], 'min' => ['numeric' => 'Le champ :attribute doit être au moins égal à :min.', 'string' => 'Le champ :attribute doit contenir au moins :min caractères.'], 'unique' => 'La valeur de :attribute est déjà utilisée.'];

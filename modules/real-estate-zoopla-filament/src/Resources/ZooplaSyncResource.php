@@ -23,6 +23,12 @@ final class ZooplaSyncResource extends Resource
 {
     protected static ?string $model = ZooplaSync::class;
 
+    protected static ?string $modelLabel = 'Синхронизация Zoopla';
+
+    protected static ?string $pluralModelLabel = 'Синхронизации Zoopla';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([TextInput::make('listing_id')->required()->numeric(), TextInput::make('property_id')->numeric(), TextInput::make('external_id'), TextInput::make('status')->required()]);

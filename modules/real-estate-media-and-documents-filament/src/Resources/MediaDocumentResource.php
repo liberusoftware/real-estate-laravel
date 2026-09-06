@@ -26,20 +26,23 @@ final class MediaDocumentResource extends Resource
 {
     protected static ?string $model = MediaDocument::class;
 
+    protected static ?string $modelLabel = 'Медиафайл';
+
+    protected static ?string $pluralModelLabel = 'Медиафайлы';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([Select::make('kind')->options(['photo' => 'Photo', 'floorplan' => 'Floorplan', 'siteplan' => 'Site plan', 'video' => 'Video', 'certificate' => 'Certificate', 'brochure' => 'Brochure', 'document' => 'Document'])->required(), TextInput::make('path')->required()->maxLength(2048), TextInput::make('title')->maxLength(255), TextInput::make('sort_order')->numeric()->minValue(0)]);
+        return $schema->components([Select::make('kind')->options(['photo' => 'Photo', 'floorplan' => 'Floorplan', 'video' => 'Video', 'certificate' => 'Certificate', 'brochure' => 'Brochure', 'document' => 'Document'])->required(), TextInput::make('path')->required()->maxLength(2048), TextInput::make('title')->maxLength(255), TextInput::make('sort_order')->numeric()->minValue(0)]);
     }
 
     public static function table(Table $table): Table
     {
         return $table->columns([TextColumn::make('kind')->badge(), TextColumn::make('title')->searchable(), TextColumn::make('path')->limit(50), TextColumn::make('sort_order')->sortable(), TextColumn::make('retention_until')->date(), TextColumn::make('created_at')->dateTime()->sortable()])->recordActions([
             EditAction::make(),
-            Action::make('preview')->url(fn (MediaDocument $record): ?string => $record->publicUrl())->openUrlInNewTab()->visible(fn (MediaDocument $record): bool => $record->publicUrl() !== null),
             Action::make('brochure')->form([TextInput::make('title')->required(), TextInput::make('price')->numeric()->required(), TextInput::make('address')])->action(fn (MediaDocument $record, array $data): array => app(GeneratePropertyBrochure::class)->handle(['id' => $record->getKey(), 'title' => $data['title'], 'price' => $data['price'], 'address' => $data['address'] ?? '', 'images' => [$record->path]])),
             Action::make('reorder')->form([TextInput::make('sort_order')->numeric()->required()->minValue(0)])->action(fn (MediaDocument $record, array $data): MediaDocument => app(ReorderMediaDocument::class)->handle($record, (int) auth()->user()->current_team_id, (int) $data['sort_order'])),
             Action::make('retention')->form([TextInput::make('retention_until')->type('date')])->action(fn (MediaDocument $record, array $data): MediaDocument => app(SetMediaDocumentRetention::class)->handle($record, (int) auth()->user()->current_team_id, $data['retention_until'] ?? null)),
