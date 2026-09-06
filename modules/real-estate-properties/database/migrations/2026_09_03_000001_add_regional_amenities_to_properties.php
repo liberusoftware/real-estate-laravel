@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Schema;
 return new class() extends Migration
 {
     /**
-     * The Filament PropertyResource form (and the ihona.tj storefront's
-     * PropertyCard/detail page) have rendered fields for these seven
+     * The Filament PropertyResource form (and the public catalog's
+     * property card/detail page) have rendered fields for these seven
      * attributes since early in the project — a known, previously
      * out-of-scope schema-drift bug (see docs/handoffs): the form looked
      * like it worked, but had nothing to save into, so Eloquent's mass

@@ -1,0 +1,23 @@
+{
+    "Dashboard": "Tableau de bord",
+    "Login": "Se connecter",
+    "Logout": "Se déconnecter",
+    "Register": "S’inscrire",
+    "Save": "Enregistrer",
+    "Cancel": "Annuler",
+    "Create": "Créer",
+    "Edit": "Modifier",
+    "Delete": "Supprimer",
+    "Search": "Rechercher",
+    "Settings": "Paramètres",
+    "Profile": "Profil",
+    "Email": "E-mail",
+    "Password": "Mot de passe",
+    "Name": "Nom",
+    "Actions": "Actions",
+    "Users": "Utilisateurs",
+    "Teams": "Équipes",
+    "Properties": "Biens immobiliers",
+    "Viewings": "Visites",
+    "Offers": "Offres"
+}

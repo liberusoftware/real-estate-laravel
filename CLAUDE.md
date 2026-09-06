@@ -264,7 +264,7 @@ A fresh install must run `npm run build`.
 
 ### Multi-language
 
-`config('app.supported_locales')` (en/ru/tg/uz).
+`config('app.supported_locales')` (en/ru/tg/uz/es/it/fr/de/pt).
 `Liberu\Foundation\Localization\Http\Middleware\SetLocale` resolves request param → session →
 `users.locale` → `Accept-Language` → default, and runs on the `web` group (`bootstrap/app.php`)
 **and** both panels. Precedence is request > session > user, so a stale session locale can shadow
@@ -575,20 +575,20 @@ When working on Octane-specific features (concurrency, shared tables, memory, dr
 - Frontend: Nuxt 3 (Vue 3 Composition API, TypeScript)
 - Styling: Tailwind CSS 4
 - State: Pinia (для глобального состояния)
-- API: Laravel REST API (https://ihona.tj/api)
+- API: Laravel REST API (`/api`)
 - Auth: Laravel Sanctum (токены)
 - i18n: @nuxtjs/i18n (ru, tg, uz, en)
 - CORS: `config/cors.php` scopes `allowed_origins` to the frontend's origin via `NUXT_APP_URL`
 
 ## Project Structure
 
-The Nuxt app is a **separate repository** (`liberusoftware/ihona-frontend`, cloned at
-`~/code/ihona-frontend` like any other project this host consumes rather than composes) —
+The frontend is a **separate repository** (cloned at `~/code/frontend` like any other
+project this host consumes rather than composes) —
 it is not part of this host's `modules/`/`themes/` Composer tree, has no `module.json`, and
-never appears in `composer.lock`. See `ihona-frontend`'s own CLAUDE.md/README for its
+never appears in `composer.lock`. See the frontend repository's own CLAUDE.md/README for its
 internal layout (`pages/`, `stores/`, `composables/`, `i18n/`). This host's CLAUDE.md only
 documents the boundary and contract between the two repositories:
-- API: this host's REST API at `https://ihona.tj/api`, already built across the `-api`
+- API: this host's REST API at `/api`, already built across the `-api`
   companion modules (`modules/*-api/routes/api.php`).
 - Auth: Sanctum personal access tokens (Bearer), issued by `POST /api/v1/auth/token` and
   revoked by `DELETE /api/v1/auth/token` (`identity-core-api` module) — not Sanctum SPA

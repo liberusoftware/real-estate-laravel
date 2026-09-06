@@ -38,7 +38,7 @@ final class AuthTokenController
             $user->forceFill(['current_team_id' => $team->id])->save();
         }
 
-        $token = $user->createToken('ihona-frontend')->plainTextToken;
+        $token = $user->createToken('public-api-client')->plainTextToken;
 
         return response()->json([
             'plainTextToken' => $token,
@@ -83,7 +83,7 @@ final class AuthTokenController
             ], 422);
         }
 
-        $token = $user->createToken('ihona-frontend')->plainTextToken;
+        $token = $user->createToken('public-api-client')->plainTextToken;
 
         return response()->json([
             'plainTextToken' => $token,

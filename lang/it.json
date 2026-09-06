@@ -1,0 +1,23 @@
+{
+    "Dashboard": "Bacheca",
+    "Login": "Accedi",
+    "Logout": "Esci",
+    "Register": "Registrati",
+    "Save": "Salva",
+    "Cancel": "Annulla",
+    "Create": "Crea",
+    "Edit": "Modifica",
+    "Delete": "Elimina",
+    "Search": "Cerca",
+    "Settings": "Impostazioni",
+    "Profile": "Profilo",
+    "Email": "Email",
+    "Password": "Password",
+    "Name": "Nome",
+    "Actions": "Azioni",
+    "Users": "Utenti",
+    "Teams": "Team",
+    "Properties": "Immobili",
+    "Viewings": "Visite",
+    "Offers": "Offerte"
+}

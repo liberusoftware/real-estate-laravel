@@ -1,0 +1,23 @@
+{
+    "Dashboard": "Panel",
+    "Login": "Iniciar sesión",
+    "Logout": "Cerrar sesión",
+    "Register": "Registrarse",
+    "Save": "Guardar",
+    "Cancel": "Cancelar",
+    "Create": "Crear",
+    "Edit": "Editar",
+    "Delete": "Eliminar",
+    "Search": "Buscar",
+    "Settings": "Configuración",
+    "Profile": "Perfil",
+    "Email": "Correo electrónico",
+    "Password": "Contraseña",
+    "Name": "Nombre",
+    "Actions": "Acciones",
+    "Users": "Usuarios",
+    "Teams": "Equipos",
+    "Properties": "Propiedades",
+    "Viewings": "Visitas",
+    "Offers": "Ofertas"
+}

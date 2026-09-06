@@ -12,9 +12,7 @@
 
     <style>
         :root {
-            /* ihona brand green (docs/brand/README.txt — Изумруд #2E7D5C is
-               --brand-emphasis here, same colour as brand-600 on the main
-               storefront). Was an unrelated teal from a different theme. */
+            /* Real-estate brand green. */
             --brand-primary: #37956e;
             --brand-deep: #246349;
             --brand-emphasis: #2e7d5c;

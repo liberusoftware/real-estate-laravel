@@ -101,6 +101,11 @@ return [
         'ru' => 'Русский',
         'tg' => 'Тоҷикӣ',
         'uz' => 'O\'zbek',
+        'es' => 'Español',
+        'it' => 'Italiano',
+        'fr' => 'Français',
+        'de' => 'Deutsch',
+        'pt' => 'Português',
     ],
 
     /*

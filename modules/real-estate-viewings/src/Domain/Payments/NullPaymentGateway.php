@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\Viewings\Domain\Payments;
 
 /**
- * No real gateway is configured — ihona.tj has no merchant agreement with
- * a Tajik bank/payment gateway (Alif Pay et al.) as of this writing.
+ * No real gateway is configured yet, so bookings remain pending without a
+ * provider reference until a merchant agreement is configured.
  * Always returns Pending with no provider reference, so nothing downstream
  * can mistake this for a real charge. Bound as the default PaymentGateway
  * in ViewingsServiceProvider; swap that binding for a real implementation

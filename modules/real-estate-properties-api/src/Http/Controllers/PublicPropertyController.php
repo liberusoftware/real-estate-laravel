@@ -14,7 +14,7 @@ use Liberu\RealEstate\PropertiesApi\Http\Resources\PublicPropertyResource;
 
 /**
  * Anonymous, read-only property browsing for the public storefront
- * (ihona-frontend). See PublicTerritoryController (real-estate-core-api)
+ * (public frontend). See PublicTerritoryController (real-estate-core-api)
  * for why this resolves "the" public team rather than scoping by
  * $request->user() — there isn't one.
  */

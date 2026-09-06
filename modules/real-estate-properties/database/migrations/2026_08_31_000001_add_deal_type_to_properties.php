@@ -15,7 +15,7 @@ return new class() extends Migration
             // under_offer/sold/let/withdrawn, the listing's lifecycle) and
             // from PropertyResource's `rentPeriod` (the storefront's
             // display-only cadence for a rental price) — deal_type is what
-            // the ihona.tj storefront's Купить/Снять split filters on.
+            // the public catalog's sale/rent filter uses.
             $table->string('deal_type', 10)->default('sale')->after('property_type');
         });
     }

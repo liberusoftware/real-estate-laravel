@@ -19,7 +19,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('NUXT_APP_URL', 'http://localhost:3000'), 'https://ihona.tj'],
+    'allowed_origins' => array_values(array_filter([
+        env('FRONTEND_URL'),
+        env('NUXT_APP_URL'),
+        'http://localhost:3000',
+    ])),
 
     'allowed_origins_patterns' => [],
 

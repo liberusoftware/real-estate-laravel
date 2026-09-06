@@ -11,7 +11,7 @@ use Liberu\RealEstate\CoreApi\Http\Resources\TerritoryResource;
 
 /**
  * Anonymous, read-only territory listing for the public storefront
- * (ihona-frontend). TerritoryController's index() is deliberately
+ * (public frontend). TerritoryController's index() is deliberately
  * team-scoped to $request->user()->current_team_id, which an anonymous
  * visitor doesn't have — this resolves the storefront's public team the
  * same way the rest of the composition is effectively single-tenant today

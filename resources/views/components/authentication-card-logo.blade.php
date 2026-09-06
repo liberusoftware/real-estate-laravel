@@ -1,5 +1,4 @@
-{{-- ihona brand mark (docs/brand/README.txt) — house pictogram on a rounded
-     square, same asset as the site favicon, not the old generic waveform. --}}
+{{-- Real-estate brand mark — house pictogram on a rounded square. --}}
 <a href="/" aria-label="{{ config('app.name', 'Boilerplate Laravel') }} home">
     <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect width="64" height="64" rx="14" fill="#2E7D5C"/>
