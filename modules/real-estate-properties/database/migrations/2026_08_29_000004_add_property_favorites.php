@@ -17,7 +17,7 @@ return new class() extends Migration
             $table->foreignId('property_id')->constrained('real_estate_properties')->cascadeOnDelete();
             $table->timestamps();
 
-            $table->unique(['team_id', 'user_id', 'property_id']);
+            $table->unique(['team_id', 'user_id', 'property_id'], 'property_favorites_team_user_property_unique');
         });
     }
 

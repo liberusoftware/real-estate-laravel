@@ -1,0 +1,1 @@
+{"nodes":[{"id":"routes_channels","label":"channels.php","file_type":"code","source_file":"routes/channels.php","source_location":"L1"}],"edges":[{"source":"routes_channels","target":"broadcast","relation":"imports","confidence":"EXTRACTED","source_file":"routes/channels.php","source_location":"L3","weight":1}]}

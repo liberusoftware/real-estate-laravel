@@ -21,5 +21,5 @@
     },
     "capabilities": ["real-estate.parties"],
     "default_enabled": true,
-    "features": ["Applicants", "Vendors", "Landlords", "Tenants", "Buyers", "Solicitors", "Contractors", "Relationships", "Consent", "Landlord reviews", "Tenant reviews"]
+    "features": ["Applicants", "Vendors", "Landlords", "Tenants", "Buyers", "Solicitors", "Contractors", "Tourists", "Guides", "Relationships", "Consent", "Landlord reviews", "Tenant reviews"]
 }

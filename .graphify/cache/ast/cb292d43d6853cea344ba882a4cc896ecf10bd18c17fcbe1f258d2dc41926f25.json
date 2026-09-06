@@ -1,0 +1,1 @@
+{"nodes":[{"id":"config_session","label":"session.php","file_type":"code","source_file":"config/session.php","source_location":"L1"}],"edges":[{"source":"config_session","target":"str","relation":"imports","confidence":"EXTRACTED","source_file":"config/session.php","source_location":"L3","weight":1}]}

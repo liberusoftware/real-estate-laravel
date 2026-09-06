@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Liberu\RealEstate\MarketingFilament\Resources;
 
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -19,7 +20,7 @@ final class NewsArticleResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('title')->required(), TextInput::make('slug')->required(), Textarea::make('content')->required(), TextInput::make('published_at')->datetime()]);
+        return $schema->components([TextInput::make('title')->required(), TextInput::make('slug')->required(), Textarea::make('content')->required(), DateTimePicker::make('published_at')]);
     }
 
     public static function table(Table $table): Table

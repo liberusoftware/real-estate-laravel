@@ -30,6 +30,12 @@ final class MarketingCampaignResource extends Resource
 {
     protected static ?string $model = MarketingCampaign::class;
 
+    protected static ?string $modelLabel = 'Маркетинговая кампания';
+
+    protected static ?string $pluralModelLabel = 'Маркетинговые кампании';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([TextInput::make('name')->required()->maxLength(255), TextInput::make('channel')->required()->maxLength(80), TextInput::make('property_id')->numeric(), TextInput::make('listing_id')->numeric(), TextInput::make('status')->required(), Textarea::make('notes')->columnSpanFull()]);

@@ -6,6 +6,8 @@ namespace Liberu\RealEstate\Properties\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Liberu\Foundation\Organizations\Models\Team;
 
 final class PropertySavedSearch extends Model
 {
@@ -21,5 +23,10 @@ final class PropertySavedSearch extends Model
     public function scopeForUser(Builder $query, int|string $teamId, int|string $userId): Builder
     {
         return $query->where('team_id', $teamId)->where('user_id', $userId);
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 }

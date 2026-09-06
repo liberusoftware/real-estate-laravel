@@ -22,6 +22,12 @@ final class ManagementRecordResource extends Resource
 {
     protected static ?string $model = ManagementRecord::class;
 
+    protected static ?string $modelLabel = 'Запись управления';
+
+    protected static ?string $pluralModelLabel = 'Записи управления';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
     public static function form(Schema $schema): Schema

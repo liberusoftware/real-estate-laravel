@@ -6,7 +6,7 @@
     "version": "1.0.1",
     "category": "presentation",
     "provider": "Liberu\\RealEstate\\PropertiesApi\\PropertiesApiServiceProvider",
-    "requires": {"php": "^8.5", "laravel": "^13.0", "packages": {"liberusoftware/real-estate-properties": "^1.0"}},
+    "requires": {"php": "^8.5", "laravel": "^13.0", "packages": {"liberusoftware/real-estate-properties": "^1.0", "liberusoftware/organizations-teams": "^1.0"}},
     "capabilities": ["real-estate.properties.api"],
     "default_enabled": true,
     "features": ["Property list and detail transport", "Validated property creation", "Tenant-scoped property comparison", "Property tax estimates", "Walkability score refresh", "Property QR-code data", "Property sharing", "Favorites and saved-property endpoints", "Saved-search endpoints", "Community event endpoints", "Price alert endpoints"]

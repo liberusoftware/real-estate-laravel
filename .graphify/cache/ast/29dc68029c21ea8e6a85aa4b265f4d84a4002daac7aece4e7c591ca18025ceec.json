@@ -1,0 +1,1 @@
+{"nodes":[{"id":"js_app","label":"app.js","file_type":"code","source_file":"themes/default/resources/js/app.js","source_location":"L1"}],"edges":[{"source":"js_app","target":"home_adminj0n_ihona_themes_base_resources_js_app_ts","relation":"imports_from","confidence":"EXTRACTED","source_file":"themes/default/resources/js/app.js","source_location":"L1","weight":1}]}

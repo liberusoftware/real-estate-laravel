@@ -21,7 +21,7 @@ return new class() extends Migration
             $table->boolean('is_active')->default(true)->index();
             $table->timestamps();
             $table->softDeletes();
-            $table->index(['team_id', 'user_id', 'property_id']);
+            $table->index(['team_id', 'user_id', 'property_id'], 'price_alerts_team_user_property_idx');
         });
     }
 

@@ -50,7 +50,7 @@ return new class() extends Migration
             $table->unsignedInteger('unhelpful_votes')->default(0);
             $table->timestamps();
             $table->softDeletes();
-            $table->unique(['team_id', 'neighborhood_id', 'user_id']);
+            $table->unique(['team_id', 'neighborhood_id', 'user_id'], 'neighborhood_reviews_team_neighborhood_user_unique');
         });
     }
 

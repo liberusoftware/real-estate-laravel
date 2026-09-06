@@ -6,6 +6,7 @@
   "require": {
     "php": "^8.5",
     "filament/filament": "^5.1",
+    "liberusoftware/organizations-teams": "^1.0",
     "liberusoftware/roles-permissions": "^1.0"
   },
   "autoload": {

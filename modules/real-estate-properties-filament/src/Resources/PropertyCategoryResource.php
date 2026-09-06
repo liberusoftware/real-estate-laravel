@@ -19,9 +19,13 @@ final class PropertyCategoryResource extends Resource
 {
     protected static ?string $model = PropertyCategory::class;
 
+    protected static ?string $modelLabel = 'Категория объекта';
+
+    protected static ?string $pluralModelLabel = 'Категории объектов';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-tag';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {

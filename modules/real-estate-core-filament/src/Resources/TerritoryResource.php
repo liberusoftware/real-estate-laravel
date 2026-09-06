@@ -20,15 +20,19 @@ final class TerritoryResource extends Resource
 {
     protected static ?string $model = Territory::class;
 
+    protected static ?string $modelLabel = 'Территория';
+
+    protected static ?string $pluralModelLabel = 'Территории';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-map';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
             TextInput::make('name')->required()->maxLength(255),
-            TextInput::make('code')->required()->uppercase()->maxLength(20),
+            TextInput::make('code')->required()->maxLength(20)->dehydrateStateUsing(fn (?string $state): ?string => $state !== null ? mb_strtoupper($state) : null),
             Textarea::make('boundary')->helperText('Optional JSON boundary metadata.')->columnSpanFull(),
         ]);
     }

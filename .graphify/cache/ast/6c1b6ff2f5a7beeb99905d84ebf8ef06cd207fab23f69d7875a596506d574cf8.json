@@ -1,0 +1,1 @@
+{"nodes":[{"id":"config_auth","label":"auth.php","file_type":"code","source_file":"config/auth.php","source_location":"L1"}],"edges":[{"source":"config_auth","target":"user","relation":"imports","confidence":"EXTRACTED","source_file":"config/auth.php","source_location":"L3","weight":1}]}

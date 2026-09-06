@@ -7,6 +7,7 @@ namespace Liberu\RealEstate\ViewingsFilament\Resources;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -29,13 +30,17 @@ final class ViewingResource extends Resource
 {
     protected static ?string $model = Viewing::class;
 
+    protected static ?string $modelLabel = 'Показ';
+
+    protected static ?string $pluralModelLabel = 'Показы';
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-calendar-days';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
+    protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('subject')->required()->maxLength(255), Select::make('status')->options(['requested' => 'Requested', 'confirmed' => 'Confirmed', 'completed' => 'Completed', 'cancelled' => 'Cancelled', 'no_show' => 'No show'])->required(), TextInput::make('starts_at')->datetime(), TextInput::make('ends_at')->datetime(), Textarea::make('access')->helperText('JSON access instructions.')->columnSpanFull(), Textarea::make('accompaniment')->helperText('JSON accompaniment details.')->columnSpanFull(), Textarea::make('reminders')->helperText('JSON reminder settings.')->columnSpanFull(), Textarea::make('feedback')->helperText('JSON feedback.')->columnSpanFull()]);
+        return $schema->components([TextInput::make('subject')->required()->maxLength(255), Select::make('status')->options(['requested' => 'Requested', 'confirmed' => 'Confirmed', 'completed' => 'Completed', 'cancelled' => 'Cancelled', 'no_show' => 'No show'])->required(), DateTimePicker::make('starts_at'), DateTimePicker::make('ends_at'), Textarea::make('access')->helperText('JSON access instructions.')->columnSpanFull(), Textarea::make('accompaniment')->helperText('JSON accompaniment details.')->columnSpanFull(), Textarea::make('reminders')->helperText('JSON reminder settings.')->columnSpanFull(), Textarea::make('feedback')->helperText('JSON feedback.')->columnSpanFull()]);
     }
 
     public static function table(Table $table): Table

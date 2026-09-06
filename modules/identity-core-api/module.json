@@ -1,27 +1,25 @@
 {
-  "$schema": "https://schemas.liberu.dev/module/v1.json",
-  "name": "identity-core-api",
-  "display_name": "Identity Api",
-  "description": "Identity api presentation adapter.",
-  "version": "1.0.0",
-  "category": "presentation",
-  "provider": "Liberu\\Foundation\\IdentityCoreApi\\IdentityCoreApiServiceProvider",
-  "requires": {
-    "php": "^8.5",
-    "laravel": "^13.0",
-    "packages": {
-      "liberusoftware/identity-core": "^1.0"
-    }
-  },
-  "suggests": [],
-  "capabilities": [
-    "foundation.identity-core.api"
-  ],
-  "default_enabled": true,
-  "features": [
-    "Bounded api presentation for Identity",
-    "Authorization delegated to the matching core module",
-    "Accessible loading, empty, denied, and failure states"
-  ]
+    "$schema": "https://schemas.liberu.dev/module/v1.json",
+    "name": "identity-core-api",
+    "display_name": "Identity Core API",
+    "description": "Sanctum Bearer token issuance for API consumers (the Nuxt storefront), realizing identity-core's identity.authenticate capability over HTTP.",
+    "version": "1.0.0",
+    "category": "presentation",
+    "provider": "Liberu\\Foundation\\IdentityCoreApi\\IdentityCoreApiServiceProvider",
+    "requires": {
+        "php": "^8.5",
+        "laravel": "^13.0",
+        "packages": {
+            "liberusoftware/identity-core": "^1.0",
+            "liberusoftware/organizations-teams": "^1.0"
+        }
+    },
+    "suggests": {},
+    "capabilities": ["identity.authenticate.api"],
+    "default_enabled": true,
+    "features": [
+        "POST /api/v1/auth/token — issue a Sanctum Bearer token",
+        "DELETE /api/v1/auth/token — revoke the current token",
+        "POST /api/v1/auth/register — self-register and issue a Bearer token"
+    ]
 }
-

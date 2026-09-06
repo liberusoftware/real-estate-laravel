@@ -94,7 +94,8 @@ and "nobody looked", which is the confusion this table exists to prevent.
 | `THEMES` | audited | audited | **5** |
 | `TRANSLATIONS` | — | audited | **2** |
 | `VIEWS` | — | audited | 0 |
-| `FLUTTER` `INERTIA` `MOBILE` `NUXT` `REACT` `REACT-NATIVE` `VUE` | **inapplicable** | **inapplicable** | this stack has no React, Vue, Nuxt, Inertia, Flutter, React Native or mobile surface. Ruled out while charting, recorded here so the seven are not re-litigated |
+| `FLUTTER` `INERTIA` `MOBILE` `REACT` `REACT-NATIVE` `VUE` | **inapplicable** | **inapplicable** | this stack has no React, Vue, Inertia, Flutter, React Native or mobile surface. Ruled out while charting, recorded here so the six are not re-litigated |
+| `NUXT` | **out of scope** | **out of scope** | a Nuxt 3 frontend is a planned, separate consumer of this host's REST API, developed and deployed as its own repository (`liberusoftware/ihona-frontend`) — it never appears in `composer.lock` and so is out of this audit's scope rather than ruled out. See `CLAUDE.md`'s Nuxt 3 Frontend section |
 
 ## Boundary class — findings
 
