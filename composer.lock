@@ -25359,19 +25359,20 @@
         },
         {
             "name": "filament/upgrade",
-            "version": "v5.7.8",
+            "version": "v5.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/upgrade.git",
-                "reference": "1dec8fe9a7d36892dfaca9460f640c4c9fb2dc2c"
+                "reference": "5a53f0e8aea7b76f6641d846b8f44fee78e17dfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/upgrade/zipball/1dec8fe9a7d36892dfaca9460f640c4c9fb2dc2c",
-                "reference": "1dec8fe9a7d36892dfaca9460f640c4c9fb2dc2c",
+                "url": "https://api.github.com/repos/filamentphp/upgrade/zipball/5a53f0e8aea7b76f6641d846b8f44fee78e17dfa",
+                "reference": "5a53f0e8aea7b76f6641d846b8f44fee78e17dfa",
                 "shasum": ""
             },
             "require": {
+                "composer-runtime-api": "^2.1",
                 "nunomaduro/termwind": "^2.0",
                 "php": "^8.2",
                 "rector/rector": "^2.0"
@@ -25395,7 +25396,7 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2026-05-20T17:21:47+00:00"
+            "time": "2026-09-07T18:43:54+00:00"
         },
         {
             "name": "filp/whoops",
