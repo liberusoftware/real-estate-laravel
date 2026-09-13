@@ -79,7 +79,7 @@ final class PropertyController
             ->postalCode($filters['postal_code'] ?? null)
             ->when($filters['needs_syncing'] ?? false, fn ($query) => $query->needsSyncing())
             ->hasAmenities($filters['amenities'] ?? [])
-            ->when($filters['latitude'] !== null && $filters['longitude'] !== null && $filters['radius'] !== null, fn ($query) => $query->nearby($filters['latitude'], $filters['longitude'], $filters['radius']))
+            ->when(($filters['latitude'] ?? null) !== null && ($filters['longitude'] ?? null) !== null && ($filters['radius'] ?? null) !== null, fn ($query) => $query->nearby($filters['latitude'], $filters['longitude'], $filters['radius']))
             ->when(array_key_exists('branch_id', $filters), fn ($query) => $query->where('branch_id', $filters['branch_id']))
             ->priceRange($filters['min_price'] ?? null, $filters['max_price'] ?? null)
             ->bedrooms($filters['min_bedrooms'] ?? null, $filters['max_bedrooms'] ?? null)
