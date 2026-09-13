@@ -7,10 +7,6 @@ namespace Liberu\RealEstate\PropertyManagementFilament;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Liberu\RealEstate\PropertyManagementFilament\Resources\InspectionResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\MaintenanceRequestResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\ManagementRecordResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\VendorQuoteResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\WorkOrderResource;
 
 final class PropertyManagementFilamentPlugin implements Plugin
 {
@@ -24,9 +20,16 @@ final class PropertyManagementFilamentPlugin implements Plugin
         return 'real-estate-property-management';
     }
 
+    /**
+     * ManagementRecord/MaintenanceRequest/VendorQuote/WorkOrder are the
+     * post-sale repair/contractor workflow — not part of ihona's actual
+     * service (explicitly decided against, 2026-09-13). Inspection stays:
+     * it replaces a manual "опись" (condition report) the team already
+     * does by hand at every rental handover.
+     */
     public function register(Panel $panel): void
     {
-        $panel->resources([ManagementRecordResource::class, InspectionResource::class, MaintenanceRequestResource::class, VendorQuoteResource::class, WorkOrderResource::class]);
+        $panel->resources([InspectionResource::class]);
     }
 
     public function boot(Panel $panel): void {}

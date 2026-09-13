@@ -6,6 +6,7 @@ use App\Filament\App\Pages\AccountSetupWizard;
 use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
 use Filament\Panel;
 use Liberu\Foundation\ApplicationFilament\Pages\Overview;
+use Liberu\Foundation\AuditFilament\Resources\ActivityLogResource;
 use Liberu\Foundation\IdentityFilament\Resources\UserResource;
 use Liberu\Foundation\ModuleManagerFilament\Pages\FoundationOperations;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource;
@@ -26,16 +27,11 @@ use Liberu\RealEstate\MediaAndDocumentsFilament\Resources\MediaDocumentResource;
 use Liberu\RealEstate\OffersFilament\Resources\OfferResource;
 use Liberu\RealEstate\OnTheMarketFilament\Resources\OnTheMarketSyncResource;
 use Liberu\RealEstate\PartiesFilament\Resources\PartyResource;
-use Liberu\RealEstate\PortalsReportingFilament\Resources\PortalReportResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertyCategoryResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertyResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertySavedSearchResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertyTemplateResource;
 use Liberu\RealEstate\PropertyManagementFilament\Resources\InspectionResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\MaintenanceRequestResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\ManagementRecordResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\VendorQuoteResource;
-use Liberu\RealEstate\PropertyManagementFilament\Resources\WorkOrderResource;
 use Liberu\RealEstate\RightmoveFilament\Resources\RightmoveSyncResource;
 use Liberu\RealEstate\SalesProgressionFilament\Resources\SalesProgressionResource;
 use Liberu\RealEstate\ValuationsFilament\Resources\ValuationResource;
@@ -92,15 +88,10 @@ final class NavigationGroups
             ],
             __('filament.nav_groups.property_management') => [
                 10 => InspectionResource::class,
-                20 => MaintenanceRequestResource::class,
-                30 => ManagementRecordResource::class,
-                40 => VendorQuoteResource::class,
-                50 => WorkOrderResource::class,
             ],
             __('filament.nav_groups.marketing_portals') => [
                 10 => MarketingCampaignResource::class,
                 20 => NewsArticleResource::class,
-                30 => PortalReportResource::class,
                 40 => RightmoveSyncResource::class,
                 50 => ZooplaSyncResource::class,
                 60 => OnTheMarketSyncResource::class,
@@ -149,7 +140,7 @@ final class NavigationGroups
                 40 => \Liberu\Foundation\FilesMediaFilament\Pages\Overview::class,
                 50 => \Liberu\Foundation\ImportExportFilament\Pages\Overview::class,
                 60 => \Liberu\Foundation\DeveloperExperienceFilament\Pages\Overview::class,
-                70 => \Liberu\Foundation\AuditFilament\Resources\ActivityLogResource::class,
+                70 => ActivityLogResource::class,
             ],
         ];
     }
