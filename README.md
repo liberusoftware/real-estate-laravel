@@ -92,6 +92,7 @@ Package repositories own their releases and CI. The application’s protected `m
 
 ## Documentation
 
+- [Property architecture](docs/PROPERTY_ARCHITECTURE.md)
 - [Module development](docs/MODULE_DEVELOPMENT.md)
 - [Foundation compliance](docs/FOUNDATION_COMPLIANCE.md)
 - [Theme architecture](docs/THEME_ARCHITECTURE.md)
