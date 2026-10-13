@@ -9,7 +9,7 @@
     "devDependencies": {
         "@laravel/vite-plugin-wayfinder": "^0.1.10",
         "@tailwindcss/vite": "^4.0.0",
-        "concurrently": "^10.0.5",
+        "concurrently": "^10.0.6",
         "laravel-vite-plugin": "^3.2",
         "tailwindcss": "^4.0.0",
         "vite": "^8.2.2"
