@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Liberu\RealEstate\Parties\Policies;
 
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Liberu\RealEstate\Parties\Models\Party;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PartyPolicy
 {
     use HandlesAuthorization;
-    
+
     public function viewAny(AuthUser $authUser): bool
     {
         return $authUser->can('ViewAny:Party');
@@ -71,5 +71,4 @@ class PartyPolicy
     {
         return $authUser->can('Reorder:Party');
     }
-
 }

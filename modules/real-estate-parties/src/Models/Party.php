@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\RealEstate\Parties\Domain\PartyType;
 
 final class Party extends Model
@@ -31,9 +32,10 @@ final class Party extends Model
     {
         return $query->where('team_id', $teamId);
     }
+
     public function team()
     {
-        return $this->belongsTo(\Liberu\Foundation\Organizations\Models\Team::class);
+        return $this->belongsTo(Team::class);
     }
 
     public function reviews(): HasMany

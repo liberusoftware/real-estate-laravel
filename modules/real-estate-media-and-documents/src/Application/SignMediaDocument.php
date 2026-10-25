@@ -16,6 +16,6 @@ final class SignMediaDocument
             throw ValidationException::withMessages(['document' => 'Document cannot be signed.']);
         }
 
-return $document->signatures()->create(['team_id' => $teamId, 'user_id' => $userId, 'signature_data' => $data, 'signature_hash' => hash('sha256', $data), 'ip_address' => $ip, 'user_agent' => $agent]);
+        return $document->signatures()->create(['team_id' => $teamId, 'user_id' => $userId, 'signature_data' => $data, 'signature_hash' => hash('sha256', $data), 'ip_address' => $ip, 'user_agent' => $agent]);
     }
 }
