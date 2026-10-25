@@ -1,7 +1,10 @@
 <?php
+
 namespace Liberu\Foundation\Localization\Context;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+
 final class LocaleResolver
 {
     public function resolve(Request $request): LocaleContext
@@ -19,6 +22,7 @@ final class LocaleResolver
         if (! in_array($timezone, timezone_identifiers_list(), true)) {
             $timezone = 'UTC';
         }
+
         return new LocaleContext($locale, $timezone, in_array($locale, (array) config('localization.rtl_locales', []), true) ? 'rtl' : 'ltr');
     }
 }

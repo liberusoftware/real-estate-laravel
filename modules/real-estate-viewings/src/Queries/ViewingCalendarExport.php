@@ -16,6 +16,6 @@ final class ViewingCalendarExport
             $ics .= "BEGIN:VEVENT\r\nUID:viewing-{$event->id}\r\nDTSTART:".$event->starts_at->utc()->format('Ymd\THis\Z')."\r\nSUMMARY:".addcslashes($event->subject, ',;')."\r\nEND:VEVENT\r\n";
         }
 
-return $ics."END:VCALENDAR\r\n";
+        return $ics."END:VCALENDAR\r\n";
     }
 }

@@ -194,9 +194,9 @@ it('keeps the property detail disclosure contract across adapters', function ():
         ->toContain('Book a viewing')
         ->toContain('loading="lazy"')
         ->toContain('preload="none"')
-        ->and($filament)->toContain("label('Price / sq ft')")
-        ->toContain("label('Days listed')")
-        ->toContain("label('Floor plan')");
+        ->and($filament)->toContain("TextColumn::make('price_per_square_foot')")
+        ->toContain("TextColumn::make('days_listed')")
+        ->toContain("TextColumn::make('floor_plan_image')");
 });
 
 it('keeps the property gallery contract connected to the media boundary', function (): void {

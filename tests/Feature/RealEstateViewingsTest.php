@@ -26,7 +26,7 @@ beforeEach(function (): void {
 });
 
 it('creates a requested viewing with access metadata', function (): void {
-    $viewing = app(CreateViewing::class)->handle(1, 5, ['subject' => 'Property viewing', 'starts_at' => '2026-09-01 10:00', 'access' => ['key_holder' => 'agent']]);
+    $viewing = app(CreateViewing::class)->handle(1, 5, ['subject' => 'Property viewing', 'starts_at' => now()->addDay()->startOfHour(), 'access' => ['key_holder' => 'agent']]);
     expect($viewing->status->value)->toBe('requested')->and($viewing->access['key_holder'])->toBe('agent');
 });
 it('requires a start time and archives a viewing for its team', function (): void {

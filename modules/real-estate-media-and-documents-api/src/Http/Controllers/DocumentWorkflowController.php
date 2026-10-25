@@ -12,6 +12,8 @@ use Liberu\RealEstate\MediaAndDocuments\Application\SignDocumentEnvelope;
 use Liberu\RealEstate\MediaAndDocuments\Models\DocumentEnvelope;
 use Liberu\RealEstate\MediaAndDocuments\Models\DocumentParticipant;
 use Liberu\RealEstate\MediaAndDocuments\Models\DocumentTemplate;
+use Liberu\RealEstate\MediaAndDocumentsApi\Http\Resources\DocumentEnvelopeResource;
+use Liberu\RealEstate\MediaAndDocumentsApi\Http\Resources\DocumentEnvelopeSignatureResource;
 
 final class DocumentWorkflowController
 {
@@ -32,14 +34,14 @@ final class DocumentWorkflowController
 
         $envelope = $create->handle($user->current_team_id, $user->getAuthIdentifier(), $documentTemplate, $data['values'], $data['participants']);
 
-        return response()->json(['data' => $envelope], 201);
+        return (new DocumentEnvelopeResource($envelope))->response()->setStatusCode(201);
     }
 
     public function show(Request $request, DocumentEnvelope $documentEnvelope): JsonResponse
     {
         abort_unless((string) $request->user()?->current_team_id === (string) $documentEnvelope->team_id, 404);
 
-        return response()->json(['data' => $documentEnvelope->load(['template', 'participants', 'signatures'])]);
+        return (new DocumentEnvelopeResource($documentEnvelope->load(['template', 'participants', 'signatures'])))->response();
     }
 
     public function sign(Request $request, DocumentEnvelope $documentEnvelope, DocumentParticipant $documentParticipant, SignDocumentEnvelope $sign): JsonResponse
@@ -52,6 +54,6 @@ final class DocumentWorkflowController
         ]);
         $signature = $sign->handle($documentEnvelope, $documentParticipant, $user->current_team_id, $user->getAuthIdentifier(), $data['signature'], $data['method'], $request->ip(), $request->userAgent());
 
-        return response()->json(['data' => $signature->load('participant')]);
+        return (new DocumentEnvelopeSignatureResource($signature->load('participant')))->response();
     }
 }

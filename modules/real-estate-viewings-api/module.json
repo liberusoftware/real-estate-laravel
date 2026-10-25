@@ -1,1 +1,27 @@
-{"$schema":"https://schemas.liberu.dev/module/v1.json","name":"real-estate-viewings-api","display_name":"Real Estate Viewings API","description":"Versioned team-scoped API adapter for viewings.","version":"1.0.0","category":"adapter","provider":"Liberu\\RealEstate\\ViewingsApi\\ViewingsApiServiceProvider","requires":{"php":"^8.5","laravel":"^13.0","packages":{"liberusoftware/real-estate-viewings":"^1.0","liberusoftware/api-access":"^1.0"}},"suggests":{},"capabilities":["real-estate.viewings.api"],"default_enabled":true,"features":["Team-scoped viewing endpoints","Bounded booking validation"]}
+{
+    "$schema": "https://schemas.liberu.dev/module/v1.json",
+    "name": "real-estate-viewings-api",
+    "display_name": "Real Estate Viewings API",
+    "description": "Versioned team-scoped API adapter for viewings.",
+    "version": "1.0.0",
+    "category": "adapter",
+    "provider": "Liberu\\RealEstate\\ViewingsApi\\ViewingsApiServiceProvider",
+    "requires": {
+        "php": "^8.5",
+        "laravel": "^13.0",
+        "packages": {
+            "liberusoftware/real-estate-viewings": "^1.0",
+            "liberusoftware/api-access": "^1.0",
+            "liberusoftware/real-estate-properties": "^1.0"
+        }
+    },
+    "suggests": {},
+    "capabilities": [
+        "real-estate.viewings.api"
+    ],
+    "default_enabled": true,
+    "features": [
+        "Team-scoped viewing endpoints",
+        "Bounded booking validation"
+    ]
+}

@@ -18,6 +18,6 @@ final class CanAccessMediaDocument
             return in_array((string) $userId, array_map('strval', $document->allowed_user_ids ?? []), true) || array_intersect($roles, $document->allowed_roles ?? []) !== [];
         }
 
-return true;
+        return true;
     }
 }

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Liberu\RealEstate\Core\Policies;
 
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Liberu\RealEstate\Core\Models\Territory;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TerritoryPolicy
 {
     use HandlesAuthorization;
-    
+
     public function viewAny(AuthUser $authUser): bool
     {
         return $authUser->can('ViewAny:Territory');
@@ -71,5 +71,4 @@ class TerritoryPolicy
     {
         return $authUser->can('Reorder:Territory');
     }
-
 }

@@ -1,1 +1,36 @@
-{"name":"liberusoftware/real-estate-viewings-api","description":"Versioned API adapter for real-estate viewings.","type":"liberu-module","version":"1.0.0","license":"MIT","require":{"php":"^8.5","illuminate/http":"^13.0","illuminate/routing":"^13.0","liberusoftware/real-estate-viewings":"^1.0","liberusoftware/api-access":"^1.0"},"autoload":{"psr-4":{"Liberu\\RealEstate\\ViewingsApi\\":"src/"}},"extra":{"liberu":{"name":"real-estate-viewings-api"}},"require-dev":{"pestphp/pest":"^5.0"},"scripts":{"test":"pest"},"config":{"allow-plugins":{"pestphp/pest-plugin":true}}}
+{
+    "name": "liberusoftware/real-estate-viewings-api",
+    "description": "Versioned API adapter for real-estate viewings.",
+    "type": "liberu-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "php": "^8.5",
+        "illuminate/http": "^13.0",
+        "illuminate/routing": "^13.0",
+        "liberusoftware/real-estate-viewings": "^1.0",
+        "liberusoftware/api-access": "^1.0",
+        "liberusoftware/real-estate-properties": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liberu\\RealEstate\\ViewingsApi\\": "src/"
+        }
+    },
+    "extra": {
+        "liberu": {
+            "name": "real-estate-viewings-api"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^5.0"
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

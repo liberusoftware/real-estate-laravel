@@ -11,5 +11,5 @@ it('adds baseline security headers to web responses', function () {
 
 it('does not send HSTS over plain HTTP', function () {
     // Local/dev http requests must not be pinned to HTTPS.
-    $this->get('/')->assertHeaderMissing('Strict-Transport-Security');
+    $this->get('http://localhost/')->assertHeaderMissing('Strict-Transport-Security');
 });

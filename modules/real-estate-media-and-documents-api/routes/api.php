@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Liberu\RealEstate\MediaAndDocumentsApi\Http\Controllers\HomeReportController;
 use Liberu\RealEstate\MediaAndDocumentsApi\Http\Controllers\DocumentWorkflowController;
+use Liberu\RealEstate\MediaAndDocumentsApi\Http\Controllers\HomeReportController;
 use Liberu\RealEstate\MediaAndDocumentsApi\Http\Controllers\MediaDocumentController;
 use Liberu\RealEstate\MediaAndDocumentsApi\Http\Controllers\VirtualStagingController;
 

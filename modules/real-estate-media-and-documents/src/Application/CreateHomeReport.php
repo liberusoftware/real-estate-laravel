@@ -19,6 +19,6 @@ final class CreateHomeReport
             throw new \InvalidArgumentException('Invalid condition.');
         }
 
-return HomeReport::create([...$data, 'team_id' => $property->team_id, 'created_by' => $userId, 'property_id' => $property->getKey(), 'property_condition' => $condition]);
+        return HomeReport::create([...$data, 'team_id' => $property->team_id, 'created_by' => $userId, 'property_id' => $property->getKey(), 'property_condition' => $condition]);
     }
 }
