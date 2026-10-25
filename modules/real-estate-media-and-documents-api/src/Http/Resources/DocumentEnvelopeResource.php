@@ -12,6 +12,6 @@ final class DocumentEnvelopeResource extends JsonResource
     /** @return array<string, mixed> */
     public function toArray(Request $request): array
     {
-        return $this->resource->only(['id', 'team_id', 'document_template_id', 'created_by', 'subject', 'status', 'values', 'rendered_content', 'content_hash', 'sent_at', 'completed_at', 'expires_at', 'created_at', 'updated_at']) + ['template' => $this->whenLoaded('template'), 'participants' => $this->whenLoaded('participants'), 'signatures' => DocumentEnvelopeSignatureResource::collection($this->whenLoaded('signatures'))];
+        return $this->resource->only(['id', 'team_id', 'document_template_id', 'property_id', 'transaction_type', 'document_number', 'created_by', 'subject', 'status', 'values', 'rendered_content', 'content_hash', 'sent_at', 'completed_at', 'expires_at', 'created_at', 'updated_at']) + ['template' => $this->whenLoaded('template'), 'participants' => $this->whenLoaded('participants'), 'signatures' => DocumentEnvelopeSignatureResource::collection($this->whenLoaded('signatures'))];
     }
 }

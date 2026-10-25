@@ -54,6 +54,6 @@ final class DocumentWorkflowController
         ]);
         $signature = $sign->handle($documentEnvelope, $documentParticipant, $user->current_team_id, $user->getAuthIdentifier(), $data['signature'], $data['method'], $request->ip(), $request->userAgent());
 
-        return (new DocumentEnvelopeSignatureResource($signature->load('participant')))->response();
+        return (new DocumentEnvelopeSignatureResource($signature->load('participant')))->response()->setStatusCode(200);
     }
 }
