@@ -10,5 +10,15 @@ final class Overview extends Page
 {
     protected string $view = 'files-media-filament::overview';
 
-    protected static ?string $title = 'Files and Media';
+    protected static ?string $slug = 'overview-files-media';
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.pages.files_media');
+    }
+
+    public function getTitle(): string
+    {
+        return __('filament.pages.files_media');
+    }
 }

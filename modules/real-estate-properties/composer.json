@@ -13,7 +13,8 @@
         "illuminate/validation": "^13.0",
         "liberusoftware/module-manager": "^1.0",
         "liberusoftware/organizations-teams": "^1.0",
-        "liberusoftware/real-estate-core": "^1.0"
+        "liberusoftware/real-estate-core": "^1.0",
+        "liberusoftware/audit": "^1.0"
     },
     "autoload": {
         "psr-4": {

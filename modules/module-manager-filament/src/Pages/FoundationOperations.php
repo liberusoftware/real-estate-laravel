@@ -12,9 +12,17 @@ final class FoundationOperations extends Page
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
-    protected static ?string $navigationLabel = 'Foundation Operations';
-
     protected static string|\UnitEnum|null $navigationGroup = 'Operations';
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.pages.foundation_operations');
+    }
+
+    public function getTitle(): string
+    {
+        return __('filament.pages.foundation_operations');
+    }
 
     public array $modules = [];
 

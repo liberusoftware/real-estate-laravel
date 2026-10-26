@@ -17,7 +17,7 @@ final class PropertySavedSearch extends Model
 
     protected function casts(): array
     {
-        return ['criteria' => 'array'];
+        return ['criteria' => 'array', 'last_notified_at' => 'datetime'];
     }
 
     public function scopeForUser(Builder $query, int|string $teamId, int|string $userId): Builder
@@ -28,5 +28,13 @@ final class PropertySavedSearch extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);
+    }
+
+    /**
+     * @return BelongsTo<Model, $this>
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(config('auth.providers.users.model'), 'user_id');
     }
 }

@@ -6,6 +6,7 @@ use App\Filament\App\Pages\AccountSetupWizard;
 use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
 use Filament\Panel;
 use Liberu\Foundation\ApplicationFilament\Pages\Overview;
+use Liberu\Foundation\AuditFilament\Resources\ActivityLogResource;
 use Liberu\Foundation\IdentityFilament\Resources\UserResource;
 use Liberu\Foundation\ModuleManagerFilament\Pages\FoundationOperations;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource;
@@ -16,6 +17,7 @@ use Liberu\RealEstate\CoreFilament\Resources\BranchResource;
 use Liberu\RealEstate\CoreFilament\Resources\StatusDefinitionResource;
 use Liberu\RealEstate\CoreFilament\Resources\TerritoryResource;
 use Liberu\RealEstate\InstructionsFilament\Resources\InstructionResource;
+use Liberu\RealEstate\LeadsFilament\Resources\LeadResource;
 use Liberu\RealEstate\LettingsFilament\Resources\LettingResource;
 use Liberu\RealEstate\LettingsFilament\Resources\RentalApplicationResource;
 use Liberu\RealEstate\ListingsFilament\Resources\ListingResource;
@@ -26,11 +28,13 @@ use Liberu\RealEstate\MediaAndDocumentsFilament\Resources\MediaDocumentResource;
 use Liberu\RealEstate\OffersFilament\Resources\OfferResource;
 use Liberu\RealEstate\OnTheMarketFilament\Resources\OnTheMarketSyncResource;
 use Liberu\RealEstate\PartiesFilament\Resources\PartyResource;
-use Liberu\RealEstate\PortalsReportingFilament\Resources\PortalReportResource;
+use Liberu\RealEstate\PropertiesFilament\Resources\CityResource;
+use Liberu\RealEstate\PropertiesFilament\Resources\DistrictResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertyCategoryResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertyResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertySavedSearchResource;
 use Liberu\RealEstate\PropertiesFilament\Resources\PropertyTemplateResource;
+use Liberu\RealEstate\PropertiesFilament\Resources\RegionResource;
 use Liberu\RealEstate\PropertyManagementFilament\Resources\InspectionResource;
 use Liberu\RealEstate\PropertyManagementFilament\Resources\MaintenanceRequestResource;
 use Liberu\RealEstate\PropertyManagementFilament\Resources\ManagementRecordResource;
@@ -70,7 +74,7 @@ final class NavigationGroups
     {
         if ($panel === 'app') {
             return [
-                'Account & support' => [
+                __('filament.nav_groups.account_support') => [
                     10 => AccountSetupWizard::class,
                     20 => AccountSecurity::class,
                 ],
@@ -78,7 +82,7 @@ final class NavigationGroups
         }
 
         return [
-            'Sales & lettings' => [
+            __('filament.nav_groups.sales_lettings') => [
                 10 => PropertyResource::class,
                 20 => ListingResource::class,
                 30 => ViewingResource::class,
@@ -87,54 +91,57 @@ final class NavigationGroups
                 60 => RentalApplicationResource::class,
                 70 => SalesProgressionResource::class,
             ],
-            'People & relationships' => [
+            __('filament.nav_groups.people_relationships') => [
                 10 => PartyResource::class,
+                20 => LeadResource::class,
             ],
-            'Property management' => [
+            __('filament.nav_groups.property_management') => [
                 10 => InspectionResource::class,
-                20 => MaintenanceRequestResource::class,
-                30 => ManagementRecordResource::class,
+                20 => ManagementRecordResource::class,
+                30 => MaintenanceRequestResource::class,
                 40 => VendorQuoteResource::class,
                 50 => WorkOrderResource::class,
             ],
-            'Marketing & portals' => [
+            __('filament.nav_groups.marketing_portals') => [
                 10 => MarketingCampaignResource::class,
                 20 => NewsArticleResource::class,
-                30 => PortalReportResource::class,
                 40 => RightmoveSyncResource::class,
                 50 => ZooplaSyncResource::class,
                 60 => OnTheMarketSyncResource::class,
             ],
-            'Insights & tools' => [
+            __('filament.nav_groups.insights_tools') => [
                 10 => MatchProfileResource::class,
                 20 => ValuationResource::class,
                 30 => PropertySavedSearchResource::class,
             ],
-            'Instructions & media' => [
+            __('filament.nav_groups.instructions_media') => [
                 10 => InstructionResource::class,
                 20 => MediaDocumentResource::class,
             ],
-            'Organisation' => [
+            __('filament.nav_groups.organisation') => [
                 10 => TeamResource::class,
                 20 => UserResource::class,
                 30 => RoleResource::class,
             ],
-            'Property configuration' => [
+            __('filament.nav_groups.property_configuration') => [
                 10 => AgencyResource::class,
                 20 => BranchResource::class,
                 30 => TerritoryResource::class,
                 40 => StatusDefinitionResource::class,
                 50 => PropertyCategoryResource::class,
                 60 => PropertyTemplateResource::class,
+                70 => RegionResource::class,
+                80 => CityResource::class,
+                90 => DistrictResource::class,
             ],
-            'Platform settings' => [
+            __('filament.nav_groups.platform_settings') => [
                 10 => ManageSiteSettings::class,
                 20 => Overview::class,
                 30 => \Liberu\Foundation\LocalizationCoreFilament\Pages\Overview::class,
                 40 => \Liberu\Foundation\CurrencyContextFilament\Pages\Overview::class,
                 50 => FoundationOperations::class,
             ],
-            'Integrations & API' => [
+            __('filament.nav_groups.integrations_api') => [
                 10 => \Liberu\Foundation\IntegrationsFilament\Pages\Overview::class,
                 20 => \Liberu\Foundation\ApiAccessFilament\Pages\Overview::class,
                 30 => \Liberu\Foundation\WebhooksFilament\Pages\Overview::class,
@@ -142,14 +149,14 @@ final class NavigationGroups
                 50 => \Liberu\Foundation\AnalyticsGoogleFilament\Pages\Overview::class,
                 60 => \Liberu\Foundation\AnalyticsMetaFilament\Pages\Overview::class,
             ],
-            'Operations & diagnostics' => [
+            __('filament.nav_groups.operations_diagnostics') => [
                 10 => \Liberu\Foundation\SchedulerQueuesFilament\Pages\Overview::class,
                 20 => \Liberu\Foundation\ObservabilityFilament\Pages\Overview::class,
                 30 => \Liberu\Foundation\NotificationsFilament\Pages\Overview::class,
                 40 => \Liberu\Foundation\FilesMediaFilament\Pages\Overview::class,
                 50 => \Liberu\Foundation\ImportExportFilament\Pages\Overview::class,
                 60 => \Liberu\Foundation\DeveloperExperienceFilament\Pages\Overview::class,
-                70 => \Liberu\Foundation\AuditFilament\Pages\Overview::class,
+                70 => ActivityLogResource::class,
             ],
         ];
     }

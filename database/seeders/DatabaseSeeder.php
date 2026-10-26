@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             TerritorySeeder::class,
             RolesSeeder::class,
             RealEstateRolesSeeder::class,
+            SignupRolesSeeder::class,
             UserSeeder::class,
             PropertySeeder::class,
         ]);

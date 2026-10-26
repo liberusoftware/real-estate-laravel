@@ -3,7 +3,7 @@
 @if (count($properties))
     <div {{ $attributes->class(['re-grid']) }} data-theme-extension="real-estate.properties.grid">
         @foreach ($properties as $property)
-            <x-property-card :property="$property" />
+            <x-theme-real-estate-default::property-card :property="$property" />
         @endforeach
     </div>
 @else

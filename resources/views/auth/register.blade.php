@@ -56,5 +56,7 @@
                 </x-button>
             </div>
         </form>
+
+        <x-socialstream />
     </x-authentication-card>
 </x-guest-layout>

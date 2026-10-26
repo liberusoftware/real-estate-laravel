@@ -10,6 +10,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -23,9 +24,15 @@ final class OfferResource extends Resource
 {
     protected static ?string $model = Offer::class;
 
-    protected static ?string $modelLabel = 'Предложение';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.offer.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Предложения';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.offer.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-banknotes';
 
@@ -33,12 +40,29 @@ final class OfferResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('subject')->required()->maxLength(255), TextInput::make('amount')->numeric()->minValue(0)->required(), TextInput::make('currency')->default('GBP')->length(3), Textarea::make('terms')->json(), Textarea::make('qualification')->json(), Textarea::make('negotiation')->json(), Textarea::make('proof')->json(), Textarea::make('conditions'), Select::make('status')->options(['draft' => 'Draft', 'submitted' => 'Submitted', 'countered' => 'Countered', 'accepted' => 'Accepted', 'rejected' => 'Rejected', 'withdrawn' => 'Withdrawn'])->disabled()->dehydrated(false)]);
+        return $schema->components([
+            Section::make(__('filament.offer.sections.basic'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('subject')->label(__('filament.offer.fields.subject'))->required()->maxLength(255)->columnSpanFull(),
+                    TextInput::make('amount')->label(__('filament.offer.fields.amount'))->numeric()->minValue(0)->required(),
+                    TextInput::make('currency')->label(__('filament.offer.fields.currency'))->default(config('app.currency', 'USD'))->length(3),
+                    Select::make('status')->label(__('filament.offer.fields.status'))->options(['draft' => __('filament.offer.statuses.draft'), 'submitted' => __('filament.offer.statuses.submitted'), 'countered' => __('filament.offer.statuses.countered'), 'accepted' => __('filament.offer.statuses.accepted'), 'rejected' => __('filament.offer.statuses.rejected'), 'withdrawn' => __('filament.offer.statuses.withdrawn')])->disabled()->dehydrated(false)->columnSpanFull(),
+                ]),
+            Section::make(__('filament.offer.sections.details'))
+                ->schema([
+                    Textarea::make('terms')->label(__('filament.offer.fields.terms'))->json()->columnSpanFull(),
+                    Textarea::make('qualification')->label(__('filament.offer.fields.qualification'))->json()->columnSpanFull(),
+                    Textarea::make('negotiation')->label(__('filament.offer.fields.negotiation'))->json()->columnSpanFull(),
+                    Textarea::make('proof')->label(__('filament.offer.fields.proof'))->json()->columnSpanFull(),
+                    Textarea::make('conditions')->label(__('filament.offer.fields.conditions'))->columnSpanFull(),
+                ]),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('subject')->searchable(), TextColumn::make('amount')->money('GBP'), TextColumn::make('status')->badge(), TextColumn::make('created_at')->dateTime()->sortable()])->recordActions([EditAction::make(), DeleteAction::make()])->defaultSort('created_at', 'desc');
+        return $table->columns([TextColumn::make('subject')->label(__('filament.offer.fields.subject'))->searchable(), TextColumn::make('amount')->label(__('filament.offer.fields.amount'))->money(), TextColumn::make('status')->label(__('filament.offer.fields.status'))->badge(), TextColumn::make('created_at')->label(__('filament.offer.fields.created_at'))->dateTime()->sortable()])->recordActions([EditAction::make(), DeleteAction::make()])->defaultSort('created_at', 'desc');
     }
 
     public static function getEloquentQuery(): Builder

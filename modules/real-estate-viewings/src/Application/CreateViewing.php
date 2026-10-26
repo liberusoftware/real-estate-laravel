@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\Viewings\Application;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Validation\ValidationException;
+use Liberu\RealEstate\Viewings\Domain\Events\ViewingCreated;
 use Liberu\RealEstate\Viewings\Domain\ViewingStatus;
 use Liberu\RealEstate\Viewings\Models\Viewing;
 
@@ -32,6 +34,13 @@ final class CreateViewing
             throw ValidationException::withMessages(['starts_at' => 'That property already has a viewing in the selected time window.']);
         }
 
-        return DB::transaction(fn (): Viewing => Viewing::query()->create(['team_id' => $teamId, 'created_by' => $actorId, 'property_id' => $attributes['property_id'] ?? null, 'party_id' => $attributes['party_id'] ?? null, 'subject' => $subject, 'status' => ViewingStatus::Requested, 'starts_at' => $starts, 'ends_at' => $ends, 'guests_count' => $attributes['guests_count'] ?? null, 'access' => $attributes['access'] ?? [], 'accompaniment' => $attributes['accompaniment'] ?? [], 'reminders' => $attributes['reminders'] ?? []]));
+        $viewing = DB::transaction(fn (): Viewing => Viewing::query()->create(['team_id' => $teamId, 'created_by' => $actorId, 'property_id' => $attributes['property_id'] ?? null, 'party_id' => $attributes['party_id'] ?? null, 'subject' => $subject, 'status' => ViewingStatus::Requested, 'starts_at' => $starts, 'ends_at' => $ends, 'guests_count' => $attributes['guests_count'] ?? null, 'access' => $attributes['access'] ?? [], 'accompaniment' => $attributes['accompaniment'] ?? [], 'reminders' => $attributes['reminders'] ?? []]));
+
+        // A viewing being booked is a pipeline signal for real-estate-leads'
+        // TransitionLeadFromViewing, which advances the matching lead's
+        // status without any manual sync.
+        Event::dispatch(new ViewingCreated($viewing));
+
+        return $viewing;
     }
 }

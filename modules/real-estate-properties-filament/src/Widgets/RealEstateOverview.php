@@ -7,6 +7,7 @@ namespace Liberu\RealEstate\PropertiesFilament\Widgets;
 use Filament\Facades\Filament;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Support\Number;
 use Liberu\RealEstate\Core\Models\Territory;
 use Liberu\RealEstate\Properties\Domain\PropertyStatus;
 use Liberu\RealEstate\Properties\Models\Property;
@@ -24,19 +25,21 @@ final class RealEstateOverview extends StatsOverviewWidget
         $properties = Property::query()->forTeam($team->id);
         $activeCount = (clone $properties)->whereIn('status', [
             PropertyStatus::Available->value,
+            PropertyStatus::Published->value,
             PropertyStatus::UnderOffer->value,
         ])->count();
-        $averagePrice = (clone $properties)->whereNotNull('price')->avg('price');
+        $currency = (string) config('app.currency', 'USD');
+        $averagePrice = (clone $properties)->where('currency', $currency)->whereNotNull('price')->avg('price');
 
         return [
-            Stat::make('Территорий', Territory::query()->forTeam($team->id)->count())
+            Stat::make(__('Territories'), Territory::query()->forTeam($team->id)->count())
                 ->icon('heroicon-o-map'),
-            Stat::make('Объектов всего', (clone $properties)->count())
+            Stat::make(__('Total properties'), (clone $properties)->count())
                 ->icon('heroicon-o-building-office-2'),
-            Stat::make('Активные объявления', $activeCount)
+            Stat::make(__('Active listings'), $activeCount)
                 ->icon('heroicon-o-megaphone')
                 ->color('success'),
-            Stat::make('Средняя цена', $averagePrice ? number_format((float) $averagePrice, 0, ',', ' ').' TJS' : '—')
+            Stat::make(__('Average price'), $averagePrice !== null ? Number::currency((float) $averagePrice, in: $currency) : '—')
                 ->icon('heroicon-o-banknotes'),
         ];
     }

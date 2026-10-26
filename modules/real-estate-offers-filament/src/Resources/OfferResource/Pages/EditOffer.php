@@ -18,6 +18,6 @@ final class EditOffer extends EditRecord
         $teamId = auth()->user()?->current_team_id;
         abort_unless($teamId !== null && (string) $teamId === (string) $record->team_id, 403);
 
-        return app(UpdateOffer::class)->handle($record, $teamId, $data);
+        return app(UpdateOffer::class)->handle($record, $teamId, auth()->id(), $data);
     }
 }

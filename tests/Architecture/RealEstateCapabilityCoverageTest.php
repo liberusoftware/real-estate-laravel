@@ -448,6 +448,13 @@ it('keeps Filament resources tenant-scoped and lifecycle-delegated', function ()
     foreach (glob("{$root}/modules/real-estate-*-filament/src/Resources/*Resource.php") ?: [] as $resourceFile) {
         $resource = file_get_contents($resourceFile);
 
+        if (in_array(basename($resourceFile), ['RegionResource.php', 'CityResource.php', 'DistrictResource.php'], true)) {
+            expect($resource)->toContain('isScopedToTenant')->toContain('return false;')
+                ->toContain('canViewAny')->toContain('canCreate')->toContain('canEdit')->toContain('canDelete');
+
+            continue;
+        }
+
         expect($resource)->toContain('getEloquentQuery')
             ->and($resource)->toContain('current_team_id');
     }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Liberu\Foundation\Organizations\Models\Team;
 
 final class MediaDocument extends Model
@@ -56,11 +57,31 @@ final class MediaDocument extends Model
         return $this->kind === 'video';
     }
 
+    /**
+     * `path` is a plain TextInput in the admin form (staff paste either a
+     * full URL or a relative storage path), not a real upload widget — so
+     * this has to handle both, in addition to the explicit metadata
+     * override. Before this, only the (never-populated) metadata override
+     * worked, meaning every real upload silently produced no public URL at
+     * all and the storefront gallery fell back to a placeholder image.
+     */
     public function publicUrl(): ?string
     {
         $explicit = data_get($this->metadata, 'public_url');
+        if ($explicit !== null) {
+            return is_string($explicit) && filter_var($explicit, FILTER_VALIDATE_URL) ? $explicit : null;
+        }
 
-        return is_string($explicit) && filter_var($explicit, FILTER_VALIDATE_URL) ? $explicit : null;
+        $path = (string) ($this->path ?? '');
+        if ($path === '') {
+            return null;
+        }
+
+        if (filter_var($path, FILTER_VALIDATE_URL)) {
+            return $path;
+        }
+
+        return Storage::url($path);
     }
 
     public function team(): BelongsTo

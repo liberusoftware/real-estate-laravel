@@ -31,7 +31,9 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'theme');
+        if (is_dir(__DIR__.'/../../resources/views')) {
+            $this->loadViewsFrom(__DIR__.'/../../resources/views', 'theme');
+        }
         if ($this->app->runningInConsole()) {
             $this->commands([ThemeCacheCommand::class, ThemeClearCommand::class, ThemeValidateCommand::class]);
         }
@@ -41,6 +43,10 @@ class ThemeServiceProvider extends ServiceProvider
         $this->registerBladeDirectives();
 
         View::composer('*', function (ViewContract $view) use ($themeManager): void {
+            if (str_starts_with($view->name(), 'wayfinder::')) {
+                return;
+            }
+
             // ponytail: re-derive per view render, not just once at boot. ThemeManager
             // is a singleton resolved once per app lifecycle (long-lived under Octane;
             // reused across a whole test method under Pest) — without this, an

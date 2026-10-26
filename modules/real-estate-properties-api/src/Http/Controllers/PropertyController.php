@@ -20,6 +20,7 @@ use Liberu\RealEstate\Properties\Application\TogglePropertyFavorite;
 use Liberu\RealEstate\Properties\Application\TransitionProperty;
 use Liberu\RealEstate\Properties\Application\UpdateProperty;
 use Liberu\RealEstate\Properties\Application\UpsertPropertyUnit;
+use Liberu\RealEstate\Properties\Domain\DealType;
 use Liberu\RealEstate\Properties\Domain\PropertyStatus;
 use Liberu\RealEstate\Properties\Models\Property;
 use Liberu\RealEstate\Properties\Models\PropertyHistory;
@@ -79,7 +80,7 @@ final class PropertyController
             ->postalCode($filters['postal_code'] ?? null)
             ->when($filters['needs_syncing'] ?? false, fn ($query) => $query->needsSyncing())
             ->hasAmenities($filters['amenities'] ?? [])
-            ->when($filters['latitude'] !== null && $filters['longitude'] !== null && $filters['radius'] !== null, fn ($query) => $query->nearby($filters['latitude'], $filters['longitude'], $filters['radius']))
+            ->when(($filters['latitude'] ?? null) !== null && ($filters['longitude'] ?? null) !== null && ($filters['radius'] ?? null) !== null, fn ($query) => $query->nearby($filters['latitude'], $filters['longitude'], $filters['radius']))
             ->when(array_key_exists('branch_id', $filters), fn ($query) => $query->where('branch_id', $filters['branch_id']))
             ->priceRange($filters['min_price'] ?? null, $filters['max_price'] ?? null)
             ->bedrooms($filters['min_bedrooms'] ?? null, $filters['max_bedrooms'] ?? null)
@@ -107,6 +108,12 @@ final class PropertyController
         $validated = $request->validate([
             'address' => ['required', 'string', 'max:500'],
             'branch_id' => ['sometimes', 'nullable', 'integer', Rule::exists('real_estate_branches', 'id')->where('team_id', $request->user()?->current_team_id)],
+            'region_id' => ['sometimes', 'nullable', 'integer', 'exists:real_estate_regions,id'],
+            'city_id' => ['sometimes', 'nullable', 'integer', 'exists:real_estate_cities,id'],
+            'district_id' => ['sometimes', 'nullable', 'integer', 'exists:real_estate_districts,id'],
+            'agent_id' => ['sometimes', 'nullable', 'integer', Rule::exists('team_user', 'user_id')->where('team_id', $request->user()?->current_team_id)],
+            'territory_id' => ['sometimes', 'nullable', 'integer', Rule::exists('real_estate_territories', 'id')->where('team_id', $request->user()?->current_team_id)],
+            'deal_type' => ['sometimes', Rule::enum(DealType::class)],
             'title' => ['sometimes', 'nullable', 'string', 'max:255'],
             'description' => ['sometimes', 'nullable', 'string'],
             'description_generated_at' => ['sometimes', 'nullable', 'date'],
@@ -149,6 +156,13 @@ final class PropertyController
             'sold_date' => ['sometimes', 'nullable', 'date', 'after_or_equal:list_date'],
             'last_synced_at' => ['sometimes', 'nullable', 'date'],
             'is_featured' => ['sometimes', 'boolean'],
+            'has_generator' => ['sometimes', 'boolean'],
+            'has_wifi' => ['sometimes', 'boolean'],
+            'has_parking' => ['sometimes', 'boolean'],
+            'mountain_view' => ['sometimes', 'nullable', 'string', 'max:120'],
+            'altitude' => ['sometimes', 'nullable', 'integer', 'min:0'],
+            'water_source' => ['sometimes', 'nullable', Rule::in(['well', 'river', 'spring', 'other'])],
+            'max_guests' => ['sometimes', 'nullable', 'integer', 'min:1'],
             'live_tour_available' => ['sometimes', 'boolean'],
             'ar_tour_enabled' => ['sometimes', 'boolean'],
             'ar_tour_settings' => ['sometimes', 'array'],
@@ -342,6 +356,12 @@ final class PropertyController
         $validated = $request->validate([
             'address' => ['sometimes', 'string', 'max:500'],
             'branch_id' => ['sometimes', 'nullable', 'integer', Rule::exists('real_estate_branches', 'id')->where('team_id', $request->user()?->current_team_id)],
+            'region_id' => ['sometimes', 'nullable', 'integer', 'exists:real_estate_regions,id'],
+            'city_id' => ['sometimes', 'nullable', 'integer', 'exists:real_estate_cities,id'],
+            'district_id' => ['sometimes', 'nullable', 'integer', 'exists:real_estate_districts,id'],
+            'agent_id' => ['sometimes', 'nullable', 'integer', Rule::exists('team_user', 'user_id')->where('team_id', $request->user()?->current_team_id)],
+            'territory_id' => ['sometimes', 'nullable', 'integer', Rule::exists('real_estate_territories', 'id')->where('team_id', $request->user()?->current_team_id)],
+            'deal_type' => ['sometimes', Rule::enum(DealType::class)],
             'title' => ['sometimes', 'nullable', 'string', 'max:255'],
             'description' => ['sometimes', 'nullable', 'string'],
             'description_generated_at' => ['sometimes', 'nullable', 'date'],
@@ -384,6 +404,13 @@ final class PropertyController
             'sold_date' => ['sometimes', 'nullable', 'date', 'after_or_equal:list_date'],
             'last_synced_at' => ['sometimes', 'nullable', 'date'],
             'is_featured' => ['sometimes', 'boolean'],
+            'has_generator' => ['sometimes', 'boolean'],
+            'has_wifi' => ['sometimes', 'boolean'],
+            'has_parking' => ['sometimes', 'boolean'],
+            'mountain_view' => ['sometimes', 'nullable', 'string', 'max:120'],
+            'altitude' => ['sometimes', 'nullable', 'integer', 'min:0'],
+            'water_source' => ['sometimes', 'nullable', Rule::in(['well', 'river', 'spring', 'other'])],
+            'max_guests' => ['sometimes', 'nullable', 'integer', 'min:1'],
             'live_tour_available' => ['sometimes', 'boolean'],
             'ar_tour_enabled' => ['sometimes', 'boolean'],
             'ar_tour_settings' => ['sometimes', 'array'],

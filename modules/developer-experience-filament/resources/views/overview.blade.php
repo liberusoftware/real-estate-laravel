@@ -1,7 +1,6 @@
 <x-filament-panels::page>
     <section aria-labelledby="developer-experience-filament-heading">
-        <h1 id="developer-experience-filament-heading" class="text-xl font-semibold">Developer Experience</h1>
-        <p class="mt-2 text-sm text-gray-600">The Filament adapter is installed. Domain operations remain governed by the matching core module.</p>
+        <h1 id="developer-experience-filament-heading" class="text-xl font-semibold">{{ __('filament.pages.developer_experience') }}</h1>
+        <p class="mt-2 text-sm text-gray-600">{{ __('filament.stub_page_note') }}</p>
     </section>
 </x-filament-panels::page>
-

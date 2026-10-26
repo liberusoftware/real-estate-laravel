@@ -23,20 +23,31 @@ final class RightmoveSyncResource extends Resource
 {
     protected static ?string $model = RightmoveSync::class;
 
-    protected static ?string $modelLabel = 'Синхронизация Rightmove';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.rightmove_sync.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Синхронизации Rightmove';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.rightmove_sync.plural');
+    }
 
     protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('listing_id')->required()->numeric(), TextInput::make('property_id')->numeric(), TextInput::make('external_id'), TextInput::make('status')->required()]);
+        return $schema->components([
+            TextInput::make('listing_id')->label(__('filament.rightmove_sync.fields.listing_id'))->required()->numeric(),
+            TextInput::make('property_id')->label(__('filament.rightmove_sync.fields.property_id'))->numeric(),
+            TextInput::make('external_id')->label(__('filament.rightmove_sync.fields.external_id')),
+            TextInput::make('status')->label(__('filament.rightmove_sync.fields.status'))->required(),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('listing_id')->searchable(), TextColumn::make('external_id')->searchable(), TextColumn::make('status')->badge(), TextColumn::make('last_synced_at')->dateTime()])->recordActions([
+        return $table->columns([TextColumn::make('listing_id')->label(__('filament.rightmove_sync.fields.listing_id'))->searchable(), TextColumn::make('external_id')->label(__('filament.rightmove_sync.fields.external_id'))->searchable(), TextColumn::make('status')->label(__('filament.rightmove_sync.fields.status'))->badge(), TextColumn::make('last_synced_at')->label(__('filament.rightmove_sync.fields.last_synced_at'))->dateTime()])->recordActions([
             EditAction::make(),
             DeleteAction::make()->action(function (Model $record): void {
                 $teamId = auth()->user()?->current_team_id;
@@ -44,6 +55,16 @@ final class RightmoveSyncResource extends Resource
                 app(DeleteRightmoveSync::class)->handle($record, $teamId);
             }),
         ]);
+    }
+
+    /**
+     * RightmoveSync has no team() relationship — it's scoped by a plain
+     * team_id column via scopeForTeam(), handled manually in
+     * getEloquentQuery() below (see CLAUDE.md's "Tenancy rules that bite").
+     */
+    public static function isScopedToTenant(): bool
+    {
+        return false;
     }
 
     public static function getEloquentQuery(): Builder

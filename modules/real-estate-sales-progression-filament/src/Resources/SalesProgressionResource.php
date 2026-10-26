@@ -10,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -29,20 +30,41 @@ final class SalesProgressionResource extends Resource
 {
     protected static ?string $model = SalesProgression::class;
 
-    protected static ?string $modelLabel = 'Сопровождение сделки';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.sales_progression.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Сопровождения сделок';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.sales_progression.plural');
+    }
 
     protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('subject')->required()->maxLength(255), TextInput::make('property_id')->numeric(), TextInput::make('offer_id')->numeric(), TextInput::make('status')->required(), Textarea::make('notes')->columnSpanFull()]);
+        return $schema->components([
+            Section::make(__('filament.sales_progression.sections.overview'))
+                ->description(__('filament.sales_progression.sections.overview_description'))
+                ->columns(3)
+                ->schema([
+                    TextInput::make('subject')->label(__('filament.sales_progression.fields.subject'))->required()->maxLength(255),
+                    TextInput::make('property_id')->label(__('filament.sales_progression.fields.property_id'))->numeric(),
+                    TextInput::make('offer_id')->label(__('filament.sales_progression.fields.offer_id'))->numeric(),
+                ]),
+            Section::make(__('filament.sales_progression.sections.status'))
+                ->description(__('filament.sales_progression.sections.status_description'))
+                ->schema([
+                    TextInput::make('status')->label(__('filament.sales_progression.fields.status'))->required(),
+                    Textarea::make('notes')->label(__('filament.sales_progression.fields.notes'))->columnSpanFull(),
+                ]),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('subject')->searchable(), TextColumn::make('status')->badge(), TextColumn::make('created_at')->dateTime()])->recordActions([
+        return $table->columns([TextColumn::make('subject')->label(__('filament.sales_progression.fields.subject'))->searchable(), TextColumn::make('status')->label(__('filament.sales_progression.fields.status'))->badge(), TextColumn::make('created_at')->label(__('filament.sales_progression.fields.created_at'))->dateTime()])->recordActions([
             EditAction::make(),
             Action::make('exchange')->requiresConfirmation()->action(fn (Model $record): SalesProgression => app(TransitionSalesProgression::class)->handle($record, (int) auth()->user()->current_team_id, SalesProgressionStatus::Exchanged)),
             Action::make('complete')->requiresConfirmation()->action(fn (Model $record): SalesProgression => app(TransitionSalesProgression::class)->handle($record, (int) auth()->user()->current_team_id, SalesProgressionStatus::Completed)),

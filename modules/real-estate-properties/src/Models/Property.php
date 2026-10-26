@@ -37,6 +37,10 @@ final class Property extends Model
         'townhouse' => 'Townhouse',
         'villa' => 'Villa',
         'hmo' => 'HMO',
+        'guesthouse' => 'Guesthouse',
+        'hostel' => 'Hostel',
+        'hunting-lodge' => 'Hunting lodge',
+        'cottage' => 'Cottage',
     ];
 
     /** @var list<string> */
@@ -286,7 +290,7 @@ final class Property extends Model
      */
     public function reference(): string
     {
-        return sprintf('IH-%d-%05d', $this->created_at?->year ?? now()->year, $this->getKey());
+        return sprintf('%s-%d-%05d', config('app.property_reference_prefix', 'RE'), $this->created_at?->year ?? now()->year, $this->getKey());
     }
 
     /**
@@ -336,7 +340,7 @@ final class Property extends Model
 
     public function isRental(): bool
     {
-        return in_array(strtolower(trim($this->statusValue())), [
+        return in_array($this->deal_type, [DealType::Rent, DealType::Daily], true) || in_array(strtolower(trim($this->statusValue())), [
             'to_let', 'let', 'let_agreed', 'for rent', 'for_rent', 'rented', 'rent', 'rental',
         ], true);
     }
@@ -355,14 +359,62 @@ final class Property extends Model
 
         $formatted = rtrim(rtrim(number_format($value, 2, '.', ''), '0'), '.');
 
-        return $this->isRental() ? $formatted.' pcm' : $formatted;
+        return $this->isRental() ? $formatted.($this->deal_type === DealType::Daily ? ' per day' : ' pcm') : $formatted;
+    }
+
+    public function scopeWithinBounds(Builder $query, float $minLat, float $minLng, float $maxLat, float $maxLng): Builder
+    {
+        return $query->whereBetween('latitude', [$minLat, $maxLat])
+            ->when($minLng <= $maxLng,
+                fn (Builder $query): Builder => $query->whereBetween('longitude', [$minLng, $maxLng]),
+                fn (Builder $query): Builder => $query->where(fn (Builder $query): Builder => $query->where('longitude', '>=', $minLng)->orWhere('longitude', '<=', $maxLng)),
+            );
+    }
+
+    public function pricePerSquareMeter(): ?float
+    {
+        $perSquareFoot = $this->pricePerSquareFoot();
+
+        return $perSquareFoot === null ? null : round((float) $this->price / ((float) $this->area_sqft * 0.09290304), 2);
+    }
+
+    public function pricePerSquareMeterLabel(): string
+    {
+        return $this->currencySymbol().'/m²';
+    }
+
+    public function pricePerSquareMeterForHumans(): ?string
+    {
+        $value = $this->pricePerSquareMeter();
+
+        return $value === null ? null : rtrim(rtrim(number_format($value, 2, '.', ''), '0'), '.').($this->isRental() ? ($this->deal_type === DealType::Daily ? ' per day' : ' pcm') : '');
+    }
+
+    public function region(): BelongsTo
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function agent(): BelongsTo
+    {
+        return $this->belongsTo(config('auth.providers.users.model'), 'agent_id');
     }
 
     public function currencySymbol(): string
     {
-        return match (strtoupper((string) $this->currency)) {
+        return match (strtoupper((string) ($this->currency ?: config('app.currency', 'GBP')))) {
             'GBP' => '£', 'EUR' => '€', 'USD' => '$', 'CAD' => 'CA$', 'AUD' => 'A$',
-            default => filled($this->currency) ? (string) $this->currency.' ' : '£',
+            default => filled($this->currency) ? (string) $this->currency.' ' : (string) config('app.currency', 'GBP').' ',
         };
     }
 

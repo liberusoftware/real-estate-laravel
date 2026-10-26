@@ -8,6 +8,7 @@ use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource\Pages\ListTeams;
 use Livewire\Livewire;
+use Spatie\Permission\Models\Role;
 
 uses(RefreshDatabase::class);
 
@@ -20,6 +21,9 @@ it('renders the teams list for a super admin', function () {
     $team = Team::factory()->create(['user_id' => $admin->id]);
     $admin->forceFill(['current_team_id' => $team->id])->save();
     $otherTeam = Team::factory()->create();
+    setPermissionsTeamId($team->id);
+    Role::findOrCreate('super_admin', 'web');
+    $admin->assignRole('super_admin');
 
     Gate::before(fn () => true);
     $this->actingAs($admin);

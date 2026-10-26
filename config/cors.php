@@ -15,13 +15,14 @@ return [
     |
     */
 
-    'paths' => ['api/*'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
     'allowed_origins' => array_values(array_filter([
         env('FRONTEND_URL'),
         env('NUXT_APP_URL'),
+        ...explode(',', (string) env('CORS_ALLOWED_ORIGINS', '')),
         'http://localhost:3000',
     ])),
 
@@ -33,6 +34,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => env('CORS_SUPPORTS_CREDENTIALS', false),
 
 ];

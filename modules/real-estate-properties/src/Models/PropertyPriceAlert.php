@@ -27,6 +27,14 @@ final class PropertyPriceAlert extends Model
         return $this->belongsTo(Property::class);
     }
 
+    /**
+     * @return BelongsTo<Model, $this>
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(config('auth.providers.users.model'), 'user_id');
+    }
+
     public function scopeForUser(Builder $query, int|string $teamId, int|string $userId): Builder
     {
         return $query->where('team_id', $teamId)->where('user_id', $userId);

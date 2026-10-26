@@ -15,15 +15,16 @@ final class LanguageSwitcher extends Component
     /** @var array<string, string> */
     public array $availableLocales = [];
 
-    public function mount(): void
+    /** @param array<string, string>|null $locales Restricts the switcher to a subset of app.supported_locales — e.g. the admin panel offering only ru/en. Null uses the full site list. */
+    public function mount(?array $locales = null): void
     {
         $this->currentLocale = App::getLocale();
-        $this->availableLocales = array_filter((array) config('app.supported_locales', []), 'is_string');
+        $this->availableLocales = array_filter($locales ?? (array) config('app.supported_locales', []), 'is_string');
     }
 
     public function switchLanguage(string $locale): void
     {
-        if (! array_key_exists($locale, $this->availableLocales)) {
+        if (! array_key_exists($locale, $this->availableLocales) || ! array_key_exists($locale, (array) config('app.supported_locales', []))) {
             return;
         }
         Session::put('locale', $locale);
@@ -31,9 +32,14 @@ final class LanguageSwitcher extends Component
             $user->update(['locale' => $locale]);
         }
         $this->currentLocale = $locale;
-        $referer = request()->header('Referer');
-        $base = url('/');
-        $this->redirect(is_string($referer) && str_starts_with($referer, $base) ? $referer : '/');
+
+        // A same-page reload, not a redirect: the switcher is mounted inside
+        // other pages (Filament panels, public layouts) via a render hook, so
+        // it has no page of its own to send the visitor back to. Guessing the
+        // origin page from the Referer header was fragile — wrong or missing
+        // on some requests — and sent people straight to "/" instead of back
+        // to where they clicked from.
+        $this->js('window.location.reload()');
     }
 
     public function render(): View

@@ -24,10 +24,15 @@ return [
             'files' => [
                 /*
                  * The list of directories and files that will be included in the backup.
+                 *
+                 * Deliberately NOT base_path(): the whole codebase already lives in git
+                 * (host + modules/), so zipping it here would just duplicate version
+                 * control at real cost on a host with limited disk. The only thing a
+                 * backup needs to capture that git doesn't is what users upload at
+                 * runtime — property photos and documents land in storage/app/public.
                  */
                 'include' => [
-                    base_path(),
-                    // storage_path(),  // Include if you use zero downtime deployments and don't follow symlinks
+                    storage_path('app'),
                 ],
 
                 /*
@@ -35,11 +40,7 @@ return [
                  *
                  * Directories used by the backup process will automatically be excluded.
                  */
-                'exclude' => [
-                    base_path('vendor'),
-                    base_path('node_modules'),
-                    storage_path('framework'),
-                ],
+                'exclude' => [],
 
                 /*
                  * Determines if symlinks should be followed.
@@ -299,8 +300,8 @@ return [
             'name' => env('APP_NAME', 'laravel-backup'),
             'disks' => ['local'],
             'health_checks' => [
-                MaximumAgeInDays::class => 1,
-                MaximumStorageInMegabytes::class => 5000,
+                MaximumAgeInDays::class => 2,
+                MaximumStorageInMegabytes::class => 1000,
             ],
         ],
 
@@ -332,7 +333,7 @@ return [
             /*
              * The number of days for which backups must be kept.
              */
-            'keep_all_backups_for_days' => 7,
+            'keep_all_backups_for_days' => 3,
 
             /*
              * After the "keep_all_backups_for_days" period is over, the most recent backup
@@ -365,7 +366,7 @@ return [
              * this amount of megabytes has been reached.
              * Set null for unlimited size.
              */
-            'delete_oldest_backups_when_using_more_megabytes_than' => 5000,
+            'delete_oldest_backups_when_using_more_megabytes_than' => 1000,
         ],
 
         /*

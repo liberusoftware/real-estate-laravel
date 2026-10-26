@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\Parties\Application;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Liberu\RealEstate\Parties\Domain\Events\ContactMessageReceived;
 use Liberu\RealEstate\Parties\Models\ContactMessage;
 
 final class CreateContactMessage
@@ -20,6 +22,13 @@ final class CreateContactMessage
         }
         $validated = Validator::make($attributes, $rules, ['email.email' => 'Add the part after the @ so we can reply.', 'property_id.exists' => 'That property is no longer listed.'])->validate();
 
-        return DB::transaction(fn (): ContactMessage => ContactMessage::query()->create($validated));
+        $message = DB::transaction(fn (): ContactMessage => ContactMessage::query()->create($validated));
+
+        // A contact enquiry was, until now, a record nobody automatically
+        // acted on — see real-estate-leads' CreateLeadFromContactMessage,
+        // which listens for this to turn it into a tracked pipeline lead.
+        Event::dispatch(new ContactMessageReceived($message));
+
+        return $message;
     }
 }

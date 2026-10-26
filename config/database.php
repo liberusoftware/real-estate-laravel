@@ -62,6 +62,21 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+
+            // Telescope/Pulse are debug and metrics data, not business data — excluding
+            // them keeps spatie/laravel-backup's dump focused and small (they were
+            // ~150MB combined, dwarfing every real table put together).
+            'dump' => [
+                'excludeTables' => [
+                    'telescope_entries',
+                    'telescope_entries_tags',
+                    'telescope_monitoring',
+                    'pulse_entries',
+                    'pulse_aggregates',
+                    'pulse_values',
+                ],
+                'useSingleTransaction' => true,
+            ],
         ],
 
         'mariadb' => [

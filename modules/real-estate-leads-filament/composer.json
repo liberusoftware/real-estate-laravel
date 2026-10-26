@@ -1,0 +1,38 @@
+{
+    "name": "liberusoftware/real-estate-leads-filament",
+    "description": "Filament resource for team-scoped leads.",
+    "type": "liberu-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "php": "^8.5",
+        "filament/filament": "^5.11.0",
+        "liberusoftware/real-estate-leads": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liberu\\RealEstate\\LeadsFilament\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Liberu\\RealEstate\\LeadsFilament\\LeadsFilamentServiceProvider"
+            ]
+        },
+        "liberu": {
+            "name": "real-estate-leads-filament"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^5.3.3"
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

@@ -58,7 +58,7 @@ final class SendPropertyToFriend
                 {$message}
                 <h2>{$escapedTitle}</h2>
                 <p><strong>Location:</strong> {$escapedAddress}</p>
-                <p><strong>Price:</strong> £{number_format((float) ($property->price ?? 0), 0)}</p>
+                <p><strong>Price:</strong> {$property->currencySymbol()}{number_format((float) ($property->price ?? 0), 0)}</p>
                 <p><strong>Bedrooms:</strong> {$property->bedrooms}</p>
                 <p><strong>Bathrooms:</strong> {$property->bathrooms}</p>
                 <p><a href="{$propertyUrl}">View full property details</a></p>

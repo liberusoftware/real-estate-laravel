@@ -1,7 +1,11 @@
 <?php
 
-// Scaffold only — intentionally deferred to a professional-translation follow-up
-// Missing keys fall back
-// to APP_FALLBACK_LOCALE (en) safely via Laravel's translator, so this file is
-// safe to ship empty in the meantime.
-return [];
+declare(strict_types=1);
+
+return [
+    'reset' => 'Parolingiz muvaffaqiyatli qayta o‘rnatildi.',
+    'sent' => 'Parolni tiklash havolasini elektron pochtangizga yubordik.',
+    'throttled' => 'Iltimos, qayta urinishdan oldin kuting.',
+    'token' => 'Parolni tiklash uchun token noto‘g‘ri.',
+    'user' => 'Bunday elektron pochta manziliga ega foydalanuvchi topilmadi.',
+];

@@ -11,7 +11,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/fortify": "^1.0",
         "liberusoftware/identity-core": "^1.0",
-        "liberusoftware/organizations-teams": "^1.0"
+        "liberusoftware/organizations-teams": "^1.0",
+        "spatie/laravel-permission": "^8.3.2"
     },
     "autoload": {
         "psr-4": {

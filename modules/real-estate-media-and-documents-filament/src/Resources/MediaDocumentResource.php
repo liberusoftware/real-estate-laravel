@@ -10,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -26,9 +27,15 @@ final class MediaDocumentResource extends Resource
 {
     protected static ?string $model = MediaDocument::class;
 
-    protected static ?string $modelLabel = 'Медиафайл';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.media_document.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Медиафайлы';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.media_document.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document';
 
@@ -36,12 +43,23 @@ final class MediaDocumentResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([Select::make('kind')->options(['photo' => 'Photo', 'floorplan' => 'Floorplan', 'video' => 'Video', 'certificate' => 'Certificate', 'brochure' => 'Brochure', 'document' => 'Document'])->required(), TextInput::make('path')->required()->maxLength(2048), TextInput::make('title')->maxLength(255), TextInput::make('sort_order')->numeric()->minValue(0)]);
+        return $schema->components([
+            Section::make(__('filament.media_document.sections.file'))
+                ->description(__('filament.media_document.sections.file_description'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('property_id')->label(__('filament.media_document.fields.property_id'))->numeric(),
+                    Select::make('kind')->label(__('filament.media_document.fields.kind'))->options(['photo' => __('filament.media_document.kinds.photo'), 'floorplan' => __('filament.media_document.kinds.floorplan'), 'video' => __('filament.media_document.kinds.video'), 'certificate' => __('filament.media_document.kinds.certificate'), 'brochure' => __('filament.media_document.kinds.brochure'), 'document' => __('filament.media_document.kinds.document')])->required(),
+                    TextInput::make('title')->label(__('filament.media_document.fields.title'))->maxLength(255),
+                    TextInput::make('path')->label(__('filament.media_document.fields.path'))->required()->maxLength(2048)->helperText(__('filament.media_document.fields.path_help'))->columnSpanFull(),
+                    TextInput::make('sort_order')->label(__('filament.media_document.fields.sort_order'))->numeric()->minValue(0),
+                ]),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('kind')->badge(), TextColumn::make('title')->searchable(), TextColumn::make('path')->limit(50), TextColumn::make('sort_order')->sortable(), TextColumn::make('retention_until')->date(), TextColumn::make('created_at')->dateTime()->sortable()])->recordActions([
+        return $table->columns([TextColumn::make('property_id')->label(__('filament.media_document.fields.property_id'))->placeholder('—')->sortable(), TextColumn::make('kind')->label(__('filament.media_document.fields.kind'))->badge(), TextColumn::make('title')->label(__('filament.media_document.fields.title'))->searchable(), TextColumn::make('path')->label(__('filament.media_document.fields.path'))->limit(50), TextColumn::make('sort_order')->label(__('filament.media_document.fields.sort_order'))->sortable(), TextColumn::make('retention_until')->label(__('filament.media_document.fields.retention_until'))->date(), TextColumn::make('created_at')->label(__('filament.media_document.fields.created_at'))->dateTime()->sortable()])->recordActions([
             EditAction::make(),
             Action::make('brochure')->form([TextInput::make('title')->required(), TextInput::make('price')->numeric()->required(), TextInput::make('address')])->action(fn (MediaDocument $record, array $data): array => app(GeneratePropertyBrochure::class)->handle(['id' => $record->getKey(), 'title' => $data['title'], 'price' => $data['price'], 'address' => $data['address'] ?? '', 'images' => [$record->path]])),
             Action::make('reorder')->form([TextInput::make('sort_order')->numeric()->required()->minValue(0)])->action(fn (MediaDocument $record, array $data): MediaDocument => app(ReorderMediaDocument::class)->handle($record, (int) auth()->user()->current_team_id, (int) $data['sort_order'])),

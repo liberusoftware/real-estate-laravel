@@ -3,9 +3,12 @@
 namespace Liberu\Foundation\Currency;
 
 use Illuminate\Support\ServiceProvider;
+use Liberu\Foundation\Currency\Contracts\ExchangeRateProvider;
 use Liberu\Foundation\Currency\Enums\CurrencyRole;
 use Liberu\Foundation\Currency\Services\CurrencyContext;
+use Liberu\Foundation\Currency\Services\CurrencyConverter;
 use Liberu\Foundation\Currency\Services\CurrencyRegistry;
+use Liberu\Foundation\Currency\Services\OpenExchangeRateApiProvider;
 
 final class CurrencyServiceProvider extends ServiceProvider
 {
@@ -13,6 +16,8 @@ final class CurrencyServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/currency.php', 'currency');
         $this->app->singleton(CurrencyRegistry::class, fn () => new CurrencyRegistry(config('currency.currencies', [])));
+        $this->app->singleton(ExchangeRateProvider::class, OpenExchangeRateApiProvider::class);
+        $this->app->singleton(CurrencyConverter::class);
         $this->app->scoped(CurrencyContext::class, function ($app) {
             $registry = $app->make(CurrencyRegistry::class);
             $base = $registry->get(config('currency.base'));

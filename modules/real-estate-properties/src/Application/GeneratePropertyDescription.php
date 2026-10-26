@@ -50,10 +50,10 @@ final class GeneratePropertyDescription
         };
 
         return sprintf(
-            'Generate an appealing property description for a %s with %s bedrooms, %s bathrooms, %s sqft, located in %s, priced at £%s. %s',
+            'Generate an appealing property description for a %s with %s bedrooms, %s bathrooms, %s sqft, located in %s, priced at %s %s. %s',
             $property['property_type'] ?? 'property', $property['bedrooms'] ?? 0, $property['bathrooms'] ?? 0,
             $property['area_sqft'] ?? 0, $property['location'] ?? $property['address'] ?? 'an excellent location',
-            $property['price'] ?? 0, $toneInstruction,
+            $property['price'] ?? 0, $property['currency'] ?? config('app.currency', 'GBP'), $toneInstruction,
         );
     }
 

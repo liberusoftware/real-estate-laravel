@@ -11,6 +11,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -28,9 +29,15 @@ final class ListingResource extends Resource
 {
     protected static ?string $model = Listing::class;
 
-    protected static ?string $modelLabel = 'Объявление';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.listing.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Объявления';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.listing.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-megaphone';
 
@@ -38,12 +45,27 @@ final class ListingResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('title')->required()->maxLength(255), Select::make('status')->options(['draft' => 'Draft', 'ready' => 'Ready', 'published' => 'Published', 'suspended' => 'Suspended', 'withdrawn' => 'Withdrawn'])->disabled()->dehydrated(false), TextInput::make('price')->numeric()->minValue(0), DatePicker::make('available_from')]);
+        return $schema->components([
+            Section::make(__('filament.listing.sections.details'))
+                ->description(__('filament.listing.sections.details_description'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('title')->label(__('filament.listing.fields.title'))->required()->maxLength(255)->columnSpanFull(),
+                    Select::make('status')->label(__('filament.listing.fields.status'))->options(['draft' => __('filament.listing.statuses.draft'), 'ready' => __('filament.listing.statuses.ready'), 'published' => __('filament.listing.statuses.published'), 'suspended' => __('filament.listing.statuses.suspended'), 'withdrawn' => __('filament.listing.statuses.withdrawn')])->disabled()->dehydrated(false),
+                    TextInput::make('price')->label(__('filament.listing.fields.price'))->numeric()->minValue(0),
+                    DatePicker::make('available_from')->label(__('filament.listing.fields.available_from')),
+                ]),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('title')->searchable(), TextColumn::make('status')->badge(), TextColumn::make('price')->money('GBP'), TextColumn::make('created_at')->dateTime()->sortable()])
+        return $table->columns([
+            TextColumn::make('title')->label(__('filament.listing.fields.title'))->searchable(),
+            TextColumn::make('status')->label(__('filament.listing.fields.status'))->badge()->formatStateUsing(fn (ListingStatus $state): string => __('filament.listing.statuses.'.$state->value)),
+            TextColumn::make('price')->label(__('filament.listing.fields.price'))->numeric(),
+            TextColumn::make('created_at')->label(__('filament.listing.fields.created_at'))->dateTime()->sortable(),
+        ])
             ->recordActions([
                 EditAction::make(),
                 Action::make('section')->form([TextInput::make('section')->required(), TextInput::make('value')->required()])->action(fn (Listing $record, array $data): Listing => app(UpdateListingSection::class)->handle($record, (int) auth()->user()->current_team_id, ListingSection::from($data['section']), ['value' => $data['value']])),

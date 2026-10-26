@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'base' => env('APP_CURRENCY', 'TJS'),
+    'base' => env('APP_CURRENCY', 'USD'),
     'display' => env('DISPLAY_CURRENCY'),
     'stale_after_seconds' => 86400,
     'currencies' => [

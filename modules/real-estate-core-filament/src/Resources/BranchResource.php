@@ -6,6 +6,7 @@ namespace Liberu\RealEstate\CoreFilament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -19,9 +20,15 @@ final class BranchResource extends Resource
 {
     protected static ?string $model = Branch::class;
 
-    protected static ?string $modelLabel = 'Филиал';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.branch.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Филиалы';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.branch.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-office';
 
@@ -30,10 +37,15 @@ final class BranchResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            TextInput::make('name')->required()->maxLength(255),
-            TextInput::make('code')->required()->maxLength(20)->dehydrateStateUsing(fn (?string $state): ?string => $state !== null ? mb_strtoupper($state) : null),
-            TextInput::make('email')->email(),
-            TextInput::make('phone')->maxLength(50),
+            Section::make(__('filament.branch_form.sections.details'))
+                ->description(__('filament.branch_form.sections.details_description'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('name')->label(__('filament.branch_form.fields.name'))->required()->maxLength(255),
+                    TextInput::make('code')->label(__('filament.branch_form.fields.code'))->required()->maxLength(20)->dehydrateStateUsing(fn (?string $state): ?string => $state !== null ? mb_strtoupper($state) : null),
+                    TextInput::make('email')->label(__('filament.branch_form.fields.email'))->email(),
+                    TextInput::make('phone')->label(__('filament.branch_form.fields.phone'))->maxLength(50),
+                ]),
         ]);
     }
 
@@ -41,10 +53,10 @@ final class BranchResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable(),
-                TextColumn::make('code')->badge(),
-                TextColumn::make('email')->searchable(),
-                TextColumn::make('created_at')->dateTime()->sortable(),
+                TextColumn::make('name')->label(__('filament.branch_form.fields.name'))->searchable(),
+                TextColumn::make('code')->label(__('filament.branch_form.fields.code'))->badge(),
+                TextColumn::make('email')->label(__('filament.branch_form.fields.email'))->searchable(),
+                TextColumn::make('created_at')->label(__('filament.branch_form.fields.created_at'))->dateTime()->sortable(),
             ])
             ->defaultSort('created_at', 'desc');
     }

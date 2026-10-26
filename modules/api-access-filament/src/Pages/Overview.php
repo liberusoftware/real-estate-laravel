@@ -10,5 +10,15 @@ final class Overview extends Page
 {
     protected string $view = 'api-access-filament::overview';
 
-    protected static ?string $title = 'API Access';
+    protected static ?string $slug = 'overview-api-access';
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.pages.api_access');
+    }
+
+    public function getTitle(): string
+    {
+        return __('filament.pages.api_access');
+    }
 }

@@ -11,10 +11,13 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Liberu\Foundation\FilamentClusters\Clusters\UsersCluster;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource\Pages\CreateTeam;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource\Pages\EditTeam;
@@ -22,11 +25,19 @@ use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource\Pages\ListTea
 
 class TeamResource extends Resource
 {
+    protected static ?string $cluster = UsersCluster::class;
+
     protected static ?string $model = Team::class;
 
-    protected static ?string $modelLabel = 'Команда';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.team.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Команды';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.team.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
@@ -44,21 +55,48 @@ class TeamResource extends Resource
         return false;
     }
 
+    /**
+     * isScopedToTenant() being false only opts this resource OUT of
+     * Filament's automatic "current tenant" scope — it does not, by itself,
+     * limit the list to teams the user actually belongs to. Without this,
+     * any admin/staff user (not just super_admin) could list, edit and
+     * delete every team in the system, not just their own — team_user
+     * membership is Jetstream's real ownership boundary here, so it's what
+     * this query enforces. super_admin bypasses it, matching every other
+     * resource's super_admin-sees-everything behaviour.
+     */
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+
+        if ($user?->isSuperAdmin()) {
+            return parent::getEloquentQuery();
+        }
+
+        return parent::getEloquentQuery()->whereIn('id', $user?->allTeams()->pluck('id') ?? []);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return $schema
             ->components([
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Select::make('user_id')
-                    ->label('Owner')
-                    ->relationship('owner', 'name')
-                    ->required()
-                    ->searchable()
-                    ->preload(),
-                Toggle::make('personal_team')
-                    ->label('Personal team'),
+                Section::make(__('filament.team_form.sections.details'))
+                    ->description(__('filament.team_form.sections.details_description'))
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->label(__('filament.team_form.fields.name'))
+                            ->required()
+                            ->maxLength(255),
+                        Select::make('user_id')
+                            ->label(__('filament.team_form.fields.user_id'))
+                            ->relationship('owner', 'name')
+                            ->required()
+                            ->searchable()
+                            ->preload(),
+                        Toggle::make('personal_team')
+                            ->label(__('filament.team_form.fields.personal_team')),
+                    ]),
             ]);
     }
 
@@ -67,15 +105,18 @@ class TeamResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('filament.team_form.fields.name'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('owner.name')
-                    ->label('Owner')
+                    ->label(__('filament.team_form.fields.user_id'))
                     ->searchable()
                     ->sortable(),
                 IconColumn::make('personal_team')
+                    ->label(__('filament.team_form.fields.personal_team'))
                     ->boolean(),
                 TextColumn::make('created_at')
+                    ->label(__('filament.team_form.fields.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

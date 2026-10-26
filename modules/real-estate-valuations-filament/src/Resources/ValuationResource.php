@@ -13,6 +13,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -33,18 +34,50 @@ final class ValuationResource extends Resource
 {
     protected static ?string $model = Valuation::class;
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.valuation.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.valuation.plural');
+    }
+
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-calculator';
 
     protected static string|\UnitEnum|null $navigationGroup = 'Real Estate';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('subject')->required()->maxLength(255), Select::make('status')->options(['draft' => 'Draft', 'scheduled' => 'Scheduled', 'completed' => 'Completed', 'converted' => 'Converted', 'cancelled' => 'Cancelled'])->required(), TextInput::make('valued_amount')->numeric()->minValue(0), TextInput::make('fee_amount')->numeric()->minValue(0), TextInput::make('currency')->length(3)->default('GBP'), Textarea::make('comparable_data')->helperText('JSON comparable evidence.')->columnSpanFull(), Textarea::make('recommendation')->helperText('JSON recommendation and follow-up notes.')->columnSpanFull(), DateTimePicker::make('scheduled_at'), DateTimePicker::make('follow_up_at')]);
+        return $schema->components([
+            Section::make(__('filament.valuation.sections.basic'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('subject')->label(__('filament.valuation.fields.subject'))->required()->maxLength(255)->columnSpanFull(),
+                    Select::make('status')->label(__('filament.valuation.fields.status'))->options(['draft' => __('filament.valuation.statuses.draft'), 'scheduled' => __('filament.valuation.statuses.scheduled'), 'completed' => __('filament.valuation.statuses.completed'), 'converted' => __('filament.valuation.statuses.converted'), 'cancelled' => __('filament.valuation.statuses.cancelled')])->required(),
+                ]),
+            Section::make(__('filament.valuation.sections.financial'))
+                ->columns(3)
+                ->schema([
+                    TextInput::make('valued_amount')->label(__('filament.valuation.fields.valued_amount'))->numeric()->minValue(0),
+                    TextInput::make('fee_amount')->label(__('filament.valuation.fields.fee_amount'))->numeric()->minValue(0),
+                    TextInput::make('currency')->label(__('filament.valuation.fields.currency'))->length(3)->default(config('app.currency', 'USD')),
+                ]),
+            Section::make(__('filament.valuation.sections.schedule'))
+                ->columns(2)
+                ->schema([
+                    DateTimePicker::make('scheduled_at')->label(__('filament.valuation.fields.scheduled_at')),
+                    DateTimePicker::make('follow_up_at')->label(__('filament.valuation.fields.follow_up_at')),
+                    Textarea::make('comparable_data')->label(__('filament.valuation.fields.comparable_data'))->helperText('JSON comparable evidence.')->columnSpanFull(),
+                    Textarea::make('recommendation')->label(__('filament.valuation.fields.recommendation'))->helperText('JSON recommendation and follow-up notes.')->columnSpanFull(),
+                ]),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('subject')->searchable(), TextColumn::make('status')->badge(), TextColumn::make('valued_amount')->money('GBP'), TextColumn::make('created_at')->dateTime()->sortable()])
+        return $table->columns([TextColumn::make('subject')->label(__('filament.valuation.fields.subject'))->searchable(), TextColumn::make('status')->label(__('filament.valuation.fields.status'))->badge(), TextColumn::make('valued_amount')->label(__('filament.valuation.fields.valued_amount'))->money(), TextColumn::make('created_at')->label(__('filament.valuation.fields.created_at'))->dateTime()->sortable()])
             ->recordActions([
                 EditAction::make(),
                 Action::make('schedule')

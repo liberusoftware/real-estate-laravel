@@ -6,9 +6,36 @@
     "version": "1.0.1",
     "category": "presentation",
     "provider": "Liberu\\RealEstate\\PropertiesFilament\\PropertiesFilamentServiceProvider",
-    "requires": {"php": "^8.5", "laravel": "^13.0", "packages": {"liberusoftware/real-estate-properties": "^1.0", "liberusoftware/real-estate-core": "^1.0"}},
-    "presentation": {"filament": {"admin": ["Liberu\\RealEstate\\PropertiesFilament\\PropertiesFilamentPlugin"], "app": ["Liberu\\RealEstate\\PropertiesFilament\\PropertiesFilamentPlugin"]}},
-    "capabilities": ["real-estate.properties.filament"],
+    "requires": {
+        "php": "^8.5",
+        "laravel": "^13.0",
+        "packages": {
+            "liberusoftware/real-estate-properties": "^1.0",
+            "liberusoftware/real-estate-core": "^1.0",
+            "liberusoftware/real-estate-media-and-documents": "^1.0"
+        }
+    },
+    "presentation": {
+        "filament": {
+            "admin": [
+                "Liberu\\RealEstate\\PropertiesFilament\\PropertiesFilamentPlugin"
+            ],
+            "app": [
+                "Liberu\\RealEstate\\PropertiesFilament\\PropertiesFilamentPlugin"
+            ]
+        }
+    },
+    "capabilities": [
+        "real-estate.properties.filament"
+    ],
     "default_enabled": true,
-    "features": ["Property resource", "Property category resource", "Property template resource", "Saved-search resource", "Team-scoped property administration", "Property tax estimates", "Favorites filtering"]
+    "features": [
+        "Property resource",
+        "Property category resource",
+        "Property template resource",
+        "Saved-search resource",
+        "Team-scoped property administration",
+        "Property tax estimates",
+        "Favorites filtering"
+    ]
 }

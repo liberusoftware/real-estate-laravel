@@ -1,1 +1,31 @@
-{"$schema":"https://schemas.liberu.dev/module/v1.json","name":"real-estate-offers","display_name":"Real Estate Offers","description":"Team-scoped terms, qualification, negotiation, proof, decision history, and accepted-offer controls.","version":"1.0.0","category":"product","provider":"Liberu\\RealEstate\\Offers\\OffersServiceProvider","requires":{"php":"^8.5","laravel":"^13.0","packages":{"liberusoftware/module-manager":"^1.0","liberusoftware/organizations-teams":"^1.0"}},"suggests":{},"capabilities":["real-estate.offers"],"default_enabled":true,"features":["Terms","Qualification","Negotiation","Proof","Decision history","Accepted-offer controls"]}
+{
+    "$schema": "https://schemas.liberu.dev/module/v1.json",
+    "name": "real-estate-offers",
+    "display_name": "Real Estate Offers",
+    "description": "Team-scoped terms, qualification, negotiation, proof, decision history, and accepted-offer controls.",
+    "version": "1.0.0",
+    "category": "product",
+    "provider": "Liberu\\RealEstate\\Offers\\OffersServiceProvider",
+    "requires": {
+        "php": "^8.5",
+        "laravel": "^13.0",
+        "packages": {
+            "liberusoftware/audit": "^1.0",
+            "liberusoftware/module-manager": "^1.0",
+            "liberusoftware/organizations-teams": "^1.0"
+        }
+    },
+    "suggests": {},
+    "capabilities": [
+        "real-estate.offers"
+    ],
+    "default_enabled": true,
+    "features": [
+        "Terms",
+        "Qualification",
+        "Negotiation",
+        "Proof",
+        "Decision history",
+        "Accepted-offer controls"
+    ]
+}

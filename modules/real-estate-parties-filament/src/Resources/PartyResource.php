@@ -10,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -26,9 +27,15 @@ final class PartyResource extends Resource
 {
     protected static ?string $model = Party::class;
 
-    protected static ?string $modelLabel = 'Контрагент';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.party.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Контрагенты';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.party.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
@@ -37,10 +44,15 @@ final class PartyResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            Select::make('type')->options(collect(PartyType::cases())->mapWithKeys(fn ($type) => [$type->value => ucfirst($type->value)])->all())->required(),
-            TextInput::make('name')->required()->maxLength(255),
-            TextInput::make('email')->email(),
-            TextInput::make('phone')->maxLength(50),
+            Section::make(__('filament.party.sections.contact'))
+                ->description(__('filament.party.sections.contact_description'))
+                ->columns(2)
+                ->schema([
+                    Select::make('type')->label(__('filament.party.fields.type'))->options(collect(PartyType::cases())->mapWithKeys(fn ($type) => [$type->value => __('filament.party.types.'.$type->value)])->all())->required(),
+                    TextInput::make('name')->label(__('filament.party.fields.name'))->required()->maxLength(255),
+                    TextInput::make('email')->label(__('filament.party.fields.email'))->email(),
+                    TextInput::make('phone')->label(__('filament.party.fields.phone'))->maxLength(50),
+                ]),
         ]);
     }
 
@@ -48,10 +60,10 @@ final class PartyResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable(),
-                TextColumn::make('type')->badge(),
-                TextColumn::make('email')->searchable(),
-                TextColumn::make('created_at')->dateTime()->sortable(),
+                TextColumn::make('name')->label(__('filament.party.fields.name'))->searchable(),
+                TextColumn::make('type')->label(__('filament.party.fields.type'))->badge(),
+                TextColumn::make('email')->label(__('filament.party.fields.email'))->searchable(),
+                TextColumn::make('created_at')->label(__('filament.party.fields.created_at'))->dateTime()->sortable(),
             ])
             ->recordActions([
                 EditAction::make(),

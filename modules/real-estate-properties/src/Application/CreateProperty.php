@@ -7,6 +7,7 @@ namespace Liberu\RealEstate\Properties\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Liberu\RealEstate\Core\Models\Branch;
+use Liberu\RealEstate\Core\Models\Territory;
 use Liberu\RealEstate\Properties\Domain\PropertyStatus;
 use Liberu\RealEstate\Properties\Models\Property;
 use Liberu\RealEstate\Properties\Models\PropertyCategory;
@@ -34,8 +35,14 @@ final class CreateProperty
         if ($templateId !== null && ! PropertyTemplate::query()->forTeam($teamId)->whereKey($templateId)->exists()) {
             throw ValidationException::withMessages(['property_template_id' => 'The template must belong to the current team.']);
         }
+        app(ValidatePropertyGeography::class)->handle($attributes, $teamId);
 
-        return DB::transaction(function () use ($teamId, $actorId, $attributes, $address, $categoryId, $templateId): Property {
+        $territoryId = $attributes['territory_id'] ?? null;
+        if ($territoryId !== null && ! Territory::query()->forTeam($teamId)->whereKey($territoryId)->exists()) {
+            throw ValidationException::withMessages(['territory_id' => 'The territory must belong to the current team.']);
+        }
+
+        return DB::transaction(function () use ($teamId, $actorId, $attributes, $address, $categoryId, $templateId, $territoryId): Property {
             $property = Property::query()->create([
                 'team_id' => $teamId,
                 'branch_id' => $attributes['branch_id'] ?? null,
@@ -83,11 +90,18 @@ final class CreateProperty
                 'sold_date' => $attributes['sold_date'] ?? null,
                 'last_synced_at' => $attributes['last_synced_at'] ?? null,
                 'is_featured' => $attributes['is_featured'] ?? false,
-                'live_tour_available' => $attributes['live_tour_available'] ?? false,
+                'has_generator' => $attributes['has_generator'] ?? false,
+                'has_wifi' => $attributes['has_wifi'] ?? false,
+                'has_parking' => $attributes['has_parking'] ?? false,
+                'mountain_view' => $attributes['mountain_view'] ?? null,
+                'altitude' => $attributes['altitude'] ?? null,
+                'water_source' => $attributes['water_source'] ?? null,
+                'max_guests' => $attributes['max_guests'] ?? null,
                 'ar_tour_enabled' => $attributes['ar_tour_enabled'] ?? false,
                 'ar_tour_settings' => $attributes['ar_tour_settings'] ?? null,
                 'ar_placement_guide' => $attributes['ar_placement_guide'] ?? null,
                 'ar_model_scale' => $attributes['ar_model_scale'] ?? null,
+                'live_tour_available' => $attributes['live_tour_available'] ?? false,
                 'holographic_tour_url' => $attributes['holographic_tour_url'] ?? null,
                 'holographic_provider' => $attributes['holographic_provider'] ?? null,
                 'holographic_metadata' => $attributes['holographic_metadata'] ?? null,
@@ -99,8 +113,14 @@ final class CreateProperty
                 'insurance_expiry_date' => $attributes['insurance_expiry_date'] ?? null,
                 'jupix_id' => $attributes['jupix_id'] ?? null,
                 'property_type' => $attributes['property_type'] ?? 'residential',
+                'deal_type' => $attributes['deal_type'] ?? 'sale',
                 'property_category_id' => $categoryId,
                 'property_template_id' => $templateId,
+                'territory_id' => $territoryId,
+                'region_id' => $attributes['region_id'] ?? null,
+                'city_id' => $attributes['city_id'] ?? null,
+                'district_id' => $attributes['district_id'] ?? null,
+                'agent_id' => $attributes['agent_id'] ?? null,
                 'characteristics' => $attributes['characteristics'] ?? [],
                 'utilities' => $attributes['utilities'] ?? [],
                 'features' => $attributes['features'] ?? [],

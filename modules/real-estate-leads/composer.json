@@ -1,0 +1,44 @@
+{
+    "name": "liberusoftware/real-estate-leads",
+    "description": "Team-scoped lead capture, pipeline status and assignment for enquiries into the platform.",
+    "type": "liberu-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "php": "^8.5",
+        "illuminate/database": "^13.38.0",
+        "illuminate/validation": "^13.38.0",
+        "liberusoftware/module-manager": "^1.0",
+        "liberusoftware/organizations-teams": "^1.0",
+        "liberusoftware/real-estate-parties": "^1.0",
+        "liberusoftware/real-estate-properties": "^1.0",
+        "liberusoftware/real-estate-viewings": "^1.0",
+        "liberusoftware/real-estate-offers": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liberu\\RealEstate\\Leads\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Liberu\\RealEstate\\Leads\\LeadsServiceProvider"
+            ]
+        },
+        "liberu": {
+            "name": "real-estate-leads"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^5.3.3"
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

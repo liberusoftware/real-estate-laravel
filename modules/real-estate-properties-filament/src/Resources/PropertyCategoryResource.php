@@ -6,6 +6,7 @@ namespace Liberu\RealEstate\PropertiesFilament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -19,9 +20,15 @@ final class PropertyCategoryResource extends Resource
 {
     protected static ?string $model = PropertyCategory::class;
 
-    protected static ?string $modelLabel = 'Категория объекта';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.property_category.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Категории объектов';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.property_category.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-tag';
 
@@ -30,8 +37,13 @@ final class PropertyCategoryResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            TextInput::make('name')->required()->maxLength(120),
-            TextInput::make('slug')->maxLength(140)->helperText('Leave blank to derive from the name.'),
+            Section::make(__('filament.property_category.sections.details'))
+                ->description(__('filament.property_category.sections.details_description'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('name')->label(__('filament.property_category.fields.name'))->required()->maxLength(120),
+                    TextInput::make('slug')->label(__('filament.property_category.fields.slug'))->maxLength(140)->helperText('Leave blank to derive from the name.'),
+                ]),
         ]);
     }
 
@@ -42,9 +54,9 @@ final class PropertyCategoryResource extends Resource
 
             return $teamId === null ? $query->whereRaw('1 = 0') : $query->forTeam($teamId);
         })->columns([
-            TextColumn::make('name')->searchable()->sortable(),
-            TextColumn::make('slug')->searchable(),
-            TextColumn::make('created_at')->dateTime()->sortable(),
+            TextColumn::make('name')->label(__('filament.property_category.fields.name'))->searchable()->sortable(),
+            TextColumn::make('slug')->label(__('filament.property_category.fields.slug'))->searchable(),
+            TextColumn::make('created_at')->label(__('filament.property_category.fields.created_at'))->dateTime()->sortable(),
         ]);
     }
 

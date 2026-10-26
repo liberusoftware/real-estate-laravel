@@ -7,6 +7,9 @@ namespace Liberu\RealEstate\Properties\Domain;
 enum PropertyStatus: string
 {
     case Draft = 'draft';
+    case Moderation = 'moderation';
+    case Published = 'published';
+    case Archive = 'archive';
     case Available = 'available';
     case UnderOffer = 'under_offer';
     case Sold = 'sold';
@@ -25,6 +28,6 @@ enum PropertyStatus: string
 
     public function isPublic(): bool
     {
-        return in_array($this, [self::Available, self::UnderOffer, self::ForSale, self::ForRent, self::ToLet, self::ComingSoon], true);
+        return in_array($this, [self::Published, self::Available, self::UnderOffer, self::ForSale, self::ForRent, self::ToLet, self::ComingSoon], true);
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
-// Scaffold only — intentionally deferred to a professional-translation follow-up
-// Missing keys fall back
-// to APP_FALLBACK_LOCALE (en) safely via Laravel's translator, so this file is
-// safe to ship empty in the meantime.
-return [];
+declare(strict_types=1);
+
+return [
+    'failed' => 'Ин маълумот бо сабтҳои мо мувофиқат намекунад.',
+    'password' => 'Пароли ворид кардашуда нодуруст аст.',
+    'throttle' => 'Шумораи кӯшишҳои воридшавӣ аз ҳад зиёд аст. Лутфан, пас аз :seconds сония дубора кӯшиш кунед.',
+];

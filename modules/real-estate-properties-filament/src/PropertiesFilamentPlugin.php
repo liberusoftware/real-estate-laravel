@@ -27,6 +27,9 @@ final class PropertiesFilamentPlugin implements Plugin
     {
         $panel->resources([
             PropertyResource::class,
+            Resources\RegionResource::class,
+            Resources\CityResource::class,
+            Resources\DistrictResource::class,
             PropertyCategoryResource::class,
             PropertyTemplateResource::class,
             PropertySavedSearchResource::class,

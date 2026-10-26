@@ -2,6 +2,8 @@
 
 return [
 
+    'seed_admin_password' => env('SEED_ADMIN_PASSWORD'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -14,6 +16,10 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+
+    'currency' => env('APP_CURRENCY', 'USD'),
+
+    'property_reference_prefix' => env('PROPERTY_REFERENCE_PREFIX', 'RE'),
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +96,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'ru'),
+    'locale' => env('APP_LOCALE', 'en'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 

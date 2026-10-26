@@ -22,6 +22,9 @@ final class ThemeManager
     /** @var array<string, ThemeManifest> */
     protected array $themes = [];
 
+    /** @var array<string, list<string>> */
+    private array $capabilityCache = [];
+
     protected readonly string $themesPath;
 
     public function __construct(?string $themesPath = null)
@@ -122,9 +125,12 @@ final class ThemeManager
         if (! isset($this->themes[$theme])) {
             return false;
         }
-        $available = $this->enabledCapabilities();
+        $required = $this->themes[$theme]->requiredCapabilities();
+        if ($required === []) {
+            return true;
+        }
 
-        return array_diff($this->themes[$theme]->requiredCapabilities(), $available) === [];
+        return array_diff($required, $this->enabledCapabilities()) === [];
     }
 
     /**
@@ -281,8 +287,15 @@ final class ThemeManager
     {
         if (! app()->bound(ModuleRegistry::class)) {
             return [];
-        }$resolved = app(ModuleRegistry::class)->resolve((array) config('modules.enabled', []), (array) config('modules.disabled', []));
+        }
+        $registry = app(ModuleRegistry::class);
+        $enabled = (array) config('modules.enabled', []);
+        $disabled = (array) config('modules.disabled', []);
+        $key = spl_object_id($registry).':'.json_encode([$enabled, $disabled], JSON_THROW_ON_ERROR);
 
-        return array_values(array_unique(array_merge(...array_map(fn ($manifest) => $manifest->capabilities(), $resolved))));
+        return $this->capabilityCache[$key] ??= array_values(array_unique(array_merge(...array_map(
+            fn ($manifest) => $manifest->capabilities(),
+            $registry->resolve($enabled, $disabled),
+        ))));
     }
 }

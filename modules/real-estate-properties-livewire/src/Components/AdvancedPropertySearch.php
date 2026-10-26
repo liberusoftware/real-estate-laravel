@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Liberu\RealEstate\PropertiesLivewire\Components;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Validation\Rule;
 use Liberu\RealEstate\Properties\Application\DeletePropertySearch;
 use Liberu\RealEstate\Properties\Application\SavePropertySearch;
+use Liberu\RealEstate\Properties\Domain\PropertyStatus;
 use Liberu\RealEstate\Properties\Models\Property;
 use Liberu\RealEstate\Properties\Models\PropertyCategory;
 use Liberu\RealEstate\Properties\Models\PropertySavedSearch;
@@ -170,7 +172,7 @@ final class AdvancedPropertySearch extends Component
             'minYearBuilt' => ['nullable', ...Property::yearBuiltRules()],
             'maxYearBuilt' => ['nullable', ...Property::yearBuiltRules(), 'gte:minYearBuilt'],
             'propertyType' => ['nullable', 'string', 'max:40'],
-            'status' => ['nullable', 'string', 'in:draft,available,under_offer,sold,let,withdrawn'],
+            'status' => ['nullable', 'string', Rule::enum(PropertyStatus::class)],
             'sortBy' => ['required', 'string', 'in:created_at,updated_at,price,year_built,bedrooms,bathrooms,area_sqft,address'],
             'sortDirection' => ['required', 'string', 'in:asc,desc'],
             'propertyCategoryId' => ['nullable', 'integer', 'exists:real_estate_property_categories,id'],

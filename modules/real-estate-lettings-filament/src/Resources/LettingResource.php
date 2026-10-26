@@ -8,6 +8,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -22,9 +23,15 @@ final class LettingResource extends Resource
 {
     protected static ?string $model = Letting::class;
 
-    protected static ?string $modelLabel = 'Аренда';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.letting.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Аренды';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.letting.plural');
+    }
 
     protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
@@ -32,12 +39,26 @@ final class LettingResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('subject')->required()->maxLength(255), Select::make('capability')->options(collect(LettingCapability::cases())->mapWithKeys(fn ($c) => [$c->value => str($c->value)->replace('_', ' ')->title()])->all())->required(), Select::make('status')->options(['draft' => 'Draft', 'in_progress' => 'In progress', 'completed' => 'Completed', 'cancelled' => 'Cancelled'])->required(), Textarea::make('failure_reason')->maxLength(2000)->columnSpanFull()]);
+        return $schema->components([
+            Section::make(__('filament.letting.sections.basic'))
+                ->description(__('filament.letting.sections.basic_description'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('subject')->label(__('filament.letting.fields.subject'))->required()->maxLength(255)->columnSpanFull(),
+                    Select::make('capability')->label(__('filament.letting.fields.capability'))->options(collect(LettingCapability::cases())->mapWithKeys(fn ($c) => [$c->value => __('filament.letting.capabilities.'.$c->value)])->all())->required(),
+                    Select::make('status')->label(__('filament.letting.fields.status'))->options(['draft' => __('filament.letting.statuses.draft'), 'in_progress' => __('filament.letting.statuses.in_progress'), 'completed' => __('filament.letting.statuses.completed'), 'cancelled' => __('filament.letting.statuses.cancelled')])->required(),
+                ]),
+            Section::make(__('filament.letting.sections.details'))
+                ->description(__('filament.letting.sections.details_description'))
+                ->schema([
+                    Textarea::make('failure_reason')->label(__('filament.letting.fields.failure_reason'))->maxLength(2000)->columnSpanFull(),
+                ]),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('subject')->searchable(), TextColumn::make('capability')->badge(), TextColumn::make('status')->badge(), TextColumn::make('created_at')->dateTime()->sortable()])->defaultSort('created_at', 'desc');
+        return $table->columns([TextColumn::make('subject')->label(__('filament.letting.fields.subject'))->searchable(), TextColumn::make('capability')->label(__('filament.letting.fields.capability'))->badge(), TextColumn::make('status')->label(__('filament.letting.fields.status'))->badge(), TextColumn::make('created_at')->label(__('filament.letting.fields.created_at'))->dateTime()->sortable()])->defaultSort('created_at', 'desc');
     }
 
     public static function getEloquentQuery(): Builder

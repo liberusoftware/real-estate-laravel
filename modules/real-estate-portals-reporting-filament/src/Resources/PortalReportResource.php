@@ -10,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -29,20 +30,42 @@ final class PortalReportResource extends Resource
 {
     protected static ?string $model = PortalReport::class;
 
-    protected static ?string $modelLabel = 'Отчёт портала';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.portal_report.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Отчёты порталов';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.portal_report.plural');
+    }
 
     protected static string|\UnitEnum|null $navigationGroup = 'Недвижимость';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([TextInput::make('portal')->required()->maxLength(120), TextInput::make('report_type')->required()->maxLength(120), TextInput::make('property_id')->numeric(), TextInput::make('listing_id')->numeric(), TextInput::make('status')->required(), Textarea::make('error')->columnSpanFull()]);
+        return $schema->components([
+            Section::make(__('filament.portal_report.sections.identification'))
+                ->description(__('filament.portal_report.sections.identification_description'))
+                ->columns(2)
+                ->schema([
+                    TextInput::make('portal')->label(__('filament.portal_report.fields.portal'))->required()->maxLength(120),
+                    TextInput::make('report_type')->label(__('filament.portal_report.fields.report_type'))->required()->maxLength(120),
+                    TextInput::make('property_id')->label(__('filament.portal_report.fields.property_id'))->numeric(),
+                    TextInput::make('listing_id')->label(__('filament.portal_report.fields.listing_id'))->numeric(),
+                ]),
+            Section::make(__('filament.portal_report.sections.status'))
+                ->description(__('filament.portal_report.sections.status_description'))
+                ->schema([
+                    TextInput::make('status')->label(__('filament.portal_report.fields.status'))->required(),
+                    Textarea::make('error')->label(__('filament.portal_report.fields.error'))->columnSpanFull(),
+                ]),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('portal')->searchable(), TextColumn::make('report_type')->searchable(), TextColumn::make('status')->badge(), TextColumn::make('generated_at')->dateTime()])->recordActions([
+        return $table->columns([TextColumn::make('portal')->label(__('filament.portal_report.fields.portal'))->searchable(), TextColumn::make('report_type')->label(__('filament.portal_report.fields.report_type'))->searchable(), TextColumn::make('status')->label(__('filament.portal_report.fields.status'))->badge(), TextColumn::make('generated_at')->label(__('filament.portal_report.fields.generated_at'))->dateTime()])->recordActions([
             EditAction::make(),
             Action::make('queue')->requiresConfirmation()->action(fn (Model $record): PortalReport => app(TransitionPortalReport::class)->handle($record, (int) auth()->user()->current_team_id, PortalReportStatus::Queued)),
             Action::make('publish')->requiresConfirmation()->action(fn (Model $record): PortalReport => app(TransitionPortalReport::class)->handle($record, (int) auth()->user()->current_team_id, PortalReportStatus::Published)),

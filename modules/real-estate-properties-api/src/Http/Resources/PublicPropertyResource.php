@@ -6,6 +6,8 @@ namespace Liberu\RealEstate\PropertiesApi\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Liberu\Foundation\Currency\Services\CurrencyConverter;
+use Liberu\RealEstate\PropertiesApi\Http\Resources\Concerns\ResolvesPropertyGallery;
 
 /**
  * Anonymous, storefront-facing property shape. Deliberately narrower than
@@ -19,11 +21,19 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 final class PublicPropertyResource extends JsonResource
 {
+    use ResolvesPropertyGallery;
+
     /** @return array<string, mixed> */
     public function toArray(Request $request): array
     {
         return [
             'id' => $this->resource->id,
+            'region_id' => $this->resource->region_id,
+            'city_id' => $this->resource->city_id,
+            'district_id' => $this->resource->district_id,
+            'region' => $this->whenLoaded('region', fn (): ?string => $this->resource->region?->name, null),
+            'city' => $this->whenLoaded('city', fn (): ?string => $this->resource->city?->name, null),
+            'district' => $this->whenLoaded('district', fn (): ?string => $this->resource->district?->name, null),
             'reference' => $this->resource->reference(),
             'title' => $this->resource->title,
             'description' => $this->resource->description,
@@ -33,6 +43,7 @@ final class PublicPropertyResource extends JsonResource
             'deal_type' => $this->resource->deal_type?->value,
             'price' => $this->resource->price,
             'currency' => $this->resource->currency,
+            'price_usd' => $this->priceUsd(),
             'bedrooms' => $this->resource->bedrooms,
             'bathrooms' => $this->resource->bathrooms,
             'area_sqft' => $this->resource->area_sqft,
@@ -48,7 +59,25 @@ final class PublicPropertyResource extends JsonResource
             'max_guests' => $this->resource->max_guests,
             'views_count' => $this->resource->views_count,
             'published_at' => $this->resource->published_at?->toIso8601String(),
-            'gallery' => array_map(static fn ($item): array => $item->toArray(), $this->resource->galleryItems()),
+            'gallery' => array_map(static fn ($item): array => $item->toArray(), $this->resource->galleryItems($this->propertyMediaItems($this->resource))),
         ];
+    }
+
+    /**
+     * Best-effort TJS/EUR/GBP/… → USD conversion via a cached, daily-refreshed
+     * public rate (see OpenExchangeRateApiProvider) — null (not an error) when
+     * the currency is unset, unsupported, or the upstream rate is unreachable.
+     */
+    private function priceUsd(): ?float
+    {
+        if ($this->resource->price === null || $this->resource->currency === null) {
+            return null;
+        }
+
+        return app(CurrencyConverter::class)->convertAmount(
+            (float) $this->resource->price,
+            (string) $this->resource->currency,
+            'USD',
+        );
     }
 }

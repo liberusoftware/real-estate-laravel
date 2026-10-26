@@ -8,4 +8,5 @@ enum DealType: string
 {
     case Sale = 'sale';
     case Rent = 'rent';
+    case Daily = 'daily';
 }

@@ -7,6 +7,7 @@ namespace Liberu\RealEstate\PropertiesFilament\Resources;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -20,9 +21,15 @@ final class PropertyTemplateResource extends Resource
 {
     protected static ?string $model = PropertyTemplate::class;
 
-    protected static ?string $modelLabel = 'Шаблон объекта';
+    public static function getModelLabel(): string
+    {
+        return __('filament.resources.property_template.singular');
+    }
 
-    protected static ?string $pluralModelLabel = 'Шаблоны объектов';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.resources.property_template.plural');
+    }
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document';
 
@@ -31,8 +38,12 @@ final class PropertyTemplateResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            TextInput::make('name')->required()->maxLength(120),
-            Textarea::make('content')->required()->maxLength(100000)->rows(12)->helperText('Use placeholders such as {title}, {description}, {price}, and {address}.'),
+            Section::make(__('filament.property_template.sections.details'))
+                ->description(__('filament.property_template.sections.details_description'))
+                ->schema([
+                    TextInput::make('name')->label(__('filament.property_template.fields.name'))->required()->maxLength(120),
+                    Textarea::make('content')->label(__('filament.property_template.fields.content'))->required()->maxLength(100000)->rows(12)->helperText('Use placeholders such as {title}, {description}, {price}, and {address}.'),
+                ]),
         ]);
     }
 
@@ -43,8 +54,8 @@ final class PropertyTemplateResource extends Resource
 
             return $teamId === null ? $query->whereRaw('1 = 0') : $query->forTeam($teamId);
         })->columns([
-            TextColumn::make('name')->searchable()->sortable(),
-            TextColumn::make('created_at')->dateTime()->sortable(),
+            TextColumn::make('name')->label(__('filament.property_template.fields.name'))->searchable()->sortable(),
+            TextColumn::make('created_at')->label(__('filament.property_template.fields.created_at'))->dateTime()->sortable(),
         ]);
     }
 

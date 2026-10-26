@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace Liberu\RealEstate\Properties;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Liberu\RealEstate\Properties\Domain\Events\PriceAlertTriggered;
+use Liberu\RealEstate\Properties\Domain\Events\SavedSearchAlertTriggered;
+use Liberu\RealEstate\Properties\Listeners\SendPriceAlertMail;
+use Liberu\RealEstate\Properties\Listeners\SendSavedSearchAlertMail;
 
 final class PropertiesServiceProvider extends ServiceProvider
 {
@@ -25,6 +30,7 @@ final class PropertiesServiceProvider extends ServiceProvider
         $this->app->singleton(Application\TogglePriceAlert::class);
         $this->app->singleton(Application\CheckPriceAlerts::class);
         $this->app->singleton(Application\ConfigurePropertyArTour::class);
+        $this->app->singleton(Application\CheckSavedSearchAlerts::class);
         $this->app->singleton(Application\FetchWalkabilityScores::class);
         $this->app->singleton(Application\GeneratePropertyQrCode::class);
         $this->app->singleton(Application\SendPropertyToFriend::class);
@@ -34,5 +40,11 @@ final class PropertiesServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        // PriceAlertTriggered was already being dispatched by
+        // CheckPriceAlerts with no listener anywhere in the codebase — the
+        // event fired into the void and no alert email was ever sent.
+        Event::listen(PriceAlertTriggered::class, SendPriceAlertMail::class);
+        Event::listen(SavedSearchAlertTriggered::class, SendSavedSearchAlertMail::class);
     }
 }

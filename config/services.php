@@ -47,6 +47,27 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI', '/oauth/google/callback'),
     ],
 
+    // Not a Socialite provider — Telegram's Login Widget signs its own
+    // redirect payload with the bot token instead of an OAuth handshake.
+    // Verified in identity-socialstream's TelegramAuthController.
+    'telegram' => [
+        'bot_username' => env('TELEGRAM_BOT_USERNAME'),
+        'bot_token' => env('TELEGRAM_BOT_TOKEN'),
+    ],
+
+    // The standalone liberu CRM (crm-laravel) — opt-in, no-ops with either
+    // unset. See identity-core's SyncNewUserToCrm.
+    'frontend' => [
+        'token_name' => env('FRONTEND_TOKEN_NAME', 'frontend'),
+        'oauth_callback_url' => env('FRONTEND_OAUTH_CALLBACK_URL', '/account/oauth-callback'),
+    ],
+
+    'crm' => [
+        'external_key_prefix' => env('CRM_EXTERNAL_KEY_PREFIX', 'user-'),
+        'base_url' => env('CRM_API_BASE_URL'),
+        'token' => env('CRM_API_TOKEN'),
+    ],
+
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),

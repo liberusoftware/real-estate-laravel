@@ -34,6 +34,7 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * @property string|null $theme_preference
  * @property string|null $locale
+ * @property string|null $signup_intent
  */
 class User extends Authenticatable implements ConnectedAccountOwner, FilamentUser, HasDefaultTenant, HasTenants, ObservabilityActor, OrganizationActor, PrivilegedActor
 {
@@ -73,6 +74,8 @@ class User extends Authenticatable implements ConnectedAccountOwner, FilamentUse
         'theme_preference',
         'locale',
         'timezone',
+        'signup_intent',
+        'profile_photo_path',
     ];
 
     /**

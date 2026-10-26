@@ -28,7 +28,7 @@
     <section class="re-section" aria-labelledby="search-heading">
         <div class="re-container">
             <h2 id="search-heading" class="sr-only">{{ __('theme-real-estate-default::messages.home.search') }}</h2>
-            <x-search-form />
+            <x-theme-real-estate-default::search-form />
         </div>
     </section>
 
@@ -41,7 +41,7 @@
                 </div>
                 <a class="font-semibold text-[var(--color-action-primary)]" href="{{ $propertiesUrl ?? url('/properties') }}">{{ __('theme-real-estate-default::messages.home.view_all') }}</a>
             </div>
-            <x-property-grid :properties="$featuredProperties ?? []" />
+            <x-theme-real-estate-default::property-grid :properties="$featuredProperties ?? []" />
         </div>
     </section>
 
@@ -54,9 +54,9 @@
                 </div>
             </div>
             <div class="re-feature-grid">
-                <x-feature-card :title="__('theme-real-estate-default::messages.features.search_title')" :body="__('theme-real-estate-default::messages.features.search_body')" icon="⌕" />
-                <x-feature-card :title="__('theme-real-estate-default::messages.features.people_title')" :body="__('theme-real-estate-default::messages.features.people_body')" icon="↗" />
-                <x-feature-card :title="__('theme-real-estate-default::messages.features.progress_title')" :body="__('theme-real-estate-default::messages.features.progress_body')" icon="✓" />
+                <x-theme-real-estate-default::feature-card :title="__('theme-real-estate-default::messages.features.search_title')" :body="__('theme-real-estate-default::messages.features.search_body')" icon="⌕" />
+                <x-theme-real-estate-default::feature-card :title="__('theme-real-estate-default::messages.features.people_title')" :body="__('theme-real-estate-default::messages.features.people_body')" icon="↗" />
+                <x-theme-real-estate-default::feature-card :title="__('theme-real-estate-default::messages.features.progress_title')" :body="__('theme-real-estate-default::messages.features.progress_body')" icon="✓" />
             </div>
         </div>
     </section>

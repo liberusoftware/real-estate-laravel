@@ -2,8 +2,8 @@
 
 <div class="overflow-hidden rounded border border-gray-200 bg-gray-100">
     <div wire:ignore data-map data-properties="{{ json_encode($properties) }}"
-         class="h-[400px] w-full" role="application" aria-label="{{ __('Map of available properties') }}"></div>
-    <div class="flex items-center justify-between gap-3 border-t border-gray-200 bg-white px-3 py-2">
+         class="h-[240px] w-full sm:h-[320px] lg:h-[440px]" role="application" aria-label="{{ __('Map of available properties') }}"></div>
+    <div class="flex flex-col items-start gap-2 border-t border-gray-200 bg-white px-3 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <p data-map-count aria-live="polite">
             {{ trans_choice(':count property mapped|:count properties mapped', count($properties), ['count' => count($properties)]) }}
         </p>

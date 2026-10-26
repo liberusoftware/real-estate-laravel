@@ -10,7 +10,8 @@
         "php": "^8.5",
         "laravel": "^13.0",
         "packages": {
-            "liberusoftware/organizations-teams": "^1.0"
+            "liberusoftware/organizations-teams": "^1.0",
+            "liberusoftware/filament-clusters-contracts": "^1.0"
         }
     },
     "suggests": [],
