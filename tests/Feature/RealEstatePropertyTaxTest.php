@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
-use InvalidArgumentException;
 use Liberu\RealEstate\Properties\Application\CreateProperty;
 use Liberu\RealEstate\Properties\Application\EstimatePropertyTax;
 use Liberu\RealEstate\PropertiesLivewire\Components\PropertyTaxEstimator;

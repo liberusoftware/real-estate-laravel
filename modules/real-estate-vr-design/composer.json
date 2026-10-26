@@ -6,10 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.5",
-        "illuminate/cache": "^13.0",
-        "illuminate/database": "^13.0",
-        "illuminate/filesystem": "^13.0",
-        "illuminate/support": "^13.0",
+        "illuminate/cache": "^13.38.0",
+        "illuminate/database": "^13.38.0",
+        "illuminate/filesystem": "^13.38.0",
+        "illuminate/support": "^13.38.0",
         "liberusoftware/module-manager": "^1.0",
         "liberusoftware/organizations-teams": "^1.0",
         "liberusoftware/real-estate-properties": "^1.0"
@@ -19,7 +19,7 @@
         "laravel": {"providers": ["Liberu\\RealEstate\\VrDesign\\VrDesignServiceProvider"]},
         "liberu": {"name": "real-estate-vr-design"}
     },
-    "require-dev": {"pestphp/pest": "^5.0"},
+    "require-dev": {"pestphp/pest": "^5.3.3"},
     "scripts": {"test": "pest"},
     "config": {"allow-plugins": {"pestphp/pest-plugin": true}}
 }

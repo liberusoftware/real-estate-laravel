@@ -4,10 +4,10 @@
     "type": "liberu-module",
     "version": "1.0.1",
     "license": "MIT",
-    "require": {"php": "^8.5", "livewire/livewire": "^4.0", "liberusoftware/real-estate-properties": "^1.0", "liberusoftware/real-estate-media-and-documents": "^1.0", "liberusoftware/real-estate-viewings": "^1.0", "liberusoftware/real-estate-viewings-livewire": "^1.0"},
+    "require": {"php": "^8.5", "livewire/livewire": "^4.4.8", "liberusoftware/real-estate-properties": "^1.0", "liberusoftware/real-estate-media-and-documents": "^1.0", "liberusoftware/real-estate-viewings": "^1.0", "liberusoftware/real-estate-viewings-livewire": "^1.0"},
     "autoload": {"psr-4": {"Liberu\\RealEstate\\PropertiesLivewire\\": "src/"}},
     "extra": {"liberu": {"name": "real-estate-properties-livewire"}},
-    "require-dev": {"pestphp/pest": "^5.0"},
+    "require-dev": {"pestphp/pest": "^5.3.3"},
     "scripts": {"test": "pest"},
     "config": {"allow-plugins": {"pestphp/pest-plugin": true}}
 }

@@ -3,7 +3,6 @@
 use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
-use InvalidArgumentException;
 use Liberu\RealEstate\Properties\Application\CreateProperty;
 use Liberu\RealEstate\Properties\Application\GeneratePropertyQrCode;
 

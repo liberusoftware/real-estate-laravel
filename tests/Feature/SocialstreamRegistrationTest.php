@@ -9,7 +9,6 @@ use JoelButcher\Socialstream\Providers;
 use Laravel\Fortify\Features as FortifyFeatures;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\User;
-use Mockery;
 
 use function Pest\Laravel\get;
 

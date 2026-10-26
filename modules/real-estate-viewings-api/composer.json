@@ -6,8 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.5",
-        "illuminate/http": "^13.0",
-        "illuminate/routing": "^13.0",
+        "illuminate/http": "^13.38.0",
+        "illuminate/routing": "^13.38.0",
         "liberusoftware/real-estate-viewings": "^1.0",
         "liberusoftware/api-access": "^1.0",
         "liberusoftware/real-estate-properties": "^1.0"
@@ -23,7 +23,7 @@
         }
     },
     "require-dev": {
-        "pestphp/pest": "^5.0"
+        "pestphp/pest": "^5.3.3"
     },
     "scripts": {
         "test": "pest"

@@ -22,9 +22,9 @@
     },
     "require-dev": {
         "liberusoftware/package-testbench": "^1.5",
-        "laravel/pint": "^1.24",
-        "pestphp/pest": "^5.0",
-        "phpstan/phpstan": "^2.1"
+        "laravel/pint": "^1.32.1",
+        "pestphp/pest": "^5.3.3",
+        "phpstan/phpstan": "^2.3.2"
     },
     "autoload-dev": {
         "psr-4": {

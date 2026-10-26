@@ -1,41 +1,41 @@
 {
-    "name": "liberusoftware/identity-core",
-    "description": "Provider-neutral identity policy, normalization, and versioned security events.",
-    "type": "liberu-module",
-    "license": "MIT",
-    "require": {
-        "php": "^8.5",
-        "illuminate/support": "^13.0",
-        "liberusoftware/module-manager": "^1.0",
-        "illuminate/http": "^13.38.0",
-        "illuminate/queue": "^13.38.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Liberu\\Foundation\\Identity\\": "src/"
-        }
-    },
-    "extra": {
-        "liberu": {
-            "name": "identity-core"
-        }
-    },
-    "version": "1.4.1",
-    "autoload-dev": {
-        "psr-4": {
-            "Liberu\\Foundation\\Identity\\Tests\\": "tests/"
-        }
-    },
-    "require-dev": {
-        "liberusoftware/package-testbench": "^1.5",
-        "pestphp/pest": "^5.0"
-    },
-    "scripts": {
-        "test": "pest"
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+  "name": "liberusoftware/identity-core",
+  "description": "Provider-neutral identity policy, normalization, and versioned security events.",
+  "type": "liberu-module",
+  "license": "MIT",
+  "require": {
+    "php": "^8.5",
+    "illuminate/support": "^13.38.0",
+    "illuminate/http": "^13.38.0",
+    "illuminate/queue": "^13.38.0",
+    "liberusoftware/module-manager": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Liberu\\Foundation\\Identity\\": "src/"
     }
+  },
+  "extra": {
+    "liberu": {
+      "name": "identity-core"
+    }
+  },
+  "version": "1.4.1",
+  "autoload-dev": {
+    "psr-4": {
+      "Liberu\\Foundation\\Identity\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "liberusoftware/package-testbench": "^1.5",
+    "pestphp/pest": "^5.3.3"
+  },
+  "scripts": {
+    "test": "pest"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
 }

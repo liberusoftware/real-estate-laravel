@@ -4,10 +4,10 @@
     "type": "liberu-module",
     "version": "1.0.0",
     "license": "MIT",
-    "require": {"php": "^8.5", "livewire/livewire": "^4.0", "liberusoftware/real-estate-properties": "^1.0", "liberusoftware/real-estate-vr-design": "^1.0"},
+    "require": {"php": "^8.5", "livewire/livewire": "^4.4.8", "liberusoftware/real-estate-properties": "^1.0", "liberusoftware/real-estate-vr-design": "^1.0"},
     "autoload": {"psr-4": {"Liberu\\RealEstate\\VrDesignLivewire\\": "src/"}},
     "extra": {"laravel": {"providers": ["Liberu\\RealEstate\\VrDesignLivewire\\VrDesignLivewireServiceProvider"]}, "liberu": {"name": "real-estate-vr-design-livewire"}},
-    "require-dev": {"pestphp/pest": "^5.0"},
+    "require-dev": {"pestphp/pest": "^5.3.3"},
     "scripts": {"test": "pest"},
     "config": {"allow-plugins": {"pestphp/pest-plugin": true}}
 }
