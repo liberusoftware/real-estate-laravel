@@ -55,3 +55,13 @@ it('renders featured latest news and related article detail', function (): void 
         ->assertSee('Featured body')
         ->assertSee('Related');
 });
+
+it('escapes scripts and event handlers in published news content', function (): void {
+    $user = User::factory()->create(['current_team_id' => 10]);
+    $content = '<script>alert(document.cookie)</script><img src=x onerror=alert(1)>';
+    NewsArticle::query()->create(['team_id' => 10, 'title' => 'Unsafe story', 'content' => $content, 'published_at' => now()->subDay(), 'slug' => 'unsafe-story']);
+
+    Livewire::actingAs($user)->test('test-news-detail', ['slug' => 'unsafe-story'])
+        ->assertSee($content)
+        ->assertDontSee($content, false);
+});
