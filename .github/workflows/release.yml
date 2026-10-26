@@ -47,7 +47,9 @@ jobs:
         run: composer validate --strict
 
       - name: Audit dependencies
-        run: composer audit --locked
+        # Laravel Lang still requires the abandoned Dragon Code helpers.
+        # Report abandonment while failing on every security advisory.
+        run: composer audit --locked --abandoned=report
 
       - name: Check formatting
         run: vendor/bin/pint --test
