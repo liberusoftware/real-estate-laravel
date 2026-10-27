@@ -1,9 +1,9 @@
 <?php
 
-use App\Filament\App\Pages\AccountSetupWizard;
 use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
+use Liberu\RealEstate\Application\Filament\App\Pages\AccountSetupWizard;
 use Liberu\RealEstate\LettingsLivewire\Components\RentalApplicationForm;
 use Liberu\RealEstate\MarketingLivewire\Components\NewsArticleList;
 use Liberu\RealEstate\MarketingLivewire\Components\NewsDetail;

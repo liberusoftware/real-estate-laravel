@@ -3,7 +3,7 @@
     "name": "real-estate-properties",
     "display_name": "Real Estate Properties",
     "description": "Address, categories, units, characteristics, tenure, utilities, features, status, history, keys, and walkability scores.",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "category": "product",
     "provider": "Liberu\\RealEstate\\Properties\\PropertiesServiceProvider",
     "requires": {

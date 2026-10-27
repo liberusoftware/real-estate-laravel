@@ -1,10 +1,10 @@
 <?php
 
-use App\Filament\ModulePlugins;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Liberu\Foundation\ModuleManager\Manifest;
 use Liberu\Foundation\ModuleManager\ModuleManagerServiceProvider;
 use Liberu\Foundation\ModuleManager\ModuleRegistry;
+use Liberu\RealEstate\Application\Filament\ModulePlugins;
 
 it('composes enabled admin plugins from module manifests', function () {
     $ids = collect(app(ModulePlugins::class)->forPanel('admin'))->map->getId()->all();

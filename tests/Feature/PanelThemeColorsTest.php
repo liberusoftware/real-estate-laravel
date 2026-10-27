@@ -1,11 +1,11 @@
 <?php
 
-use App\Providers\Filament\AdminPanelProvider;
-use App\Providers\Filament\AppPanelProvider;
 use Filament\Panel;
 use Filament\Support\Colors\Color;
 use Liberu\Foundation\Settings\Settings\SiteSettings;
 use Liberu\Foundation\Theme\Services\ThemeManager;
+use Liberu\RealEstate\Application\Providers\Filament\AdminPanelProvider;
+use Liberu\RealEstate\Application\Providers\Filament\AppPanelProvider;
 
 function setSiteTheme(string $theme): void
 {

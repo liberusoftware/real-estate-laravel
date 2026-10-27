@@ -23,6 +23,7 @@ final class ApplicationCoreServiceProvider extends ServiceProvider
 
     public function boot(EnvironmentValidator $validator): void
     {
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $validator->validate();
         Number::useCurrency(config('app.currency', 'USD'));
         $this->loadRoutesFrom(__DIR__.'/../routes/health.php');

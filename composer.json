@@ -1681,6 +1681,7 @@
         "liberusoftware/profiles-api": "^1.0",
         "liberusoftware/profiles-filament": "^1.0",
         "liberusoftware/profiles-livewire": "^1.0",
+        "liberusoftware/real-estate-application": "^1.0",
         "liberusoftware/real-estate-core": "^1.0",
         "liberusoftware/real-estate-core-api": "^1.0",
         "liberusoftware/real-estate-core-filament": "^1.0",
@@ -1789,6 +1790,7 @@
         "liberusoftware/two-factor-authentication-api": "^1.0",
         "liberusoftware/two-factor-authentication-filament": "^1.0",
         "liberusoftware/two-factor-authentication-livewire": "^1.0",
+        "liberusoftware/users-roles": "^1.0",
         "liberusoftware/webhooks": "^1.0",
         "liberusoftware/webhooks-api": "^1.0",
         "liberusoftware/webhooks-filament": "^1.0",
@@ -1825,7 +1827,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
     },

@@ -3,7 +3,7 @@
     "name": "real-estate-core",
     "display_name": "Real Estate Core",
     "description": "Team-scoped agencies, branches, statuses, terminology, and operational numbering.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "category": "product",
     "provider": "Liberu\\RealEstate\\Core\\RealEstateCoreServiceProvider",
     "requires": {
@@ -19,7 +19,20 @@
         "liberusoftware/real-estate-core-filament": "^1.0",
         "liberusoftware/real-estate-core-livewire": "^1.0"
     },
-    "capabilities": ["real-estate.core"],
+    "capabilities": [
+        "real-estate.core"
+    ],
     "default_enabled": true,
-    "features": ["Agencies", "Branches", "Teams", "Territories", "Terminology", "Statuses", "Numbering", "Audit", "Communications", "Calendar"]
+    "features": [
+        "Agencies",
+        "Branches",
+        "Teams",
+        "Territories",
+        "Terminology",
+        "Statuses",
+        "Numbering",
+        "Audit",
+        "Communications",
+        "Calendar"
+    ]
 }

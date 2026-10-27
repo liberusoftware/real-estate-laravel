@@ -2,7 +2,7 @@
     "name": "liberusoftware/real-estate-core",
     "description": "Provider-neutral real-estate agencies, branches, and operational numbering.",
     "type": "liberu-module",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "require": {
         "php": "^8.5",
@@ -11,10 +11,30 @@
         "liberusoftware/module-manager": "^1.0",
         "liberusoftware/organizations-teams": "^1.0"
     },
-    "autoload": {"psr-4": {"Liberu\\RealEstate\\Core\\": "src/"}},
-    "autoload-dev": {"psr-4": {"Liberu\\RealEstate\\Core\\Tests\\": "tests/"}},
-    "extra": {"liberu": {"name": "real-estate-core"}},
-    "require-dev": {"pestphp/pest": "^5.3.3"},
-    "scripts": {"test": "pest"},
-    "config": {"allow-plugins": {"pestphp/pest-plugin": true}}
+    "autoload": {
+        "psr-4": {
+            "Liberu\\RealEstate\\Core\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Liberu\\RealEstate\\Core\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "liberu": {
+            "name": "real-estate-core"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^5.3.3"
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
 }

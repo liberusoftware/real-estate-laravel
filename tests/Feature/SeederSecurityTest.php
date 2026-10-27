@@ -3,10 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
+use Liberu\RealEstate\Application\Database\Seeders\DatabaseSeeder;
 use Tests\TestCase;
 
 class SeederSecurityTest extends TestCase

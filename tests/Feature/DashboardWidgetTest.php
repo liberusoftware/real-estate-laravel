@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-use App\Filament\App\Pages\AccountSetupWizard;
-use App\Filament\App\Widgets\RoleStatsWidget;
-use App\Filament\App\Widgets\RoleWelcomeWidget;
-use App\Filament\Widgets\AdminOverviewWidget;
-use App\Http\Middleware\ApplyTeamIntegrationSettings;
 use App\Models\User;
-use App\Policies\UserPolicy;
-use App\Support\TeamIntegrationSettings;
 use Illuminate\Http\Request;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\RolesPermissions\Models\Permission;
 use Liberu\Foundation\RolesPermissions\Models\Role;
 use Liberu\Foundation\Settings\Services\ScopedSettings;
+use Liberu\Foundation\UsersRoles\Policies\UserPolicy;
+use Liberu\RealEstate\Application\Filament\App\Pages\AccountSetupWizard;
+use Liberu\RealEstate\Application\Filament\App\Widgets\RoleStatsWidget;
+use Liberu\RealEstate\Application\Filament\App\Widgets\RoleWelcomeWidget;
+use Liberu\RealEstate\Application\Filament\Widgets\AdminOverviewWidget;
+use Liberu\RealEstate\Application\Http\Middleware\ApplyTeamIntegrationSettings;
+use Liberu\RealEstate\Application\Support\TeamIntegrationSettings;
 use Liberu\RealEstate\Properties\Models\Property;
 use Livewire\Livewire;
 use Symfony\Component\HttpFoundation\Response;

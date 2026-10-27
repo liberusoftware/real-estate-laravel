@@ -1,12 +1,12 @@
 <?php
 
 use App\Models\User;
-use Database\Seeders\RolesSeeder;
-use Database\Seeders\TeamSeeder;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\RolesPermissions\Models\Role;
+use Liberu\RealEstate\Application\Database\Seeders\RolesSeeder;
+use Liberu\RealEstate\Application\Database\Seeders\TeamSeeder;
 
 use function Pest\Laravel\seed;
 

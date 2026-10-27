@@ -2,27 +2,4 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-
-class DatabaseSeeder extends Seeder
-{
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
-    {
-        $this->call([
-            TeamSeeder::class,
-            TerritorySeeder::class,
-            RolesSeeder::class,
-            RealEstateRolesSeeder::class,
-            SignupRolesSeeder::class,
-            UserSeeder::class,
-            PropertySeeder::class,
-        ]);
-
-    }
-}
+class DatabaseSeeder extends \Liberu\RealEstate\Application\Database\Seeders\DatabaseSeeder {}

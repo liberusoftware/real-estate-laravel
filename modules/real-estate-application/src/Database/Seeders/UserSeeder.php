@@ -1,0 +1,58 @@
+<?php
+
+namespace Liberu\RealEstate\Application\Database\Seeders;
+
+use BezhanSalleh\FilamentShield\Support\Utils;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Liberu\Foundation\Organizations\Models\Team;
+use Liberu\Foundation\RolesPermissions\Models\Role;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $adminPassword = (string) (config('app.seed_admin_password') ?: Str::random(64));
+
+        $adminUser = (config('auth.providers.users.model'))::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin User',
+                'password' => Hash::make($adminPassword),
+                'email_verified_at' => now(),
+            ],
+        );
+
+        $team = Team::firstOrFail();
+
+        // TeamSeeder runs first and may have created a throwaway owner to satisfy
+        // the team's user_id. Hand ownership to the admin and drop that placeholder.
+        $placeholderOwnerId = $team->getAttribute('user_id');
+        $team->forceFill(['user_id' => $adminUser->id])->save();
+
+        $adminUser->teams()->syncWithoutDetaching([$team->id]);
+        $adminUser->forceFill(['current_team_id' => $team->id])->save();
+
+        if ($placeholderOwnerId !== null && $placeholderOwnerId !== $adminUser->id) {
+            (config('auth.providers.users.model'))::where('id', $placeholderOwnerId)
+                ->where('email', 'owner@example.com')
+                ->whereDoesntHave('ownedTeams')
+                ->delete();
+        }
+
+        // Assign the role in the team's permission context (team-scoped roles).
+        if (Utils::isTenancyEnabled()) {
+            setPermissionsTeamId($team->id);
+        }
+        $role = Role::where('name', 'super_admin')->firstOrFail();
+        $adminUser->assignRole($role);
+
+        if (app()->environment('local') && $adminUser->wasRecentlyCreated && blank(config('app.seed_admin_password'))) {
+            $this->command?->info("Admin password: {$adminPassword}");
+        }
+    }
+}

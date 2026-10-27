@@ -1,12 +1,12 @@
 <?php
 
-use App\Filament\App\Pages\AccountSetupWizard;
 use App\Models\User;
-use App\Support\TeamIntegrationSettings;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\Settings\Services\ScopedSettings;
+use Liberu\RealEstate\Application\Filament\App\Pages\AccountSetupWizard;
+use Liberu\RealEstate\Application\Support\TeamIntegrationSettings;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);

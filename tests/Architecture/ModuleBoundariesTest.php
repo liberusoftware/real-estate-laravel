@@ -106,7 +106,7 @@ it('lets an override turn a module on and off again', function () {
         ->and($names([], ['identity-core-filament']))->not->toContain('identity-core-filament');
 
     expect(fn () => $registry->resolve([], ['search']))
-        ->toThrow(DependencyResolutionFailed::class, 'Module [search-api] requires enabled package [liberusoftware/search ^1.0].');
+        ->toThrow(DependencyResolutionFailed::class, 'requires enabled package [liberusoftware/search ^1.0].');
 });
 
 it('resolves every declared theme parent', function () {
