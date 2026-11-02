@@ -25,7 +25,10 @@
             "url": "modules/*",
             "options": {
                 "symlink": false
-            }
+            },
+            "exclude": [
+                "liberusoftware/tenancy"
+            ]
         },
         {
             "type": "path",
@@ -1558,7 +1561,10 @@
                     "liberusoftware/real-estate-leads": "1.0.0",
                     "liberusoftware/filament-clusters-contracts": "1.0.0"
                 }
-            }
+            },
+            "exclude": [
+                "liberusoftware/tenancy"
+            ]
         },
         {
             "type": "path",
@@ -1779,6 +1785,7 @@
         "liberusoftware/settings-api": "^1.0",
         "liberusoftware/settings-filament": "^1.0",
         "liberusoftware/settings-livewire": "^1.0",
+        "liberusoftware/tenancy": "^1.0",
         "liberusoftware/theme-base": "^2.0",
         "liberusoftware/theme-clear-signal": "^1.0",
         "liberusoftware/theme-dark": "^1.0",
