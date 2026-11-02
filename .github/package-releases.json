@@ -1598,5 +1598,13 @@
     "source_signature": "d2ac1b2fadc00440cb5c7fa984adf68767e6f92d4bf0c1ac8ecfe3e3cf4c116a",
     "source_tree": "0069a1bc4e68251a16cfe6f614ecb62e0adc4990",
     "version": "1.1.1"
+  },
+  "liberusoftware/webhooks-livewire": {
+    "path": "modules/webhooks-livewire",
+    "reference": "3d36994165e0edec89113e20ecf75f071bbb6f3d",
+    "repository": "https://github.com/liberusoftware/module-webhooks-livewire",
+    "source_signature": "4f076fdbee692e27a4dd089baee49062ae362d4d15a9e9e06a24b8a8d1fade12",
+    "source_tree": "e7c91f73efdb8ff5a2b7a311adfc9ab346e312ac",
+    "version": "1.1.0"
   }
 }
