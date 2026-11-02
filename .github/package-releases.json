@@ -1191,6 +1191,294 @@
     "source_tree": "0ab55debec63676e89dd96b3c52034cd0cca839d",
     "version": "1.0.1"
   },
+  "liberusoftware/real-estate-sales-progression-livewire": {
+    "path": "modules/real-estate-sales-progression-livewire",
+    "reference": "b3d08084d20cf8889fecb3f6f0c1d19c2e588f40",
+    "repository": "https://github.com/liberusoftware/module-real-estate-sales-progression-livewire",
+    "source_signature": "37ef97a89485f25e4d8ce8a60172eff35a00254c23ac3f789434660b627c5fd8",
+    "source_tree": "a9f77e8ddde63fbba80703cbdef567075119e152",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-valuations": {
+    "path": "modules/real-estate-valuations",
+    "reference": "ac71f09565e9c330a19de941b5f4e5b2ac70421a",
+    "repository": "https://github.com/liberusoftware/module-real-estate-valuations",
+    "source_signature": "d40a12aa996a09eec25d5fd3cc33b40868a2b38413b10e2d9d49d851164c8c6b",
+    "source_tree": "a54b54b321701403e5d697e740a0db71cb84d3ca",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-valuations-api": {
+    "path": "modules/real-estate-valuations-api",
+    "reference": "20ec0a844e3ed6a8af1f8eb51b07dc5e9f5e585d",
+    "repository": "https://github.com/liberusoftware/module-real-estate-valuations-api",
+    "source_signature": "8ae46d8f6ef2a4e0b6844bf758ad918b3c9266bafb317147d243e5c6707be43d",
+    "source_tree": "cb3f996224ca8ebd89718e1b446f8f82e97d1cad",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-valuations-filament": {
+    "path": "modules/real-estate-valuations-filament",
+    "reference": "6b6b265bae047e3d518dbe1caca811fbfc05b18f",
+    "repository": "https://github.com/liberusoftware/module-real-estate-valuations-filament",
+    "source_signature": "ce782f81e74e502d4d120ed3e1e4e169b5705d70a6338f2f6540f0f316de43ea",
+    "source_tree": "b1e2549f8cd0ec80e3c92751d978c6e3368fa2c9",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-valuations-livewire": {
+    "path": "modules/real-estate-valuations-livewire",
+    "reference": "2ba08b91b242ac3483cbe96463c4f8b6f64e9980",
+    "repository": "https://github.com/liberusoftware/module-real-estate-valuations-livewire",
+    "source_signature": "474b7bee3bd33cee8279879349ac36b93de443310805246122b6fdf79ade6f33",
+    "source_tree": "f0e4a244eea0434604735fc332ee443c3d7f5145",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-viewings": {
+    "path": "modules/real-estate-viewings",
+    "reference": "c057735290688178255774a93bdd68bc7f294cdd",
+    "repository": "https://github.com/liberusoftware/module-real-estate-viewings",
+    "source_signature": "6614df0344cdf007e92c39d8a606abe085d4b8d48dbf3dc77e79c596e9003064",
+    "source_tree": "575c69d566ab97b48c2f3b19555e7a412d2a7259",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-viewings-api": {
+    "path": "modules/real-estate-viewings-api",
+    "reference": "a492df20d81010aba5a976a7af2b8f3a9d7bf646",
+    "repository": "https://github.com/liberusoftware/module-real-estate-viewings-api",
+    "source_signature": "e3c95c0b8f36c158017233bd1b1047f627e97b69acf522431822eb69a9dfd7eb",
+    "source_tree": "ceb6efd8c24d79ed4d4caab94fd4a3c3bb59bb8c",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-viewings-filament": {
+    "path": "modules/real-estate-viewings-filament",
+    "reference": "9f9916b5665836ee6e2dd7aba9b6af3d25732f7c",
+    "repository": "https://github.com/liberusoftware/module-real-estate-viewings-filament",
+    "source_signature": "7634fc10c6e6eae9ce5a3515537ea983dff0f699f075e4f847d44d4b4b07d1a0",
+    "source_tree": "c002b3d433d844a3f305495fe64fde5f521e0177",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-viewings-livewire": {
+    "path": "modules/real-estate-viewings-livewire",
+    "reference": "ac7a275ea80297c4d44ed49c01f1056ec2c6e29d",
+    "repository": "https://github.com/liberusoftware/module-real-estate-viewings-livewire",
+    "source_signature": "23e4e1bda51debc9b76a32b84b81b6ae71a2c2c81cb93ca99eca2e4dcc1e0f5d",
+    "source_tree": "ae0baa99402e01e7e59feff69f1211612f3a8404",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-vr-design": {
+    "path": "modules/real-estate-vr-design",
+    "reference": "61a5a5a5114f5064560776d07b0b9b8ede9ddca8",
+    "repository": "https://github.com/liberusoftware/module-real-estate-vr-design",
+    "source_signature": "f938afea5376f79c69dce363a7e4c88a5eeaa6d132f7359699de9773d8c57422",
+    "source_tree": "541154540b9024674407165f524840cb4c595991",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-vr-design-api": {
+    "path": "modules/real-estate-vr-design-api",
+    "reference": "42d72a8e01bba4f232d2787d489e09725bda5959",
+    "repository": "https://github.com/liberusoftware/module-real-estate-vr-design-api",
+    "source_signature": "04ad484da37ad4df7633e91210aa1b468bd9314023181d73b923260768833c8c",
+    "source_tree": "2d9765dadbda11297e2776b9a0e12e1a8322108f",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-vr-design-livewire": {
+    "path": "modules/real-estate-vr-design-livewire",
+    "reference": "6648334843da597074f28b9b0df309280a7022f7",
+    "repository": "https://github.com/liberusoftware/module-real-estate-vr-design-livewire",
+    "source_signature": "b707c8d040977dd09d08c8ead8986004c1a4c96b174930e924df274c79f553e4",
+    "source_tree": "ae0004a1cb1936c0a0538003eb464b0ebe602097",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-zoopla": {
+    "path": "modules/real-estate-zoopla",
+    "reference": "17c385f763428365fdf924a318b17ccbd03e5e24",
+    "repository": "https://github.com/liberusoftware/module-real-estate-zoopla",
+    "source_signature": "b49423ca83dca221c10d94a077d519904369f37c694679eee7324045f280d041",
+    "source_tree": "f06749794566d9a72ea2f501a3f3a75b641ba41e",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-zoopla-api": {
+    "path": "modules/real-estate-zoopla-api",
+    "reference": "b38680b2dda2e801b620b282cd3d6011baf8c0ad",
+    "repository": "https://github.com/liberusoftware/module-real-estate-zoopla-api",
+    "source_signature": "5ef369f7799e8a7c668ca262d01efa90cbcfbb8009144aa500466d76d6b5c1fc",
+    "source_tree": "09f51cdc71d19843f4b1e4762338f75f60170e78",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-zoopla-filament": {
+    "path": "modules/real-estate-zoopla-filament",
+    "reference": "4c667ef631b063c126efcf4d157563ba52023b9c",
+    "repository": "https://github.com/liberusoftware/module-real-estate-zoopla-filament",
+    "source_signature": "16d2a0cff6e0a10585bb9e97ef7c11a9220a00b6b172777374959de265fc8a22",
+    "source_tree": "1462e19d8dd7b46dcef581aa4694999224397eca",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-zoopla-livewire": {
+    "path": "modules/real-estate-zoopla-livewire",
+    "reference": "66205d1f1c2ffbf3ca9dde80ee88dce5a6630937",
+    "repository": "https://github.com/liberusoftware/module-real-estate-zoopla-livewire",
+    "source_signature": "73251af6ce35a72ae7b6de50b4674cb3dfb8de8ff6337ccdfe1b9cdabe675bd4",
+    "source_tree": "22b3d4ee973c875b10b2b3faabbe5cee427ea640",
+    "version": "1.0.1"
+  },
+  "liberusoftware/roles-permissions": {
+    "path": "modules/roles-permissions",
+    "reference": "e374dee8ffb858dca3a0b1325d2b61fcbb798b6b",
+    "repository": "https://github.com/liberusoftware/module-roles-permissions",
+    "source_signature": "a5c177d76ecf81024e1ee98cd8622b5982c7934d7242abfe26cd2e072e3f6c50",
+    "source_tree": "45485099e0fe13b8174606a918e2c596c83c4959",
+    "version": "1.6.0"
+  },
+  "liberusoftware/roles-permissions-api": {
+    "path": "modules/roles-permissions-api",
+    "reference": "2a54e77c0690e65c3d1ffcf2aa88b2c9181e0577",
+    "repository": "https://github.com/liberusoftware/module-roles-permissions-api",
+    "source_signature": "15a568463518268cad49f0944b451f676c0ecd3b838436bf754f109f8dc9c675",
+    "source_tree": "ccbff9995d7af73d2416b077bef8ba28f32925b4",
+    "version": "1.1.0"
+  },
+  "liberusoftware/roles-permissions-filament": {
+    "path": "modules/roles-permissions-filament",
+    "reference": "838d8b31f6540de77263657e7afbd823b7351137",
+    "repository": "https://github.com/liberusoftware/module-roles-permissions-filament",
+    "source_signature": "0c0ce0c7069ffb3edac28d8c8736c39a7e1f734122a5cc44c2d3bd3cd8d78dc0",
+    "source_tree": "09b488c33443d13b9c18572d1d125f1193700d97",
+    "version": "1.6.1"
+  },
+  "liberusoftware/roles-permissions-livewire": {
+    "path": "modules/roles-permissions-livewire",
+    "reference": "c627ec00448694bfd32fc33ce6bb257f42a6578b",
+    "repository": "https://github.com/liberusoftware/module-roles-permissions-livewire",
+    "source_signature": "7970f46fd8d5556b21c7f467e7a2de3522b07c749cb59c6e4bc5aaa787d2f169",
+    "source_tree": "978e3c0e6ac1ef980bb3d780218e7fa7be136f5d",
+    "version": "1.1.0"
+  },
+  "liberusoftware/scheduler-queues": {
+    "path": "modules/scheduler-queues",
+    "reference": "be463dea886d4303f840beb13ad0e98032f52940",
+    "repository": "https://github.com/liberusoftware/module-scheduler-queues",
+    "source_signature": "da1a6c7bc18ed24e9e26ff79a56fa26ff6cece5ba89db52d5680470476d8cdc0",
+    "source_tree": "8c01aa181baeb871a079425623cc75b94f87ec57",
+    "version": "1.5.1"
+  },
+  "liberusoftware/scheduler-queues-api": {
+    "path": "modules/scheduler-queues-api",
+    "reference": "697cad9a1cab19501f2eb1197f3f4026c54e8f07",
+    "repository": "https://github.com/liberusoftware/module-scheduler-queues-api",
+    "source_signature": "095299d2a6b76f78885c5f77146dbb3e9b414030e276ab93602a85c3c5918931",
+    "source_tree": "9ecd22a9c9c4f62436b77245b1098d156c33b279",
+    "version": "1.1.0"
+  },
+  "liberusoftware/scheduler-queues-filament": {
+    "path": "modules/scheduler-queues-filament",
+    "reference": "10f1cf42edfc8584b0b5a50e38bf92f5324b6af4",
+    "repository": "https://github.com/liberusoftware/module-scheduler-queues-filament",
+    "source_signature": "11632304ed117ecdad1cb0354609f2d73e21e06308e237a8ba260c2bded86b78",
+    "source_tree": "0a54117e7124ad1caea8e0a80e0ba38ed094c118",
+    "version": "1.1.1"
+  },
+  "liberusoftware/scheduler-queues-livewire": {
+    "path": "modules/scheduler-queues-livewire",
+    "reference": "3af253a8d5f9e7222a0c3b50c8c6f7cbd5ffff3e",
+    "repository": "https://github.com/liberusoftware/module-scheduler-queues-livewire",
+    "source_signature": "575e38191ce8e3245e5c1d97e495fede55ea8dd82250b63226d2eb6950bfb965",
+    "source_tree": "9f07c1dfaebe2a62e1fbc6790a4de1033d280b81",
+    "version": "1.1.0"
+  },
+  "liberusoftware/search": {
+    "path": "modules/search",
+    "reference": "0a4b78e4c3a44f65f20f8d7a866fb579a9994940",
+    "repository": "https://github.com/liberusoftware/module-search",
+    "source_signature": "834402677c8000f66fa0dcb5b9c054b8f6d23c29d2d732fa8998ac7cc22202d2",
+    "source_tree": "3958515606a05691db77195f646d41cee1a1c251",
+    "version": "1.8.2"
+  },
+  "liberusoftware/search-api": {
+    "path": "modules/search-api",
+    "reference": "de4d387b081246e22aeb47149b412355c27a8c55",
+    "repository": "https://github.com/liberusoftware/module-search-api",
+    "source_signature": "1fb715fcdd3e32fe4beddd7a39977dbc79c65ea96e2dc181c85774282286da51",
+    "source_tree": "fb8f80908fcabaf4a841926759c1439dcde99450",
+    "version": "1.6.1"
+  },
+  "liberusoftware/search-filament": {
+    "path": "modules/search-filament",
+    "reference": "49379322aa8ba8d0e49ed088883638018fb41041",
+    "repository": "https://github.com/liberusoftware/module-search-filament",
+    "source_signature": "bd1b2d1089e51324d3be7f9b9b7a77c77176532c18b4ac6533e4d47e4731e9b6",
+    "source_tree": "3ad0da1c3710aeb7d12b18b9a61a313756298479",
+    "version": "1.1.1"
+  },
+  "liberusoftware/search-livewire": {
+    "path": "modules/search-livewire",
+    "reference": "4466ddb28c5cd9e026f2b28c2d69c26ae3c3a9ea",
+    "repository": "https://github.com/liberusoftware/module-search-livewire",
+    "source_signature": "9c57094232447eec2fbbcd3e8259633c11ee0057d19b11a438c599975964181f",
+    "source_tree": "b319cfb69cab9f1dfdd835e2db511bbb37f42ec4",
+    "version": "1.1.0"
+  },
+  "liberusoftware/sessions-devices": {
+    "path": "modules/sessions-devices",
+    "reference": "50174438d8f823f16390ca06093f67967ccb5c1d",
+    "repository": "https://github.com/liberusoftware/module-sessions-devices",
+    "source_signature": "aaa15409777dd8920ad9b02b13f2f7e6899581f4adaefd6c18e6258c30d099f0",
+    "source_tree": "86dff081059ee1edb16ebc24d6644f11a2ee2a63",
+    "version": "1.5.1"
+  },
+  "liberusoftware/sessions-devices-api": {
+    "path": "modules/sessions-devices-api",
+    "reference": "4d09bbbfe4d84d3997e177ab49e52955fdae64a9",
+    "repository": "https://github.com/liberusoftware/module-sessions-devices-api",
+    "source_signature": "a9646ac8fa2ea166b89dc8bc2b9ff85b9cb9ef1cbd214d742fb855ddbf2af413",
+    "source_tree": "cc208832b24d1da1a6880ab7d45d5ababea9f646",
+    "version": "1.1.0"
+  },
+  "liberusoftware/sessions-devices-filament": {
+    "path": "modules/sessions-devices-filament",
+    "reference": "b7bde4e18d314a52eeb479243d6ec47f8e82f1a9",
+    "repository": "https://github.com/liberusoftware/module-sessions-devices-filament",
+    "source_signature": "a7d0bda8ac359f373cf174774bfed2f777ed6c16d469e57d3aa94c68ec46647b",
+    "source_tree": "e81276d76048b825dbe5e1aec178815275ee3499",
+    "version": "1.6.1"
+  },
+  "liberusoftware/sessions-devices-livewire": {
+    "path": "modules/sessions-devices-livewire",
+    "reference": "967460549206420657a1916ac03940de66f8d05e",
+    "repository": "https://github.com/liberusoftware/module-sessions-devices-livewire",
+    "source_signature": "95a92c73dd5895b98a9d8ca15c31a3e72050608eccee51041dfa9c210a7c48ce",
+    "source_tree": "40cac249c5033bb312648e69310f1a1e6e3531bd",
+    "version": "1.1.0"
+  },
+  "liberusoftware/settings": {
+    "path": "modules/settings",
+    "reference": "c5abc43443553338abd4c7601f9f9f8b14a0647c",
+    "repository": "https://github.com/liberusoftware/module-settings",
+    "source_signature": "555b6e07e3dd5f42ad30dc35724ac6ecde704840d5f1a690b445a188defaacd7",
+    "source_tree": "468fb1d8d299b9e67a72285d05f0273526efb664",
+    "version": "1.5.2"
+  },
+  "liberusoftware/settings-api": {
+    "path": "modules/settings-api",
+    "reference": "0ec54d1143608098c77337920363fc8693a353d8",
+    "repository": "https://github.com/liberusoftware/module-settings-api",
+    "source_signature": "3909592c2c2bb425af6b37399f5a044b7d1ad3c8040bbc219349998d1e768631",
+    "source_tree": "5bb468bee6f0353740cf61da223b47ff95676825",
+    "version": "1.1.0"
+  },
+  "liberusoftware/settings-filament": {
+    "path": "modules/settings-filament",
+    "reference": "994889776978b47442df40930e50ce40ec3e0a99",
+    "repository": "https://github.com/liberusoftware/module-settings-filament",
+    "source_signature": "80bf5363bcf2f4eb630e4329c0b1b0d52aac974226eb962de96e3505c378ca0e",
+    "source_tree": "cf625d91e43402d056753e289afc406580a992c1",
+    "version": "1.6.2"
+  },
+  "liberusoftware/settings-livewire": {
+    "path": "modules/settings-livewire",
+    "reference": "9175b5d42549b14c527149ff35a460017b89bf6a",
+    "repository": "https://github.com/liberusoftware/module-settings-livewire",
+    "source_signature": "db81eb445f45305f04f5540059bce83d5466c969fe41d4cbc9b3654a9d0c7272",
+    "source_tree": "45cff815d82c25c18be6a5959c8ac87cba3fbe65",
+    "version": "1.1.0"
+  },
   "liberusoftware/tenancy": {
     "path": "modules/tenancy",
     "reference": "32cdb9096690f29205255f2eafee4b2b2847fcaa",
@@ -1198,5 +1486,117 @@
     "source_signature": "ee0fe468adef9cab22c285b554e35807cceb4a6e2e0dcf81a23a69ed39dcfe74",
     "source_tree": "c9c9a1bb887b98e67db718633f7c50f40638bb54",
     "version": "1.0.1"
+  },
+  "liberusoftware/theme-base": {
+    "path": "themes/base",
+    "reference": "eee9837aa9b87dd99767e63f6890cd393f3aed2b",
+    "repository": "https://github.com/liberusoftware/theme-base",
+    "source_signature": "030cffc5b41c1e95eab72166d310cf53e279d2a485a001e1fa2217131a889e67",
+    "source_tree": "af88bbfa36593a4fbed8284a61d98f30658868a4",
+    "version": "2.3.0"
+  },
+  "liberusoftware/theme-clear-signal": {
+    "path": "themes/clear-signal",
+    "reference": "500c9b1f8a22e1d64abf2221687fbd5de6e27c76",
+    "repository": "https://github.com/liberusoftware/theme-clear-signal",
+    "source_signature": "ab6c677638897cd78fe7f63c07cad59c284b670aa767a2cfca0e4ce84422ce3f",
+    "source_tree": "18be6aa85fb5616e94c6b177d7f3f217c242eae9",
+    "version": "1.9.0"
+  },
+  "liberusoftware/theme-dark": {
+    "path": "themes/dark",
+    "reference": "abc6fa5c8a815b64df3b37a8eecf55cb6bd4c5ee",
+    "repository": "https://github.com/liberusoftware/theme-dark",
+    "source_signature": "d1c433d600b3105e715b6b143d43cc26fef00231ae179e21b009573b05defe13",
+    "source_tree": "9f6068f5ca8da1331ceb882ec20fb7b434fefc19",
+    "version": "1.10.0"
+  },
+  "liberusoftware/theme-default": {
+    "path": "themes/default",
+    "reference": "3e47f71911183be347d61290dd27d0664d3975e3",
+    "repository": "https://github.com/liberusoftware/theme-default",
+    "source_signature": "fbccf7eaa62e28f183f73673bb15768c2f15d973110beddc076401d57b3c3a98",
+    "source_tree": "cad725a0f1c72e1f91dac479817913a4f258971d",
+    "version": "1.10.1"
+  },
+  "liberusoftware/theme-real-estate-default": {
+    "path": "themes/real-estate-default",
+    "reference": "1cef0d7c958a3676fe92b4af2d8eaf9dcac90948",
+    "repository": "https://github.com/liberusoftware/theme-real-estate-default",
+    "source_signature": "04b482da02a3588a3f8da43858b5d2ff5ab17ee5eed9912cab12cd96225e2da3",
+    "source_tree": "6a3e5f72c37a5cf7ba2cd60da55ed7ec033cd13f",
+    "version": "1.0.1"
+  },
+  "liberusoftware/theme-support": {
+    "path": "modules/theme-support",
+    "reference": "2dfc10e87a6eba4dee2356e2742535a37af4b6ac",
+    "repository": "https://github.com/liberusoftware/module-theme-support",
+    "source_signature": "e70201b70ea4489b4a7dc975c75b2e6f7e2a783a54f4045dafde9f7b39d08ec7",
+    "source_tree": "7f0357f85009b2575a5bf250a74bd9e25d258e42",
+    "version": "1.8.1"
+  },
+  "liberusoftware/theme-support-livewire": {
+    "path": "modules/theme-support-livewire",
+    "reference": "808a95a465b2702923921f07b21a5cb9b0982663",
+    "repository": "https://github.com/liberusoftware/module-theme-support-livewire",
+    "source_signature": "8d037f1a0027ab325b948ff2327e59380e8d910efeb5e435cb5a2b62bba86f8f",
+    "source_tree": "ec54af6eb72a681166cd41f4bb7ca88ebf1c2612",
+    "version": "1.6.1"
+  },
+  "liberusoftware/two-factor-authentication": {
+    "path": "modules/two-factor-authentication",
+    "reference": "3ca80cbc17980d9749faf765c0db847ba43c4d29",
+    "repository": "https://github.com/liberusoftware/module-two-factor-authentication",
+    "source_signature": "bdc7d5e730187b97a8d079b0a4dcf690e113a9c7d76149e48aeabe9066abf199",
+    "source_tree": "21c52926225fb1ae0bfffe3ef3dd15535a9fecb2",
+    "version": "1.4.6"
+  },
+  "liberusoftware/two-factor-authentication-api": {
+    "path": "modules/two-factor-authentication-api",
+    "reference": "899e14b098bf82af7fe020a57902523581fcd63d",
+    "repository": "https://github.com/liberusoftware/module-two-factor-authentication-api",
+    "source_signature": "a156d25c647d6d46d9c9b0b244f7a7e9ef84a036bb18653a1a770b2b9aa70ed1",
+    "source_tree": "a4b67000e535d679e68a2ca822d83ed1b70a2a92",
+    "version": "1.1.0"
+  },
+  "liberusoftware/two-factor-authentication-filament": {
+    "path": "modules/two-factor-authentication-filament",
+    "reference": "aeaad7564c86fb165b34bc08adf5c686df382225",
+    "repository": "https://github.com/liberusoftware/module-two-factor-authentication-filament",
+    "source_signature": "7648437cacb7e8486bb39f8cba5428d780d46cb743df022b986c02b29cd3f548",
+    "source_tree": "8c914fb7cef255477bef2d41873f2d9544727aee",
+    "version": "1.1.1"
+  },
+  "liberusoftware/two-factor-authentication-livewire": {
+    "path": "modules/two-factor-authentication-livewire",
+    "reference": "5e998edd200193decb0dc9c37a89ab5fe0b1743a",
+    "repository": "https://github.com/liberusoftware/module-two-factor-authentication-livewire",
+    "source_signature": "8e00af74ee18ec82f982abe970717f355c17b287e476208eaf5135bb644f7906",
+    "source_tree": "e3b5d3359ab7a77c2b0b5b89be719407f37fe800",
+    "version": "1.1.0"
+  },
+  "liberusoftware/users-roles": {
+    "path": "modules/users-roles",
+    "reference": "4aa49df470411bdea1f54abd1a6e76c6173b68d9",
+    "repository": "https://github.com/liberusoftware/module-users-roles",
+    "source_signature": "96033d42d8fc17173e90e6666fb0019d2b232b7ff059b4f520990da2fd7047bc",
+    "source_tree": "4bae1d5190dfbfabb38b1427eeb20930b66738c2",
+    "version": "1.0.3"
+  },
+  "liberusoftware/webhooks": {
+    "path": "modules/webhooks",
+    "reference": "840c0cdc9064abe3a2a61700d12901a60e585ae3",
+    "repository": "https://github.com/liberusoftware/module-webhooks",
+    "source_signature": "a745e5565822b3b055cac838750c61ce0883a5983fcbe531358a3a5a6e59946d",
+    "source_tree": "ea3d2986ba904f6b090f0bab790de3cf91886a68",
+    "version": "1.5.1"
+  },
+  "liberusoftware/webhooks-filament": {
+    "path": "modules/webhooks-filament",
+    "reference": "ffd81b0f03095f3ca81af4567373acb9e7cd2394",
+    "repository": "https://github.com/liberusoftware/module-webhooks-filament",
+    "source_signature": "d2ac1b2fadc00440cb5c7fa984adf68767e6f92d4bf0c1ac8ecfe3e3cf4c116a",
+    "source_tree": "0069a1bc4e68251a16cfe6f614ecb62e0adc4990",
+    "version": "1.1.1"
   }
 }
