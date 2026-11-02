@@ -791,6 +791,406 @@
     "source_tree": "fc5e30938a80ff00aca888e4f700700247f4a28b",
     "version": "1.0.0"
   },
+  "liberusoftware/real-estate-lettings-api": {
+    "path": "modules/real-estate-lettings-api",
+    "reference": "b36afed1710ecb7ed887c8790c4f9f84c920a953",
+    "repository": "https://github.com/liberusoftware/module-real-estate-lettings-api",
+    "source_signature": "011752287203790d34fea6a97932ced18affc8d15c392f87d5662d6a4be8ff8d",
+    "source_tree": "b3ad1bbca23e91fe66e864435928b2aafdb20716",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-lettings-filament": {
+    "path": "modules/real-estate-lettings-filament",
+    "reference": "197e7a0d1d0ce8deeeccb8b590ae181dec03cfd1",
+    "repository": "https://github.com/liberusoftware/module-real-estate-lettings-filament",
+    "source_signature": "ee13c89ed6064090029907502e028ad2d7d8885247dd2fa19c2b623090953951",
+    "source_tree": "f6602f35446c92783dbe5d48e779099396d54327",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-lettings-livewire": {
+    "path": "modules/real-estate-lettings-livewire",
+    "reference": "3ebce9ffcbce4587af68b4f9028b09a52aaaff3d",
+    "repository": "https://github.com/liberusoftware/module-real-estate-lettings-livewire",
+    "source_signature": "eabd7d2c080aa2c52bf0c30e83e587eadd2ea6ec70702018b722f64d8328646c",
+    "source_tree": "74b01ec9c8aeb3fd6fef0fc92d0fbaa313e23a3c",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-listings": {
+    "path": "modules/real-estate-listings",
+    "reference": "d74bae74f47ccbe52beca58454100c945cc3fc8b",
+    "repository": "https://github.com/liberusoftware/module-real-estate-listings",
+    "source_signature": "54f0ee5d3c8f1bd33f4c524c3a138bc4cc29cd9c7b88d6463f4db6dc83333446",
+    "source_tree": "0d3d236a3c128c14e8eceb5173086ebca49223ab",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-listings-api": {
+    "path": "modules/real-estate-listings-api",
+    "reference": "2a22cead109a8842b4ab7bc64d775f777709fbc6",
+    "repository": "https://github.com/liberusoftware/module-real-estate-listings-api",
+    "source_signature": "4957a34bd3c0284a31ad8492a9149f5583c4439a7a00984abc8472235cd564c6",
+    "source_tree": "b6c7923f9eeeafabf0fda0ae14b0aec32e523247",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-listings-filament": {
+    "path": "modules/real-estate-listings-filament",
+    "reference": "cc5329f5822af1c740d55fe92dc33711a93d33cb",
+    "repository": "https://github.com/liberusoftware/module-real-estate-listings-filament",
+    "source_signature": "ee1f37a9884f05b1e5fc2bfd704370436545f170b0deb1423382e03f6b81fa99",
+    "source_tree": "43a0f6bbb1666479f3af8e5c8a41ec99ee6a6496",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-listings-livewire": {
+    "path": "modules/real-estate-listings-livewire",
+    "reference": "24faa1a4309f70f7bcef1173aecdc260d0fbf045",
+    "repository": "https://github.com/liberusoftware/module-real-estate-listings-livewire",
+    "source_signature": "6b71ecb02ba69f45b50896d67d49fa095e4986dba9dacdeb473c7f9bc09a3ad5",
+    "source_tree": "233d1cd30e8529af9ca0d8ba8faac17d3f8426e6",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-marketing": {
+    "path": "modules/real-estate-marketing",
+    "reference": "3c310ca5bebf1d302bb79b58d3e11d5f1d9bb674",
+    "repository": "https://github.com/liberusoftware/module-real-estate-marketing",
+    "source_signature": "6dce3c83936680be512c509d4b3e1b9e117c23da7c8976381df7bf56fbb4dc4a",
+    "source_tree": "7aa8b8394731a2167b14fd98819cbe1fea68944f",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-marketing-api": {
+    "path": "modules/real-estate-marketing-api",
+    "reference": "21766ac5660e073bdee45721f2cc8cbf60e36b3b",
+    "repository": "https://github.com/liberusoftware/module-real-estate-marketing-api",
+    "source_signature": "60d724ac92feba618e8bf84c053d090cf29a277990f02f893e092a2cdb8544c4",
+    "source_tree": "44172c2a033d1b876892358550466a9f64f3e099",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-marketing-filament": {
+    "path": "modules/real-estate-marketing-filament",
+    "reference": "4bdd383574c5c04092363677aee9976ddac2cf60",
+    "repository": "https://github.com/liberusoftware/module-real-estate-marketing-filament",
+    "source_signature": "0943e54ae7a0a377a4ba0107c507949d5069111c3bd587b43ec8c46951d95037",
+    "source_tree": "8c9938556c0698447619d2101f961e35bc680021",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-marketing-livewire": {
+    "path": "modules/real-estate-marketing-livewire",
+    "reference": "1c1346c5bc88f4ee8ed9e94257d8bc6ac4f3a21a",
+    "repository": "https://github.com/liberusoftware/module-real-estate-marketing-livewire",
+    "source_signature": "0c05c8ad34d5adbb013337d58846a479eccaefb4e7cb59d0306a6291aa415514",
+    "source_tree": "784a7029b7ad27dbc31bc1e550142de6bf905cb9",
+    "version": "1.0.2"
+  },
+  "liberusoftware/real-estate-matching": {
+    "path": "modules/real-estate-matching",
+    "reference": "973056e6700f0b5f208edab66e063ad97a5a54d2",
+    "repository": "https://github.com/liberusoftware/module-real-estate-matching",
+    "source_signature": "3275f4bf07445689ce9cdad10951d386413fb699464c1b0935e1b196e2e9ac02",
+    "source_tree": "375abb056e8500b25378ee02562f2414a4622b00",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-matching-api": {
+    "path": "modules/real-estate-matching-api",
+    "reference": "cda942f1634aea0d8eb012fc3ab79f846a6880fd",
+    "repository": "https://github.com/liberusoftware/module-real-estate-matching-api",
+    "source_signature": "11ed9034eeb09d430e029fafbed805868134a0f57526e0939f052da589b63517",
+    "source_tree": "c68fdefd085e139e913ed86c0ebb68bb37d4a4b0",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-matching-filament": {
+    "path": "modules/real-estate-matching-filament",
+    "reference": "fb695fd6f122cf945686ecab8dcf20abef39dd93",
+    "repository": "https://github.com/liberusoftware/module-real-estate-matching-filament",
+    "source_signature": "93dd92276a16385137579f8623bbcaef7f03a61066f3324cce58ce07858d700b",
+    "source_tree": "7f3edc7467a7969139936b45d253733ca57838fb",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-matching-livewire": {
+    "path": "modules/real-estate-matching-livewire",
+    "reference": "2d9fc69ecb6eb38bcead7e006fd079bde8f106d2",
+    "repository": "https://github.com/liberusoftware/module-real-estate-matching-livewire",
+    "source_signature": "a954fb238a104aca7de03d8899c9fa00bda25892e3a6ecf83171948ac0008a90",
+    "source_tree": "5b89b111ac88b26709a65bb711e9c9b9b21d5f17",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-media-and-documents": {
+    "path": "modules/real-estate-media-and-documents",
+    "reference": "46acf8f2c3efd287eee1eeda0262c553a76ad966",
+    "repository": "https://github.com/liberusoftware/module-real-estate-media-and-documents",
+    "source_signature": "52ae83daf1307c96affc7e1e051680e7a966143c9d5c1369555c70cde5d5ea9a",
+    "source_tree": "22a1a549582531607fa4d987bc7ab12dbf12229c",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-media-and-documents-api": {
+    "path": "modules/real-estate-media-and-documents-api",
+    "reference": "966e75d389c7ae3d5dc16eddc2bdbafe40d9f7d6",
+    "repository": "https://github.com/liberusoftware/module-real-estate-media-and-documents-api",
+    "source_signature": "adb03a9fff5a749ddb6e65ba05a22649fa5e6d09e969be23f5a33505f4fbaaf3",
+    "source_tree": "e4b4b7118d6d3ed02ea82fe06c78f1bb20e8aadd",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-media-and-documents-filament": {
+    "path": "modules/real-estate-media-and-documents-filament",
+    "reference": "e67504b073b88e28257c2eddfec520fc0055a18b",
+    "repository": "https://github.com/liberusoftware/module-real-estate-media-and-documents-filament",
+    "source_signature": "86606fb251db10a29810905bcc6e7afb2ec8d5cbaa73d0575a5dca65e30ca7da",
+    "source_tree": "984874896bbf6697c5cc4f5080551fbdc181371d",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-media-and-documents-livewire": {
+    "path": "modules/real-estate-media-and-documents-livewire",
+    "reference": "a27e31b4329fba1784397dc28c4392968f9ef6c0",
+    "repository": "https://github.com/liberusoftware/module-real-estate-media-and-documents-livewire",
+    "source_signature": "7c68ba1ef2bb2a0453c1fc925f5c54849b83291f12219babf075619d873dc9fc",
+    "source_tree": "3a44d1767d6f710882090aef23caf5bc85074882",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-offers": {
+    "path": "modules/real-estate-offers",
+    "reference": "42cfbc2493b0b39405725cb61316f8c7d5feb8aa",
+    "repository": "https://github.com/liberusoftware/module-real-estate-offers",
+    "source_signature": "edd7d88ee316988b7840681bf1cfe1be3fa9c59e37821cb31ec3a65bc7545a21",
+    "source_tree": "68c6f656f2254e8a501e856380d1ea42d2c398aa",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-offers-api": {
+    "path": "modules/real-estate-offers-api",
+    "reference": "50dacd77db6187411a15bdd05749d46752d33c02",
+    "repository": "https://github.com/liberusoftware/module-real-estate-offers-api",
+    "source_signature": "501c26c8e7299767e56e1eb30dfdbf8154b2b7bd95d4c7fbee0f0d9c8c3212e9",
+    "source_tree": "527221fc77b8a9b0834cb11cf8c878582274817e",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-offers-filament": {
+    "path": "modules/real-estate-offers-filament",
+    "reference": "a03edaa068902a2a1c25ea0468bbb3aba10e304c",
+    "repository": "https://github.com/liberusoftware/module-real-estate-offers-filament",
+    "source_signature": "8a34945d6dfa0484aa970d544f928955389599d2c26329e971cdf4c58b86e7de",
+    "source_tree": "4996bb23b207803bf8f2fbe34b7acce3058aea5d",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-offers-livewire": {
+    "path": "modules/real-estate-offers-livewire",
+    "reference": "74e03d471b3c139cc9723a9b065272f27754ec2e",
+    "repository": "https://github.com/liberusoftware/module-real-estate-offers-livewire",
+    "source_signature": "412a33d4f9984020aa16be5d53994aecfc58b155c04f6619aa8b5cd366f72137",
+    "source_tree": "9e513569f8c51eaf962af3112aba11af0f3fb5b6",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-onthemarket": {
+    "path": "modules/real-estate-onthemarket",
+    "reference": "ff438cb26331d259a1bfee54beee1ec3417e6a23",
+    "repository": "https://github.com/liberusoftware/module-real-estate-onthemarket",
+    "source_signature": "e503dc6b3fa4e9440f9a1038afaec30f102aa8f85977a9c68f0e13ab82cae559",
+    "source_tree": "9d7ba4a68fdded9f2dcc01923b09439619e60f59",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-onthemarket-api": {
+    "path": "modules/real-estate-onthemarket-api",
+    "reference": "c750d76cd10e6823f6e3d72e364156436691002f",
+    "repository": "https://github.com/liberusoftware/module-real-estate-onthemarket-api",
+    "source_signature": "599f3026d22f8881ad45bcc0b4d22e9d94eb894e26a0da29cd3827dfd373643c",
+    "source_tree": "c32fc151c7d42aae2267c78b3d0462efa4d0894a",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-onthemarket-filament": {
+    "path": "modules/real-estate-onthemarket-filament",
+    "reference": "6b3a73d3c936411bdeb28831d0f03a23f1ef0611",
+    "repository": "https://github.com/liberusoftware/module-real-estate-onthemarket-filament",
+    "source_signature": "61f0d0f472160ebf5134e5de2dbe304c45e260389e65849ffe08ce7e220dc617",
+    "source_tree": "8b4524f80a377ea7ddbf3e6499deecc8575c6e2e",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-onthemarket-livewire": {
+    "path": "modules/real-estate-onthemarket-livewire",
+    "reference": "e862816ce961d6da94c67194d6611a8ecceee34a",
+    "repository": "https://github.com/liberusoftware/module-real-estate-onthemarket-livewire",
+    "source_signature": "791b18a24314ec4836490902eeb17168b5265e583e57a2af49dd72d7756b687c",
+    "source_tree": "89c3e3ab70507f1e7fdd55213d4401d60c40babd",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-parties": {
+    "path": "modules/real-estate-parties",
+    "reference": "a0cff52cbc47988569c6fe0c6516e2034023ec77",
+    "repository": "https://github.com/liberusoftware/module-real-estate-parties",
+    "source_signature": "5163c9739a70cda3a8a2e0ace854f8295788a1b71c575bc088fa49231d62e9fa",
+    "source_tree": "705d303b63071b17d0685a813483194c8b19f3b4",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-parties-api": {
+    "path": "modules/real-estate-parties-api",
+    "reference": "34b9e0dc2ce14edfe34e0477b675cc61265c3927",
+    "repository": "https://github.com/liberusoftware/module-real-estate-parties-api",
+    "source_signature": "31f8b4425bdcd3d2c6ae997b27d5deee5857f27dca05044da37324076ca9bf77",
+    "source_tree": "08f615f67d034a97ad772b6f010fc7d1263709c3",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-parties-filament": {
+    "path": "modules/real-estate-parties-filament",
+    "reference": "db576a63ad9b91aaf6ee5981b344b0a5246396ad",
+    "repository": "https://github.com/liberusoftware/module-real-estate-parties-filament",
+    "source_signature": "0cb1f8e2326cf6c4cf6d98b3d2a89743a8a11236fc3587545d83165a2f66ce9f",
+    "source_tree": "7f16c7497b67132799e18e64c0eafb14555a8802",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-parties-livewire": {
+    "path": "modules/real-estate-parties-livewire",
+    "reference": "4bc6d718c63109310787aab338d16fbc9bc841d7",
+    "repository": "https://github.com/liberusoftware/module-real-estate-parties-livewire",
+    "source_signature": "61cc983b0ca8b8f2ce0472a0f5d49578054dd732d239410754a7d04bea831873",
+    "source_tree": "c94381ae3d7f802a62efe77c48e36806d84063dd",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-portals-reporting": {
+    "path": "modules/real-estate-portals-reporting",
+    "reference": "9ede56c0dfbebe134a0a396d2a97ff9d3e9b8ec7",
+    "repository": "https://github.com/liberusoftware/module-real-estate-portals-reporting",
+    "source_signature": "953449a1c51f4b8df2ab59313564c353d2b917b2343f4dc467955e349898cb30",
+    "source_tree": "5036298410522709c1c20164e21bfda14472991a",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-portals-reporting-api": {
+    "path": "modules/real-estate-portals-reporting-api",
+    "reference": "cca11e706b15fa1481b55306d3f6e46a5aa94c10",
+    "repository": "https://github.com/liberusoftware/module-real-estate-portals-reporting-api",
+    "source_signature": "5978bbe48d47de5c6c16c6029bdeef42ebe995a015a45b5f72835c275e4ca7f5",
+    "source_tree": "61a4c5b8236e19729ce95701320dda70e5af902e",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-portals-reporting-filament": {
+    "path": "modules/real-estate-portals-reporting-filament",
+    "reference": "9158e108871cd98a2fb8d2768446bb8c2f3e3724",
+    "repository": "https://github.com/liberusoftware/module-real-estate-portals-reporting-filament",
+    "source_signature": "d5429233b4537ad0b04857da54083344632bc73614e82b9ef0160eef5b29e07b",
+    "source_tree": "7874e915f92e620451c84f051c71d520d14eccde",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-portals-reporting-livewire": {
+    "path": "modules/real-estate-portals-reporting-livewire",
+    "reference": "51c57a2a54e9526568f3f71de80b9348d18b4c0a",
+    "repository": "https://github.com/liberusoftware/module-real-estate-portals-reporting-livewire",
+    "source_signature": "c01a4b87a99d74c08c96d07674c75f8037f0837443f57a063f79c8ceab3b7961",
+    "source_tree": "eae33c2a7019645487fcc773bceacbe4926969e0",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-properties": {
+    "path": "modules/real-estate-properties",
+    "reference": "e48a48f0667499eadb6094dfc704d380ec1680a1",
+    "repository": "https://github.com/liberusoftware/module-real-estate-properties",
+    "source_signature": "82596d88aac7cd26f1dc29ffe3f774dc88f705c569072de8d100a12f65aaf650",
+    "source_tree": "af83248210174e65926343a3bf2affe015cd2424",
+    "version": "1.0.4"
+  },
+  "liberusoftware/real-estate-properties-api": {
+    "path": "modules/real-estate-properties-api",
+    "reference": "b6420d97b36861d0c1b978e7928e8fc68796e954",
+    "repository": "https://github.com/liberusoftware/module-real-estate-properties-api",
+    "source_signature": "94a68b767ebf8f2ff9a56f392c71cff50684e4b3bc5ad609c27fd0c4f67ca3a1",
+    "source_tree": "2b77b44cc395bbf7935737dbd4cb9b02f4077cc3",
+    "version": "1.0.2"
+  },
+  "liberusoftware/real-estate-properties-filament": {
+    "path": "modules/real-estate-properties-filament",
+    "reference": "0c6583dc38a82535675776b2c1da7e148d23cd66",
+    "repository": "https://github.com/liberusoftware/module-real-estate-properties-filament",
+    "source_signature": "3920e356e861018a663f686169cc1b3917181f13c737f3c96a3c38064c2c9a11",
+    "source_tree": "be6e5e09d3ac265681513931232d1e12a8627dc7",
+    "version": "1.0.2"
+  },
+  "liberusoftware/real-estate-properties-livewire": {
+    "path": "modules/real-estate-properties-livewire",
+    "reference": "23a016e839fab894e64251b8e95311f0433f258c",
+    "repository": "https://github.com/liberusoftware/module-real-estate-properties-livewire",
+    "source_signature": "5be60ca1296853c5527bd296011b889aaa81e6b9ac9b6d1072646d429505fa00",
+    "source_tree": "d234fc088632db22bfaa3ab0d575cf6422894cc8",
+    "version": "1.0.2"
+  },
+  "liberusoftware/real-estate-property-management": {
+    "path": "modules/real-estate-property-management",
+    "reference": "a6e88ec674bbf9917ae16887a9a164aada8527b6",
+    "repository": "https://github.com/liberusoftware/module-real-estate-property-management",
+    "source_signature": "dab0640817d24ac29e26a41845e7819e913e1e6ee3bc9f592bcf9a3fb2750db7",
+    "source_tree": "1f05e726dfb59206dad0603cc69ff16c9a653ee3",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-property-management-api": {
+    "path": "modules/real-estate-property-management-api",
+    "reference": "54a045ab3d3ee702f1399d3c3b0d40a85623b5d4",
+    "repository": "https://github.com/liberusoftware/module-real-estate-property-management-api",
+    "source_signature": "72e04fc07cbe34b958521496f48544068c188f691270d439c716257eb05260f3",
+    "source_tree": "ee65b48c4c2492271fce333e1e4a48cbf035e652",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-property-management-filament": {
+    "path": "modules/real-estate-property-management-filament",
+    "reference": "34253a7499f1e20fe00082ab34becbc1985dc367",
+    "repository": "https://github.com/liberusoftware/module-real-estate-property-management-filament",
+    "source_signature": "4d891cc2d082c50aed465f78212b0102851c5ad9cec01a4ca38fe4555b7cc968",
+    "source_tree": "a269c7fcfbda0203a853401312255feaaf19e2fd",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-property-management-livewire": {
+    "path": "modules/real-estate-property-management-livewire",
+    "reference": "f8d9aecb10a6b734e78743be448ab67509d67e8b",
+    "repository": "https://github.com/liberusoftware/module-real-estate-property-management-livewire",
+    "source_signature": "af2be002c848062284517480c09f7d893fd989acf2a2666d552e69b554c39c2e",
+    "source_tree": "858d54d51a0bd38f2ed810de691920cf10d2ebaa",
+    "version": "1.0.0"
+  },
+  "liberusoftware/real-estate-rightmove": {
+    "path": "modules/real-estate-rightmove",
+    "reference": "9643473827a1ee94cabf99385c2ba5c29c948102",
+    "repository": "https://github.com/liberusoftware/module-real-estate-rightmove",
+    "source_signature": "18b390086a12ed3c2754610c53093562ee09b7acfb93d889ddf638d44b246e99",
+    "source_tree": "f001fad2986dcadf3bf3c804c60760278fb2a7ec",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-rightmove-api": {
+    "path": "modules/real-estate-rightmove-api",
+    "reference": "cfa0915d9d1d0f9de585f1afb85bac9d1a3b5d4d",
+    "repository": "https://github.com/liberusoftware/module-real-estate-rightmove-api",
+    "source_signature": "106747f0476933b4646e075cceb3ce4f7d38fe9fcade7123691f87fe03eafadf",
+    "source_tree": "d55806b925aee0eda2c285f412cece837ec7de8e",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-rightmove-filament": {
+    "path": "modules/real-estate-rightmove-filament",
+    "reference": "ae5f04bfc802c269a93ddd4a7de2015c2364ca62",
+    "repository": "https://github.com/liberusoftware/module-real-estate-rightmove-filament",
+    "source_signature": "18fe47cc03722ee994e0a285cb9859b19690973f96aa7ecafd2bec0d40f26736",
+    "source_tree": "49967a53a1e5d022b19cef3b418a97ec761f2aff",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-rightmove-livewire": {
+    "path": "modules/real-estate-rightmove-livewire",
+    "reference": "f325c316575fd9d368b35ae03ac2ce4f17ae255e",
+    "repository": "https://github.com/liberusoftware/module-real-estate-rightmove-livewire",
+    "source_signature": "3aa2752ae38748ab3e8e8a3cc2f2cdd48fa64e7f2500d028f9b1acce3f73daf8",
+    "source_tree": "3f229443fccb15a898118266acd98eafe413aa41",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-sales-progression": {
+    "path": "modules/real-estate-sales-progression",
+    "reference": "10d160feee45e15d895f06438caa32068f290dc4",
+    "repository": "https://github.com/liberusoftware/module-real-estate-sales-progression",
+    "source_signature": "5d558e2c7dd5841d6ab0ac5c7bc41ec338d27c8694416b434ac5248cdb17b223",
+    "source_tree": "625b1a25f9ac7e80a87f64a42414c4c7abba71c3",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-sales-progression-api": {
+    "path": "modules/real-estate-sales-progression-api",
+    "reference": "69737004b72e7abecf3125c7f6c093e215350f88",
+    "repository": "https://github.com/liberusoftware/module-real-estate-sales-progression-api",
+    "source_signature": "acf62665e7936dfc2deeeb3005289df7980b5e7cd71d988fcabb74c3f17ba688",
+    "source_tree": "87a5c6e5eb80cd30ad7ef5ade16b51ae11dd385b",
+    "version": "1.0.1"
+  },
+  "liberusoftware/real-estate-sales-progression-filament": {
+    "path": "modules/real-estate-sales-progression-filament",
+    "reference": "bd5b539bc56860f09826bff588bf2353954d382c",
+    "repository": "https://github.com/liberusoftware/module-real-estate-sales-progression-filament",
+    "source_signature": "5aee8f79ecf108ad7dec93c1786f7d15d73a04d0f89ee01200ff1db2804a86d1",
+    "source_tree": "0ab55debec63676e89dd96b3c52034cd0cca839d",
+    "version": "1.0.1"
+  },
   "liberusoftware/tenancy": {
     "path": "modules/tenancy",
     "reference": "32cdb9096690f29205255f2eafee4b2b2847fcaa",
