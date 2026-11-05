@@ -58,6 +58,8 @@ class VersionTests(unittest.TestCase):
 
     def test_declared_major_can_release_a_compatible_maintenance_version(self):
         self.assertEqual(sync.next_version(['v1.4.1', 'v2.0.0'], '1.4.1', 'fix: repair'), 'v1.4.2')
+        self.assertEqual(sync.next_version(['v1.0.0'], '0.1.0', 'fix: repair'), 'v0.1.0')
+        self.assertEqual(sync.next_version(['v0.1.2', 'v0.2.0'], '0.1.0', 'fix: repair'), 'v0.1.3')
 
 
 class PublishTests(unittest.TestCase):
@@ -200,6 +202,21 @@ class PublishTests(unittest.TestCase):
         head = self.commit('fix: change implementation')
         self.assertNotEqual(original, sync.source_signature('modules/example', head))
 
+    def test_tag_version_is_written_to_a_manifest_without_adding_a_composer_version(self):
+        (self.package / 'composer.json').write_text(json.dumps({'name': 'liberusoftware/example'}))
+        (self.package / 'module.json').write_text(json.dumps({'name': 'example', 'version': '1.0.0'}))
+        before = self.commit('fix: use tag versions')
+        self.publish()
+        (self.package / 'source.php').write_text('updated')
+        self.commit('fix: update implementation')
+        self.publish(before)
+        manifest = json.loads(self.real_git('--git-dir=remote.git', 'show', 'main:module.json'))
+        composer = json.loads(self.real_git('--git-dir=remote.git', 'show', 'main:composer.json'))
+        self.assertEqual(manifest['version'], '1.0.1')
+        self.assertNotIn('version', composer)
+        self.publish(before)
+        self.assertEqual(len(self.releases), 2)
+
     def test_duplicate_directories_select_the_manifest_install_path(self):
         duplicate = self.root / 'modules' / 'module-example'
         duplicate.mkdir()
@@ -208,6 +225,34 @@ class PublishTests(unittest.TestCase):
             (path / 'composer.json').write_text(json.dumps(metadata))
         self.assertEqual(sync.package_paths(['modules/example', 'modules/module-example']),
                          {'liberusoftware/example': 'modules/example'})
+
+    def prepare_consumer(self):
+        root = {'name': 'liberusoftware/test-project', 'require': {'liberusoftware/example': '^1.0'},
+                'repositories': [{'type': 'path', 'url': 'modules/*'}]}
+        Path('composer.json').write_text(json.dumps(root))
+        report = {'liberusoftware/example': {'version': '1.0.0', 'reference': 'published-sha',
+                                           'source_signature': sync.source_signature('modules/example', self.real_git('rev-parse', 'HEAD'))}}
+        Path('.github').mkdir(exist_ok=True)
+        Path('.github/package-releases.json').write_text(json.dumps(report))
+        return root
+
+    def test_packagist_consumer_requires_matching_public_distribution(self):
+        self.prepare_consumer()
+        metadata = {'packages': {'liberusoftware/example': [{'version': 'v1.0.0',
+                     'source': {'reference': 'published-sha'}, 'dist': {'type': 'zip'}}]}}
+        with patch.object(sync, 'request', return_value=metadata):
+            sync.use_packagist()
+        project = json.loads(Path('composer.json').read_text())
+        self.assertNotIn('repositories', project)
+        self.assertEqual(project['require']['liberusoftware/example'], '1.0.0')
+        self.assertTrue((self.package / 'source.php').exists())
+
+    def test_failed_publication_verification_preserves_composer_configuration(self):
+        original = self.prepare_consumer()
+        with patch.object(sync, 'request', return_value=None):
+            with self.assertRaisesRegex(RuntimeError, 'not available'):
+                sync.use_packagist()
+        self.assertEqual(json.loads(Path('composer.json').read_text()), original)
 
 
 class PackagistTests(unittest.TestCase):
@@ -221,9 +266,20 @@ class PackagistTests(unittest.TestCase):
                 self.assertEqual(request.call_args.args, (f'https://packagist.org/api/{endpoint}', {'repository': url}, 'test:token'))
 
     def test_package_name_collision_fails(self):
-        with patch.object(sync, 'request', return_value={'package': {'repository': 'https://github.com/other/repo'}}):
+        with patch.object(sync, 'request', return_value={'package': {'repository': 'https://github.com/other/repo'}}), \
+                patch.object(sync, 'github', return_value={'html_url': 'https://github.com/other/repo'}):
             with self.assertRaisesRegex(RuntimeError, 'already belongs'):
                 sync.packagist('liberusoftware/example', 'https://github.com/liberusoftware/module-example')
+
+    def test_repository_move_requires_github_to_confirm_the_same_destination(self):
+        old = 'https://github.com/old-owner/example'
+        new = 'https://github.com/liberusoftware/module-example'
+        with patch.dict(os.environ, {'PACKAGIST_USERNAME': 'test', 'PACKAGIST_API_TOKEN': 'token'}), \
+                patch.object(sync, 'github', return_value={'html_url': new}), \
+                patch.object(sync, 'request', side_effect=[{'package': {'repository': old}},
+                                                         {'status': 'success'}, {'status': 'success'}]) as request:
+            sync.packagist('liberusoftware/example', new)
+        self.assertEqual(request.call_args_list[1].kwargs, {'method': 'PUT'})
 
 
 if __name__ == '__main__':
