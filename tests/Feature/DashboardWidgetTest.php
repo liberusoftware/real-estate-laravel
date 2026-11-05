@@ -39,7 +39,7 @@ it('shows role-specific statistics and only properties from the active workspace
     }
     $welcome = new RoleWelcomeWidget();
     expect($welcome->role())->toBe($role)->and($welcome->roleLabel())->toBe(ucfirst($role))
-        ->and($welcome->quickLinks())->toHaveCount($role === 'staff' ? 5 : 4);
+        ->and($welcome->quickLinks())->toHaveCount($role === 'staff' ? 6 : 5);
 })->with([
     ['seller', 'My properties'], ['landlord', 'Managed lettings'], ['tenant', 'Applications'],
     ['contractor', 'Assigned work'], ['staff', 'Properties'], ['buyer', 'Saved properties'],
@@ -56,7 +56,7 @@ it('returns no workspace statistics for guests and teamless users', function ():
     setPermissionsTeamId($team->id);
     Role::query()->create(['name' => 'staff', 'guard_name' => 'web', 'team_id' => $team->id]);
     $user->assignRole('staff');
-    expect((new RoleWelcomeWidget())->quickLinks())->toHaveCount(4);
+    expect((new RoleWelcomeWidget())->quickLinks())->toHaveCount(5);
 });
 
 it('limits administrator statistics to the active workspace', function (): void {
