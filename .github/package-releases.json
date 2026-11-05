@@ -697,11 +697,11 @@
   },
   "liberusoftware/real-estate-application": {
     "path": "modules/real-estate-application",
-    "reference": "d0c51a57d95dbb66fb6a14af1e677067676385ea",
+    "reference": "e94686f2622d2eb815d1a08a9097971495b64563",
     "repository": "https://github.com/liberusoftware/module-real-estate-application",
-    "source_signature": "509a3805673f7f181d6947a60f1584e9c632be7a432ed8ec878096c0694f5f1f",
-    "source_tree": "ccee03a6021be34cad8bf4f263afac4ff756e866",
-    "version": "1.0.1"
+    "source_signature": "f2c7b940171508a9265367bd10f4cb74fe18d9bdc6b9b68d538ca067accac728",
+    "source_tree": "aa71c635389059fcbb09f8325ae875071f5a0175",
+    "version": "1.1.0"
   },
   "liberusoftware/real-estate-core": {
     "path": "modules/real-estate-core",
