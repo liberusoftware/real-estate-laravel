@@ -72,7 +72,7 @@ it('guards viewing availability and supports confirmation, completion, feedback,
 });
 
 it('returns weekday slots and removes requested or confirmed overlaps', function (): void {
-    $date = CarbonImmutable::now()->addDays(2)->startOfDay();
+    $date = CarbonImmutable::now()->next(CarbonImmutable::MONDAY)->startOfDay();
     $viewing = app(CreateViewing::class)->handle(1, 5, [
         'subject' => 'Already booked',
         'property_id' => 7,
