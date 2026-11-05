@@ -1,0 +1,982 @@
+{
+  "module-activity-comments": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-activity-comments-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-activity-comments-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-activity-comments-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-core-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-core-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-core-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-google": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-google-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-google-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-google-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-meta": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-meta-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-meta-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-meta-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-api-access": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-api-access-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-api-access-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-api-access-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-application": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-application-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-application-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-application-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-audit": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-audit-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-audit-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-audit-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-currency-context": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-currency-context-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-currency-context-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-currency-context-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-developer-experience": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-developer-experience-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-developer-experience-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-developer-experience-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-feature-flags": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-feature-flags-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-feature-flags-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-feature-flags-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-filament-clusters-contracts": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-files-media": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-files-media-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-files-media-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-files-media-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-core-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-core-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-core-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-socialstream": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-import-export": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-import-export-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-import-export-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-import-export-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-integrations": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-integrations-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-integrations-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-integrations-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-jetstream-bridge": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-jetstream-bridge-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-jetstream-bridge-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-jetstream-bridge-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-core-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-core-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-core-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-mymemory": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-module-manager": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-module-manager-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-module-manager-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-module-manager-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-notifications": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-notifications-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-notifications-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-notifications-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-observability": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-observability-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-observability-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-observability-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-organizations-teams": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-organizations-teams-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-organizations-teams-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-organizations-teams-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-profiles": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-profiles-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-profiles-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-profiles-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-application": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-core-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-core-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-core-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-instructions": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-instructions-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-instructions-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-instructions-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-lettings": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-lettings-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-lettings-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-lettings-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-listings": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-listings-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-listings-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-listings-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-marketing": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-marketing-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-marketing-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-marketing-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-matching": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-matching-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-matching-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-matching-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-media-and-documents": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-media-and-documents-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-media-and-documents-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-media-and-documents-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-offers": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-offers-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-offers-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-offers-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-onthemarket": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-onthemarket-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-onthemarket-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-onthemarket-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-parties": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-parties-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-parties-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-parties-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-portals-reporting": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-portals-reporting-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-portals-reporting-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-portals-reporting-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-properties": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-properties-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-properties-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-properties-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-property-management": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-property-management-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-property-management-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-property-management-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-rightmove": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-rightmove-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-rightmove-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-rightmove-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-sales-progression": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-sales-progression-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-sales-progression-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-sales-progression-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-valuations": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-valuations-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-valuations-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-valuations-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-viewings": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-viewings-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-viewings-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-viewings-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-zoopla": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-zoopla-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-zoopla-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-real-estate-zoopla-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-roles-permissions": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-roles-permissions-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-roles-permissions-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-roles-permissions-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-scheduler-queues": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-scheduler-queues-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-scheduler-queues-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-scheduler-queues-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-search": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-search-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-search-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-search-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-sessions-devices": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-sessions-devices-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-sessions-devices-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-sessions-devices-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-settings": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-settings-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-settings-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-settings-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-theme-support": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-theme-support-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-two-factor-authentication": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-two-factor-authentication-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-two-factor-authentication-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-two-factor-authentication-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-users-roles": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-webhooks": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-webhooks-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-webhooks-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-webhooks-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-base": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-clear-signal": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-dark": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-default": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-real-estate-default": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  }
+}

@@ -4,6 +4,7 @@ use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
 use Liberu\RealEstate\Application\Filament\App\Pages\AccountSetupWizard;
+use Liberu\RealEstate\Application\Filament\App\Pages\PersonalSetupWizard;
 use Liberu\RealEstate\LettingsLivewire\Components\RentalApplicationForm;
 use Liberu\RealEstate\MarketingLivewire\Components\NewsArticleList;
 use Liberu\RealEstate\MarketingLivewire\Components\NewsDetail;
@@ -47,8 +48,12 @@ Route::get('/dashboard', function () {
         return redirect($tenant !== null ? $panel->getUrl($tenant) : '/'.$panel->getPath());
     }
 
-    if ($user instanceof User && ! AccountSetupWizard::isComplete()) {
+    if ($user instanceof User && AccountSetupWizard::canAccess() && ! AccountSetupWizard::isComplete()) {
         return redirect()->route('filament.app.pages.setup');
+    }
+
+    if (! PersonalSetupWizard::isComplete()) {
+        return redirect()->route('filament.app.pages.welcome');
     }
 
     return redirect()->route('filament.app.pages.dashboard');

@@ -1,0 +1,16 @@
+@import '../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../modules/real-estate-application/resources/views/**/*.blade.php';
+@source '../../../modules/real-estate-application/src/Filament/**/*.php';
+
+.fi-main {
+    max-width: 100rem;
+}
+
+.fi-sidebar-header {
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.dark .fi-sidebar-header {
+    border-color: var(--gray-800);
+}

@@ -72,12 +72,21 @@
     "src": "node_modules/leaflet/dist/images/marker-icon.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Duktp7mq.css",
+    "file": "assets/app-iHMxLc5a.css",
     "name": "app",
     "names": [
       "app.css"
     ],
     "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/filament/theme.css": {
+    "file": "assets/theme-DvgMhUs_.css",
+    "name": "theme",
+    "names": [
+      "theme.css"
+    ],
+    "src": "resources/css/filament/theme.css",
     "isEntry": true
   },
   "resources/js/app.js": {
@@ -157,7 +166,7 @@
     ]
   },
   "themes/real-estate-default/resources/css/app.css": {
-    "file": "assets/app-BtcoUILB.css",
+    "file": "assets/app-vZ462MPL.css",
     "name": "app",
     "names": [
       "app.css"

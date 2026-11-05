@@ -41,6 +41,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->viteTheme('resources/css/filament/theme.css')
             ->favicon(asset('favicon.svg'))
             ->brandLogo(asset('favicon.svg'))
             ->brandLogoHeight('2.5rem')
@@ -91,12 +92,12 @@ class AdminPanelProvider extends PanelProvider
             ->tenant(Team::class, ownershipRelationship: 'team')
             ->tenantMiddleware([
                 SyncShieldTenant::class,
+                ApplyTeamIntegrationSettings::class,
             ], isPersistent: true)
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
                 StartSession::class,
-                ApplyTeamIntegrationSettings::class,
                 AuthenticateSession::class,
                 ShareErrorsFromSession::class,
                 PreventRequestForgery::class,

@@ -5,6 +5,8 @@ namespace Liberu\RealEstate\Application\Providers\Filament;
 use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
 use Filament\Panel;
 use Liberu\RealEstate\Application\Filament\App\Pages\AccountSetupWizard;
+use Liberu\RealEstate\Application\Filament\App\Pages\PersonalSetupWizard;
+use Liberu\RealEstate\Application\Filament\Pages\InstallationSetupWizard;
 
 final class NavigationGroups
 {
@@ -35,6 +37,7 @@ final class NavigationGroups
         if ($panel === 'app') {
             return [
                 __('filament.nav_groups.account_support') => [
+                    5 => PersonalSetupWizard::class,
                     10 => AccountSetupWizard::class,
                     20 => 'Liberu\\Foundation\\SessionsDevicesFilament\\Pages\\AccountSecurity',
                 ],
@@ -95,6 +98,7 @@ final class NavigationGroups
                 90 => 'Liberu\\RealEstate\\PropertiesFilament\\Resources\\DistrictResource',
             ],
             __('filament.nav_groups.platform_settings') => [
+                5 => InstallationSetupWizard::class,
                 10 => 'Liberu\\Foundation\\SettingsFilament\\Pages\\ManageSiteSettings',
                 20 => 'Liberu\\Foundation\\ApplicationFilament\\Pages\\Overview',
                 30 => 'Liberu\\Foundation\\LocalizationCoreFilament\\Pages\\Overview',

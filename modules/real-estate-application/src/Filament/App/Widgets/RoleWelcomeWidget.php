@@ -4,6 +4,8 @@ namespace Liberu\RealEstate\Application\Filament\App\Widgets;
 
 use Filament\Facades\Filament;
 use Filament\Widgets\Widget;
+use Liberu\RealEstate\Application\Filament\App\Pages\AccountSetupWizard;
+use Liberu\RealEstate\Application\Filament\App\Pages\PersonalSetupWizard;
 use Liberu\RealEstate\Application\Models\User;
 
 final class RoleWelcomeWidget extends Widget
@@ -41,6 +43,22 @@ final class RoleWelcomeWidget extends Widget
 
             $links[] = ['label' => 'Open admin workspace', 'description' => 'Manage properties and workflows.', 'url' => $adminUrl, 'icon' => 'heroicon-o-squares-2x2'];
         }
+
+        if (AccountSetupWizard::canAccess()) {
+            array_unshift($links, [
+                'label' => AccountSetupWizard::isComplete() ? 'Workspace settings' : 'Finish workspace setup',
+                'description' => 'Manage branches, portal connections and tracking.',
+                'url' => AccountSetupWizard::getUrl(panel: 'app'),
+                'icon' => 'heroicon-o-sparkles',
+            ]);
+        }
+
+        $links[] = [
+            'label' => PersonalSetupWizard::isComplete() ? 'Your preferences' : 'Complete your profile',
+            'description' => 'Choose your name and panel language.',
+            'url' => PersonalSetupWizard::getUrl(panel: 'app'),
+            'icon' => 'heroicon-o-adjustments-horizontal',
+        ];
 
         return $links;
     }

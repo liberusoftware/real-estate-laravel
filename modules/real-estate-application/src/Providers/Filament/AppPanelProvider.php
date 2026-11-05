@@ -35,6 +35,7 @@ class AppPanelProvider extends PanelProvider
         return $panel
             ->id('app')
             ->path('app')
+            ->viteTheme('resources/css/filament/theme.css')
             ->favicon(asset('favicon.svg'))
             ->colors(app(ThemeColors::class)->forSite())
             ->renderHook(PanelsRenderHook::GLOBAL_SEARCH_AFTER, fn (): string => Blade::render('@livewire(\'language-switcher\')'))

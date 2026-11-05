@@ -39,7 +39,7 @@ it('shows role-specific statistics and only properties from the active workspace
     }
     $welcome = new RoleWelcomeWidget();
     expect($welcome->role())->toBe($role)->and($welcome->roleLabel())->toBe(ucfirst($role))
-        ->and($welcome->quickLinks())->toHaveCount($role === 'staff' ? 4 : 3);
+        ->and($welcome->quickLinks())->toHaveCount($role === 'staff' ? 5 : 4);
 })->with([
     ['seller', 'My properties'], ['landlord', 'Managed lettings'], ['tenant', 'Applications'],
     ['contractor', 'Assigned work'], ['staff', 'Properties'], ['buyer', 'Saved properties'],
@@ -74,12 +74,10 @@ it('limits administrator statistics to the active workspace', function (): void 
 
 it('requires the team owner to complete workspace setup', function (): void {
     $user = User::factory()->create();
-    Livewire::actingAs($user)->test(AccountSetupWizard::class)->call('save')
-        ->assertNotified('Create a team before continuing.');
+    Livewire::actingAs($user)->test(AccountSetupWizard::class)->assertForbidden();
     $team = Team::factory()->create();
     $user->forceFill(['current_team_id' => $team->id])->save();
-    Livewire::actingAs($user->fresh())->test(AccountSetupWizard::class)->call('save')
-        ->assertNotified('Only the team owner can finish workspace setup.');
+    Livewire::actingAs($user->fresh())->test(AccountSetupWizard::class)->assertForbidden();
     expect($team->fresh()->name)->toBe($team->name);
 });
 
@@ -87,11 +85,19 @@ it('applies stored workspace integration credentials to the request', function (
     $user = User::factory()->create();
     $team = Team::factory()->create(['user_id' => $user->id]);
     $user->forceFill(['current_team_id' => $team->id])->save();
-    app(ScopedSettings::class)->put(new TeamIntegrationSettings(), 'team', (string) $team->id, ['openai_api_key' => 'workspace-key']);
+    app(ScopedSettings::class)->put(new TeamIntegrationSettings(), 'team', (string) $team->id, ['openai_api_key' => 'workspace-key', 'portal_timeout' => 45]);
     $request = Request::create('/');
     $request->setUserResolver(fn () => $user);
-    (new ApplyTeamIntegrationSettings())->handle($request, fn () => new Response('ok'));
-    expect(config('services.openai.api_key'))->toBe('workspace-key');
+    $originalKey = config('services.openai.api_key');
+    (new ApplyTeamIntegrationSettings())->handle($request, function (): Response {
+        expect(config('services.openai.api_key'))->toBe('workspace-key')
+            ->and(config('rightmove.timeout'))->toBe(45)
+            ->and(config('zoopla.timeout'))->toBe(45)
+            ->and(config('onthemarket.timeout'))->toBe(45);
+
+        return new Response('ok');
+    });
+    expect(config('services.openai.api_key'))->toBe($originalKey);
 });
 
 it('keeps user administration permissions granular', function (): void {
