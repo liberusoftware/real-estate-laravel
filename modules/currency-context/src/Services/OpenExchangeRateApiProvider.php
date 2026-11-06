@@ -33,7 +33,7 @@ final class OpenExchangeRateApiProvider implements ExchangeRateProvider
             base: $base,
             quote: $quote,
             rate: (string) $rates['rates'][$quote->code],
-            source: 'open.er-api.com',
+            source: $rates['source'] ?? 'open.er-api.com',
             type: 'market',
             effectiveAt: isset($rates['time_last_update_unix'])
                 ? (new DateTimeImmutable())->setTimestamp((int) $rates['time_last_update_unix'])
@@ -42,7 +42,7 @@ final class OpenExchangeRateApiProvider implements ExchangeRateProvider
         );
     }
 
-    /** @return array{rates: array<string, float>, time_last_update_unix?: int}|null */
+    /** @return array{rates: array<string, float>, time_last_update_unix?: int, source?: string}|null */
     private function rates(string $base): ?array
     {
         $ttl = (int) config('currency.stale_after_seconds', 86400);
@@ -54,17 +54,35 @@ final class OpenExchangeRateApiProvider implements ExchangeRateProvider
             return $cached;
         }
 
-        try {
-            $response = Http::timeout(5)->get($url);
-            $rates = $response->successful() && $response->json('result') === 'success'
-                ? ['rates' => (array) $response->json('rates'), 'time_last_update_unix' => $response->json('time_last_update_unix')]
-                : ['rates' => []];
-        } catch (\Throwable) {
-            $rates = ['rates' => []];
+        $rates = $this->fetch($url);
+
+        // Optional second endpoint with the same response shape, tried only
+        // when the primary one returns nothing usable.
+        $fallback = (string) config('currency.exchange_rate_api_fallback_url', '');
+        if ($rates['rates'] === [] && $fallback !== '') {
+            $rates = $this->fetch(str_replace('{base}', $base, $fallback));
         }
 
         Cache::put($key, $rates, $rates['rates'] === [] ? 60 : max(1, $ttl));
 
         return $rates;
+    }
+
+    /** @return array{rates: array<string, float>, time_last_update_unix?: int, source?: string} */
+    private function fetch(string $url): array
+    {
+        try {
+            $response = Http::timeout(5)->get($url);
+
+            return $response->successful() && $response->json('result') === 'success'
+                ? [
+                    'rates' => (array) $response->json('rates'),
+                    'time_last_update_unix' => $response->json('time_last_update_unix'),
+                    'source' => (string) (parse_url($url, PHP_URL_HOST) ?: 'open.er-api.com'),
+                ]
+                : ['rates' => []];
+        } catch (\Throwable) {
+            return ['rates' => []];
+        }
     }
 }
